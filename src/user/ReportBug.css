@@ -1,0 +1,50 @@
+.reportBug{
+    height: 90vh;
+    width: 80%;
+}
+.bug-form{
+    height: 50vh;
+    width: 50%;
+    padding: 1rem;
+    background: rgba(27, 78, 85, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px); 
+}
+form{
+    height: inherit;
+    width: 90%;
+    flex-direction: column;
+    /* background-color: aqua; */
+}
+.form-heading{
+    padding: 1rem;
+}
+.form-item{
+    width: 100%;
+    margin: 3px;
+    text-align: center;
+}
+input, textarea{
+    height: 7vh;
+    width: 100%;
+    outline: none;
+    padding: 0.2rem;
+    font-size: 17px;
+    border: 1px solid rgba(27, 78, 85, 0.162);
+    background: rgba(27, 78, 85, 0.034);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+}
+textarea{
+    height: 10vh;
+}
+.form-submit button{
+    padding: 1rem;
+    border: 1px solid rgba(27, 78, 85, 0.162);
+    border-radius: 16px;
+    background-color: rgba(27, 78, 85, 0.256);
+}

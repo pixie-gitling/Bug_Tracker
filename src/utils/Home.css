@@ -1,0 +1,214 @@
+.container{
+    overflow: hidden;
+}
+.hero-span{
+    color: #a5cc78;
+    font-size: 45px;
+    text-shadow: 5px 5px 2px #00000072;
+}
+.hero{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    /* position: relative; */
+    background: linear-gradient(340deg, #a5cc78, #1b4e55);
+    /* background-size: 600% 600%; */
+    animation: hero-bg 25s ease infinite;
+}
+
+.hero-heading h1{
+    font-size: 40px;
+}
+.hero-text{
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    height: 60vh;
+    width: 45%;
+    padding: 1rem;
+    text-align: center;
+}
+.circle{
+    height: 150px;
+    width: 150px;
+    position: fixed;
+    border-radius: 50%;
+    background-color: #a5cc789a;
+
+    animation: bounce 2s cubic-bezier(0.05, 0.05, 1, 1) infinite alternate ;
+    -webkit-animation: bounce 2s cubic-bezier( 0.05, 0.05, 1, 1) infinite alternate; 
+}
+@keyframes bounce {
+    from{
+        transform: translate3d(0,0,0);
+    }
+    to{
+        transform: translate3d(0, 100px, 0);
+    }
+} 
+@-webkit-keyframes bounce { 
+    from { 
+        -webkit-transform: translate3d(0, 0, 0); 
+        transform: translate3d(0, 0, 0); 
+    } 
+    to { 
+        -webkit-transform: translate3d(0, 100px, 0); 
+        transform: translate3d(0, 100px, 0); 
+    } 
+} 
+.circle1{
+    height: 160px;
+    width: 160px;
+    top: 7%;
+    right: 26%;
+    animation-delay: 0.6s;
+}
+.circle2{
+    top: 60%;
+    left: 5%;
+    animation-delay: 0.2s;
+}
+.circle3{
+    top: 55%;
+    right: 4%;
+    background-color: #1b4e5594;
+}
+.hero-btn{
+    height: 20vh;
+    width: 100%;
+    padding: 1.5rem;
+}
+.btn{
+    height: 9vh;
+    width: 20%;
+    /* color: #4f6c7d; */
+    font-weight: bold;
+    font-size: medium;
+    border: none;
+    border-radius: 50px;
+    background-color: #a5cc78;
+}
+.btn:hover{
+    height: 10vh;
+    width: 22%;
+    font-size: 20px;
+    transition: 0.2s;
+    background-color: #96c264;
+    cursor: pointer;
+}
+.hero-login{
+    position: relative;
+    float: right;
+    width: 40%;
+    
+}
+
+
+/* Default styles for all devices */
+
+/* Media query for small devices (e.g., smartphones) */
+@media only screen and (max-width: 768px) {
+    .hero-text {
+        top: 10%;
+        left: 2%;
+        width: 90%;
+    }
+
+    .circle,
+    .circle1,
+    .circle2,
+    .circle3 {
+        height: 125px;
+        width: 125px;
+    }
+
+    .circle1 {
+        top: 10%;
+        right: 20%;
+    }
+
+    .circle2 {
+        top: 45%;
+        left: 2%;
+    }
+
+    .circle3 {
+        top: 60%;
+        right: 2%;
+    }
+
+    .hero-btn {
+        height: auto;
+    }
+
+    .btn {
+        /* width: 40%; */
+        font-size: 16px;
+    }
+
+    .btn:hover {
+        /* width: 45%; */
+        font-size: 18px;
+    }
+}
+
+/* Media query for medium devices (e.g., tablets) */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .hero-text {
+        top: 15%;
+        left: 5%;
+        width: 80%;
+    }
+
+    .circle,
+    .circle1,
+    .circle2,
+    .circle3 {
+        height: 135px;
+        width: 135px;
+    }
+
+    .circle1 {
+        top: 7%;
+        right: 25%;
+    }
+
+    .circle2 {
+        top: 60%;
+        left: 5%;
+    }
+
+    .circle3 {
+        top: 50%;
+        right: 5%;
+    }
+}
+
+/* Media query for large devices (e.g., desktops) */
+@media only screen and (min-width: 1025px) {
+    .hero-text {
+        top: 25%;
+        left: 5%;
+        width: 45%;
+    }
+
+    .circle,
+    .circle1,
+    .circle2,
+    .circle3 {
+        height: 150px;
+        width: 150px;
+    }
+
+    .circle1 {
+        height: 160px;
+        width: 160px;
+    }
+    .btn {
+        width: 35%;
+    }
+
+    .btn:hover {
+        width: 40%;
+    }
+}

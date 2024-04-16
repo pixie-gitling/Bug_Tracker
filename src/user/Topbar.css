@@ -1,0 +1,58 @@
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.topbar{
+    position: sticky;
+    height: 10vh;
+    width: 100%;
+    background-color: var(--secondary-color);
+}
+.logo{
+    width: 40%;
+}
+.logo h1{
+    margin-left: 10%;
+}
+.user{
+    width: 60%;
+    text-align: end;
+}
+.logout{
+    width: 10%;
+    text-align: center;
+}
+.logout-btn{
+    height: 7vh;
+    width: 70%;
+    padding: 0.5rem;
+    font-size: large;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    background-color: #86aa5cb3;
+    filter: drop-shadow(5px 5px 2px #ffffff4b);
+    box-shadow: 3px 3px 3px #ffffff4b inset;
+}
+.logout-btn:hover{
+    height: 8vh;
+    width: 75%;
+    font-size: larger;
+    transition: 0.2s;
+    background-color: #96c264;
+    filter: drop-shadow(5px 5px 2px #ffffff4b);
+    box-shadow: 3px 3px 3px #ffffff4b inset;
+    cursor: pointer;
+}
+.user-profile{
+    border: none;
+    background: none;
+    font-size: larger;
+    font-weight: bold;
+    cursor: pointer;
+}
+.user-profile:hover{
+    font-size: 22px;
+    text-shadow: 3px 3px 3px #17171760;
+}

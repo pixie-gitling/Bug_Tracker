@@ -1,0 +1,27 @@
+.dashboard{
+    height: 90vh;
+    width: 80%;
+}
+.dash-items{
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 25% 25% 25%;
+    gap: 5%;
+}
+.card{
+    height: 40vh;
+    width: 100%;
+    background: rgba(165, 204, 120, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+.card-items{
+    height: 40vh;
+    padding: 2rem;
+    text-align: center;
+}
+.card-heading, .card-data{
+    padding: 1rem;
+}

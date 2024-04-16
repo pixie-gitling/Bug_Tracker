@@ -1,0 +1,86 @@
+.login{
+    height: 100vh;
+    width: 100%;
+}
+.login-form{
+    height: fit-content;
+    width: 50%;
+    padding: 1rem;
+    border-radius: 30px;
+    margin-inline: auto;
+    text-align: center;
+    background-color: #a5cc786a;
+    filter: drop-shadow(8px 8px 5px #6968687e);
+}
+form{
+    width: 90%;
+}
+.heading{
+    padding: 1rem;
+    font-size: 20px;
+    text-shadow: 4px 3px 3px #797878;
+}
+.username, .password, .name, .confirm-password{
+    height: 10vh;
+    width: 100%;
+}
+.login-form input{
+    height: 5vh;
+    width: 100%;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    font-size: medium;
+    background-color: #f2f5f796;
+    filter: drop-shadow(4px 4px 2px #8584847e);
+    box-shadow: 3px 3px 2px #858484ce inset;
+}
+.login-btn{
+    margin-inline: auto;
+    /* background-color: black; */
+    width: 100%;
+    padding: 0.5rem;
+}
+.lg-btn{
+    height: 2.5rem;
+    width: 40%;
+    font-size: medium;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 25px;
+    background-color: #1b4e5569;
+    filter: drop-shadow(5px 5px 2px #ffffff4b);
+    box-shadow: 3px 3px 3px #ffffff4b inset;
+}
+.google{
+    /* outline: none; */
+    /* height: 3rem; */
+    width: 100%;
+}
+.sign, .googleSign{
+    padding: 1rem;
+    width: 90%;
+}
+.sign a{
+    font-size: 17.5px;
+    text-decoration: none;
+    color: #1b4e55;
+}
+.password{
+    width: 100%;
+    /* background-color: #1b4e55; */
+}
+.tog-pass{
+    width: 10%;
+}
+.tog-btn{
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: medium;
+    font-weight: bold;
+    border: none;
+    background: none;
+}

@@ -1,0 +1,55 @@
+.DisplayReports{
+    height: 90vh;
+    width: 80%;
+    margin-inline: auto;
+}
+.bug-table{
+    height: 80vh;
+    width: 100%;
+    padding: 1rem;
+    overflow: auto;
+    text-align: center;
+}
+.bug-table::-webkit-scrollbar{
+    height: 0.5rem;
+    width: 0.5rem;
+}
+.bug-table::-webkit-scrollbar-thumb{
+    border-radius: 0.5rem;
+    background-color: #0004;
+    visibility: hidden;
+}
+.bug-table:hover::-webkit-scrollbar-thumb{  
+    visibility: visible;
+}
+table, th, td, tr{
+    margin-inline: auto;
+    padding: 1rem;
+    width: 90%;
+}
+thead th{
+    text-wrap: nowrap;
+    background-color: var(--secondary-color);
+}
+tbody tr:nth-child(even) {
+    background-color: #95ee4c44;
+}
+tbody tr:hover{
+    background-color: #afee7cd4;
+}
+.table-btn{
+    padding: .5rem;
+    height: 5vh;
+    width: 60%;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    box-sizing: border-box;
+    margin-inline: auto;
+}
+.btn1{
+    background-color: var(--secondary-color);
+}
+.btn2{
+    background-color: rgb(255, 130, 130);
+}
