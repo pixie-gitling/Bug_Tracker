@@ -1,46 +1,55 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-// import zxcvbn from 'zxcvbn'; 
-import '../utils/Login.css';
-import toast from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 
-const Signup = ({ flip }) => {
+const AdminSignup = ({ flip }) => {
     const [name, setName] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
-    // const [passwordStrength, setPasswordStrength] = useState(0);
-
-    const handleNameChange = (e) => {
-        const newName = e.target.value;
-        setName(newName);
-    };
-
-    const handleUsernameChange = (e) => {
-        const newUsername = e.target.value;
-        setUsername(newUsername);
-    };
-
-    const handlePasswordChange = (e) => {
-        const newPassword = e.target.value;
-        setPassword(newPassword);
-        // Update password strength meter
-        // const { score } = zxcvbn(newPassword);
-        // setPasswordStrength(score);
-    };
-
-    const handleConfirmPasswordChange = (e) => {
-        const newPassword = e.target.value;
-        setConfirmPassword(newPassword);
-    };
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [role, setRole] = useState('');
+    const [isAdmin, setIsAdmin] = useState(false);
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
 
-    const handleSubmit = async (e) => {
+    const handleNameChange = (e) => {
+        setName(e.target.value);
+    };
+
+    const handleUsernameChange = (e) => {
+        setUsername(e.target.value);
+    };
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
+    };
+
+    const handleConfirmPasswordChange = (e) => {
+        setConfirmPassword(e.target.value);
+    };
+
+    const handleRoleChange = (e) => {
+        const selectedRole = e.target.value;
+        setRole(selectedRole);
+        setIsAdmin(selectedRole === 'Admin'); // Update isAdmin based on the selected role
+    }
+
+    const getBase64ProfilePicture = async () => {
+        const response = await fetch('/profile.jpg')
+        const blob = await response.blob()
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader()
+            reader.onload = () => resolve(reader.result)
+            reader.onerror = () => reject('Error converting image to base64')
+            reader.readAsDataURL(blob)
+        })
+    }
+
+    const handleSignup = async (e) => {
         e.preventDefault();
         try {
             if (password !== confirmPassword) {
@@ -48,9 +57,17 @@ const Signup = ({ flip }) => {
                 return;
             }
 
-            const { data } = await axios.post('/users/signup', { name, username, password, role: "User" });
+            const image = await getBase64ProfilePicture();
+
+            const { data } = await axios.post('/users/admin/signup', {
+                name,
+                username,
+                password,
+                image,
+                isAdmin,
+                role: isAdmin ? "Admin" : "Tester"
+            });
             if (data.error) {
-                console.log(data.error);
                 if (data.error === 'User already exists') {
                     toast.error('Username is already taken. Please choose another one.');
                 } else {
@@ -61,9 +78,9 @@ const Signup = ({ flip }) => {
                 setUsername('');
                 setPassword('');
                 setConfirmPassword('');
-                // setPasswordStrength(0);
-                toast.success('SignUp successful !!!');
+                setRole('');
                 flip();
+                toast.success('SignUp successful !!!');
             }
         } catch (error) {
             console.error(error);
@@ -71,12 +88,13 @@ const Signup = ({ flip }) => {
         }
     };
 
+
     return (
         <div className='login flex'>
-            <div className='login-form'>
-                <form onSubmit={handleSubmit} className='flex'>
+            <div className='Login-form'>
+                <form onSubmit={handleSignup} className='flex'>
                     <div className='heading'>
-                        <h1>Signup</h1>
+                        <h1>Admin/Tester Signup</h1>
                     </div>
                     <div className='name'>
                         <input type='text' placeholder='Enter Name' value={name} onChange={handleNameChange} />
@@ -95,19 +113,28 @@ const Signup = ({ flip }) => {
                     <div className='confirm-password'>
                         <input type='password' placeholder='Confirm Password' value={confirmPassword} onChange={handleConfirmPasswordChange} />
                     </div>
-                    {/* <div className='password-strength'>
-                        Password Strength: {passwordStrength}/5
-                    </div> */}
+                    <div className='role'>
+                        <select value={role} onChange={handleRoleChange}>
+                            <option value='' disabled>Select User</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Tester">Tester</option>
+                        </select>
+                    </div>
                     <div className='login-btn'>
-                        <button className='lg-btn' type='submit'>SignUp</button>
+                        <button className='Lg-btn' type='submit'>
+                            SignUp
+                        </button>
                     </div>
                 </form>
                 <div className='sign'>
-                    <p>Already have an account?<Link to='/' onClick={flip}>Login</Link></p>
+                    <p>
+                        Already have an account?<Link to='/adminlogin' onClick={flip}>
+                            Login
+                        </Link></p>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Signup;
+export default AdminSignup;

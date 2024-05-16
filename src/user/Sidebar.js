@@ -4,7 +4,7 @@ import './SideBar.css'
 
 const Sidebar = () => {
   return (
-    <div className="container">
+    <div className="containerr">
         <div className="sidebar">
           <div className="item flex">
             <NavLink to='/dashboard'>Dashboard</NavLink>
@@ -14,6 +14,9 @@ const Sidebar = () => {
           </div>
           <div className='item flex'>
             <NavLink to='/myreports'>My Reports</NavLink>
+          </div>
+          <div className='item flex'>
+            <NavLink to='/profile'>Profile</NavLink>
           </div>
           <div className='item flex'>
             <NavLink to='/forum'>Forum</NavLink>

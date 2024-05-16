@@ -1,26 +1,25 @@
-.container{
+.Container{
     overflow: hidden;
 }
-.hero-span{
-    color: #a5cc78;
+.Hero-span{
+    color: #1b4e55;
     font-size: 2.7rem;
-    text-shadow: 5px 5px 2px #00000072;
+    text-shadow: 5px 5px 2px #89898972;
 }
-.hero{
-    min-height: 100vh;
-    /* height: 150vh; */
+.Hero{
+    height: 100vh;
     width: 100%;
     overflow: hidden;
     position: absolute;
-    background: #e8fde4;
-    animation: hero-bg 25s ease infinite;
+    background: #eefdff;
+    animation: hero-bg 10s ease infinite;
     background-position: center;
 }
 
-.hero-heading h1{
+.Hero-heading h1{
     font-size: 2.5rem;
 }
-.hero-text{
+.Hero-text{
     position: absolute;
     top: 25%;
     left: 5%;
@@ -29,12 +28,12 @@
     padding: 1rem;
     text-align: center;
 }
-.circle{
+.Circle{
     height: 10rem;
     width: 10rem;
     position: fixed;
     border-radius: 50%;
-    background-color: #a5cc789a;
+    background-color: #1b4e55bd;
 
     animation: bounce 2s cubic-bezier(0.05, 0.05, 1, 1) infinite alternate ;
     -webkit-animation: bounce 2s cubic-bezier( 0.05, 0.05, 1, 1) infinite alternate; 
@@ -57,60 +56,56 @@
         transform: translate3d(0, 100px, 0); 
     } 
 } 
-.circle1{
+.Circle1{
     height: 12rem;
     width: 12rem;
-    top: 7%;
-    right: 26%;
+    top: 6%;
+    right: 30%;
     animation-delay: 0.6s;
 }
-.circle2{
+.Circle2{
     top: 60%;
     left: 5%;
     animation-delay: 0.2s;
+    /* background-color: #a5cc78cc; */
 }
-.circle3{
+.Circle3{
     top: 55%;
     right: 4%;
-    /* background-color: #1b4e5594; */
-}
-.hero-btn{
-    height: 20vh;
-    width: 100%;
-    padding: 1.5rem;
-}
-.btn{
-    height: 9vh;
-    width: 20%;
-    /* color: #4f6c7d; */
-    font-weight: bold;
-    font-size: medium;
-    border: none;
-    border-radius: 50px;
-    background-color: #a5cc78;
-}
-.btn:hover{
-    height: 10vh;
-    width: 22%;
-    font-size: large;
-    transition: 0.2s;
-    background-color: #96c264;
-    cursor: pointer;
 }
 .hero-login{
     position: absolute;
     left: 50%;
+    width: 50%;   
+}
+.Login-form{
+    height: fit-content;
     width: 50%;
-    
+    padding: 1rem;
+    border-radius: 30px;
+    margin-inline: auto;
+    text-align: center;
+    background-color: #1b4e5549;
+    filter: drop-shadow(8px 8px 5px #5150507e);
+}
+.Lg-btn{
+    height: 2.5rem;
+    width: 40%;
+    font-size: medium;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    border-radius: 25px;
+    background-color: #1b4e5571;
 }
 
 /******* media queries *******/
 
 @media only screen and (max-width: 749px) {
-    .hero{
+    .Hero{
         height: 150vh;
     }
-    .hero-text{
+    .Hero-text{
         display: block;
         top: 5%;
         height: 30vh;
@@ -124,37 +119,37 @@
         transform: translateX(-50%);
         width: 100%;
     }
-    .hero-span{
+    .Hero-span{
         font-size: 2.4rem;
     }
-    .hero-heading h1{
+    .Hero-heading h1{
         font-size: 2rem;
     }
-    .circle{
+    .Circle{
         height: 6.2rem;
         width: 6.2rem;
     }
-    .circle1{
+    .Circle1{
         height: 7.5rem;
         width: 7.5rem;
         top: 15%;
         right: 20%;
     }
-    .circle2{
+    .Circle2{
         top: 75%;
         left: 12%;
     }
-    .circle3{
+    .Circle3{
         top: 60%;
         right: 4%;
     }
 }
 
 @media only screen and (min-width: 750px) and (max-width: 1120px) {
-    .hero{
+    .Hero{
         height: 150vh;
     }
-    .hero-text{
+    .Hero-text{
         display: block;
         top: 5%;
         height: 40vh;
@@ -169,21 +164,21 @@
         width: 90%;
         
     }
-    .circle{
+    .Circle{
         height: 7.7rem;
         width: 7.7rem;
     }
-    .circle1{
+    .Circle1{
         height: 9.5rem;
         width: 9.5rem;
         top: 12%;
         right: 19%;
     }
-    .circle2{
+    .Circle2{
         top: 60%;
         left: 9%;
     }
-    .circle3{
+    .Circle3{
         top: 72%;
         right: 4%;
     }

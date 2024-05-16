@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './Topbar.css';
+import './AdminTopbar.css';
 import { useNavigate } from 'react-router';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 
-const Topbar = ({ onLogout }) => {
+const AdminTopbar = ({ onLogout }) => {
   const [user, setUser] = useState('');
   const [profile, setProfile] = useState('')
   const navigate = useNavigate();
@@ -28,22 +28,22 @@ const Topbar = ({ onLogout }) => {
       onLogout();
     }
     Cookies.remove('userId');
-    navigate("/");
+    navigate("/adminlogin");
   };
 
   const handleUser = () => {
-    navigate("/profile");
+    navigate("/adminprofile");
   };
 
   return (
-    <div className="UserTopbar flex">
+    <div className="Topbar flex">
       <div className="logo flex">
         <img src='icon.png' />
         <h1>Bug Tracker</h1>
       </div>
       <div className="user">
         <button className='user-profile' onClick={handleUser}>{user}</button>
-      </div> 
+      </div>
       <div className='profile'> 
         <button className='user-profile' onClick={handleUser}>
         {profile && (
@@ -58,4 +58,4 @@ const Topbar = ({ onLogout }) => {
   );
 };
 
-export default Topbar;
+export default AdminTopbar;

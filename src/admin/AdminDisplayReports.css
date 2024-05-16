@@ -1,0 +1,119 @@
+.displayReports{
+    height: 90vh;
+    width: 80%;
+    margin-inline: auto;
+    flex-direction: column;
+}
+.Bug-Table, .User-Table{
+    height: 70vh;
+    width: 80vw;
+    padding: 1rem;
+    overflow: auto;
+    text-align: center;
+}
+.Bug-Table::-webkit-scrollbar, .User-Table::-webkit-scrollbar{
+    height: 0.5rem;
+    width: 0.5rem;
+}
+.Bug-Table::-webkit-scrollbar-thumb, .User-Table::-webkit-scrollbar-thumb{
+    border-radius: 0.5rem;
+    background-color: #0004;
+    visibility: hidden;
+}
+.Bug-Table:hover::-webkit-scrollbar-thumb, .User-Table:hover::-webkit-scrollbar-thumb{  
+    visibility: visible;
+}
+table{
+    padding: 1rem;
+}
+table, th, td, tr{
+    margin-inline: auto;
+    padding: 0.2rem;
+    width: 100%;
+    text-align: center;
+}
+.tableHead th{
+    text-wrap: nowrap;
+    background-color: var(--primary-color);
+    color: #c2c0c0;
+}
+tbody tr:nth-child(even) {
+    background-color: #1b4e557d;
+}
+tbody tr:hover{
+    background-color: #2a7882df;
+}
+.fileAttached{
+    aspect-ratio: 1/1;
+}
+.Table-Btn{
+    padding: .5rem;
+    height: 5vh;
+    width: 60%;
+    border: none;
+    border-radius: 15px;
+    font-weight: bold;
+    box-sizing: border-box;
+    margin-inline: auto;
+}
+.Btn1{
+    background-color: #76c7a4c0;
+}
+.Btn2{
+    background-color: rgb(255, 130, 130);
+}
+.user-profile-image{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+.heading h1{
+    width: 50vw;
+    margin-left: 20%;
+    text-align: center;
+}
+.search{
+    height: 1vh;
+    width: 17vw;
+    margin-right: 10px;
+}
+.details{
+    cursor: pointer;
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(79, 76, 76);
+}
+.font-icon{
+    margin-left: 10px;
+    color: #ffffff ;
+}
+.red-text{
+    padding: 0.5rem;
+    border-radius: 25px;
+    border: 1px solid red;
+    color: red;
+}
+.yellow-text{
+    padding: 0.5rem;
+    border-radius: 25px;
+    border: 1px solid #ffd500;
+    color: #ffd500;
+}
+.green-text{
+    padding: 0.5rem;
+    border-radius: 25px;
+    border: 1px solid green;
+    color: green;
+}
+/******* media query *******/
+
+@media only screen and (max-width: 921px) {
+    .Bug-Table{
+        height: 60vh;
+        width: 100%;
+    }
+    th, td, tr{
+        padding: 0.3rem;
+        width: 90%;
+    }
+}

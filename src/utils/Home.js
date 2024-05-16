@@ -8,7 +8,7 @@ export const Home = ({onLogin}) => {
 
   return (
     <div className='container'>
-        <div className='hero'>
+        <div className='hero flex'>
             <div className='hero-bg'>
               <div className='circle circle1'></div>
               <div className='circle circle2'></div>
@@ -16,7 +16,7 @@ export const Home = ({onLogin}) => {
             </div>
             <div className='hero-text'>
               <div className='hero-heading'>
-                <h1>"Streamline issue resolution with <span>Bug Tracker</span> – your go-to bug tracking solution for seamless development."</h1>
+                <h1>"Streamline issue resolution with <span className='hero-span'>Bug Tracker</span> – your go-to bug tracking solution for seamless development."</h1>
               </div>
               <div className='hero-btn'>
                   <button className='btn' onClick={() => setToggle(!toggle)}>Start Now!</button>

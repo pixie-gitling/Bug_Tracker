@@ -1,6 +1,19 @@
 .UserProfile{
-    height: auto;
-    width: 80%;
+    height: 90vh;
+    width: 85.6vw;
+    overflow: auto;
+}
+.UserProfile::-webkit-scrollbar{
+    height: 0.5rem;
+    width: 0.5rem;
+}
+.UserProfile::-webkit-scrollbar-thumb{
+    border-radius: 0.5rem;
+    background-color: #0004;
+    visibility: hidden;
+}
+.UserProfile:hover::-webkit-scrollbar-thumb{  
+    visibility: visible;
 }
 .profile-name, .profile-username, .profile-password{
     height: 13vh;
@@ -35,16 +48,22 @@
     background-color: #7a9c53;
 }
 .save-btn{
-    height: 4vh;
-    width: 15%;
-    padding: 0.5rem;
+    height: 10vh;
+    width: 40%;
+}
+.sv-btn, .cancel-btn, .edit-btn{
+    height: 7vh;
+    width: 60%;
+    padding: 0.7rem;
+    margin: 4px;
     border-radius: 25px;
-    background-color: #86aa5c;
+    background-color: #23755f7f;
     text-align: center;
     cursor: pointer;
-}
-.sv-btn{
     border: none;
     font-size: large;
     font-weight: bold;
+}
+.cancel-btn{
+    background-color: #fa6464a4;
 }

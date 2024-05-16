@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../utils/Login.css'
 import axios from 'axios'
-import toast from 'react-hot-toast'
+import {toast} from 'react-hot-toast'
+import Cookies from 'js-cookie'
 
 const Login = ({onLogin, flip}) => {
 
@@ -10,25 +11,37 @@ const Login = ({onLogin, flip}) => {
     const [password, setPassword] = useState('')
     const [showPassword, setShowPassword] = useState(false)
 
-    const handleSubmit = async(e) => {
-        e.preventDefault()
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            const response = await axios.post('/users/login', { username, password })
-            const data = response.data
-            if(data.error) {
-                toast.error(data.error)
+            const response = await axios.post('/users/login', { username, password });
+            const data = response.data;
+            if (data.error) {
+                toast.error(data.error);
             } else {
-                localStorage.setItem('userId', data.user._id)
-                setUsername('')
-                setPassword('')
-                toast.success("Login Successful !!!")
-                onLogin()
+                Cookies.set('userId', data.user._id, { expires: 1/24 });
+                setUsername('');
+                setPassword('');
+                toast.success("Login Successful !!!");
+                onLogin();
             }
         } catch (error) {
-            console.error(error);
-            toast.error("An error occured.")
+            console.error('Error:', error);
+            // toast.error("An error occurred.");
+            // Check if there's a response from the server
+            if (error.response) {
+                console.error('Response data:', error.response.data);
+                toast.error(error.response.data.message || 'An error occurred while processing your request.');
+            } else if (error.request) { // Check if the request was made but no response was received
+                console.error('No response received:', error.request);
+                toast.error('No response received from the server.');
+            } else { // General error (e.g., network error)
+                console.error('Error message:', error.message);
+                toast.error('An error occurred while processing your request.');
+            }
         }
-    }
+    };
+    
 
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword)

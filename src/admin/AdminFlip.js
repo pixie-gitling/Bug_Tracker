@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import ReactCardFlip from 'react-card-flip'
-import Login from './Login'
-import Signup from './Signup'
 import { useNavigate } from 'react-router'
+import {AdminLogin} from './AdminLogin'
+import AdminSignup from './AdminSignup'
 
-const FlipCard = ({onLogin}) => {
+const AdminFlip = ({onLogin}) => {
 
     const[isFlipped, setIsFlipped] = useState()
     const navigate = useNavigate()
@@ -14,22 +14,22 @@ const FlipCard = ({onLogin}) => {
     }
 
     const handleLoginClick = () => {
-        onLogin()
-        navigate("/dashboard")
+        onLogin(true)
+        navigate("/admindashboard")
     }
-    
+
   return (
     <div className='FlipCard'>
         <ReactCardFlip flipDirection='horizontal' isFlipped={isFlipped}>
             <div className='front'>
-                <Login onLogin={handleLoginClick} flip={Flip}/>
+                <AdminLogin onLogin={handleLoginClick} flip={Flip}/>
             </div>
             <div className='back'>
-                <Signup flip={Flip}/>
+                <AdminSignup flip={Flip}/>
             </div>
         </ReactCardFlip>
     </div>
   )
 }
 
-export default FlipCard
+export default AdminFlip

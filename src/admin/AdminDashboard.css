@@ -1,74 +1,75 @@
-.dashboard{
+.AdminDashboard{
     height: fit-content;
-    width: 80%;
+    width: fit-content;
     overflow: hidden;
 }
-.dash-items{
+.DashItems{
     height: 80vh;
-    width: 100%;
+    width: 80%;
     padding: 1rem;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
+    /* overflow: auto; */
     justify-content: center;
 }
-.card{
+.Card{
     height: 30vh;
     width: 80%;
     margin-top: 30px;
-    background: #95ee4c44;
+    background: #2969728a;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
 }
-.card-items{
+.CardItems{
     padding: 2rem;
     text-align: center;
 }
-.card-heading, .card-data{
-    padding: 1rem;
+.CardHeading, .CardData{
+    padding: .1rem;
 }
 
 /******* media query *******/
 
 @media only screen and (max-width: 921px) {
-    .dash-items{
+    .DashItems{
         padding: 2rem;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    .card{
+    .Card{
         height: 25vh;
         width: 70%;
     }
-    .card-items{
+    .CardItems{
         height: 25vh;
         padding: 1.2rem;
         text-align: center;
     }
-    .card-heading, .card-data{
+    .CardHeading, .CardData{
         font-size: small;
     }
 }
 
 @media only screen and (min-width: 922px) and (max-width: 1120px) {
-    .dash-items{
+    .DashItems{
         padding: 2rem;
         display: flex;
         flex-direction: row;
         align-items: center;
     }
-    .card{
+    .Card{
         height: 35vh;
         width: 70%;
     }
-    .card-items{
+    .CardItems{
         height: 35vh;
         padding: 1.2rem;
         text-align: center;
     }
-    .card-heading, .card-data{
+    .CardHeading, .CardData{
         font-size: medium;
     }
 }

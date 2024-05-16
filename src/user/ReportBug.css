@@ -1,12 +1,12 @@
 .reportBug{
     height: 90vh;
-    width: 80%;
+    width: 85.6vw;
 }
 .bug-form{
-    height: 50vh;
-    width: 50%;
+    height: fit-content;
+    width: 60%;
     padding: 1rem;
-    background: rgba(27, 78, 85, 0.2);
+    background: #95ee4c44;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2px);
@@ -26,14 +26,15 @@ form{
     margin: 3px;
     text-align: center;
 }
-input, textarea{
+.form-item input, textarea{
     height: 7vh;
     width: 100%;
     outline: none;
     padding: 0.2rem;
     font-size: 17px;
+    text-align: left;
     border: 1px solid rgba(27, 78, 85, 0.162);
-    background: rgba(27, 78, 85, 0.034);
+    background: #1b4e5509;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(1px);
@@ -43,8 +44,30 @@ textarea{
     height: 10vh;
 }
 .form-submit button{
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: bold;
     padding: 1rem;
-    border: 1px solid rgba(27, 78, 85, 0.162);
+    border: 1px solid #afee7cd4;
     border-radius: 16px;
-    background-color: rgba(27, 78, 85, 0.256);
+    background-color: #afee7c5e;
+}
+.form-submit button:hover {
+    padding: 1.2rem;
+    font-size: 0.9rem;
+    background-color: #afee7c96;
+}
+
+.editReport{
+    width: 50vw;
+}
+
+/******* media query *******/
+
+@media only screen and (max-width: 921px) {
+    .bug-form{
+        height: 50vh;
+        width: 70%;
+        /* padding: 1.2rem;  */
+    }
 }

@@ -1,29 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import './DisplayReports.css';
-import EditReport from './EditReport';
+import '../admin/AdminDisplayReports.css';
+import EditBugReportModal from '../admin/EditBugReport';
 import Cookies from 'js-cookie';
+import TesterResolveBug from './TesterResolveBug';
 
-const DisplayReports = () => {
+const AssignedBugs = () => {
     const [reports, setReports] = useState([]);
-    const [selectedReport, setSelectedReport] = useState(null); // State to store the selected report
-    const [isModalOpen, setIsModalOpen] = useState(false); // State to control the visibility of the modal
-    const [zoomedImage, setZoomedImage] = useState(null); // State to store the zoomed image URL
+    const [selectedReport, setSelectedReport] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false); 
+    const [zoomedImage, setZoomedImage] = useState(null); 
+    const username = Cookies.get('username'); // Retrieve username from cooki
 
     useEffect(() => {
         try {
             const fetchReports = async () => {
-                const response = await axios.get(`/report/${Cookies.get('userId')}`);
-                setReports(response.data);
+                const response = await axios.get('/report');
+                const filteredReports = response.data.filter(report => report.assignedTo === username);
+                setReports(filteredReports);
             };
-
             fetchReports();
         } catch (error) {
             toast.error('Error Fetching Reports');
             console.log(error);
         }
-    }, []);
+    }, [username]);
+    
 
     // Function to handle opening the modal and setting the selected report
     const handleOpenModal = (report) => {
@@ -53,7 +56,7 @@ const DisplayReports = () => {
             toast.error('Error updating report');
             console.log(error);
         }
-    };
+    };   
 
     // Function to handle zooming in on the image
     const handleZoomImage = (imageUrl) => {
@@ -66,51 +69,56 @@ const DisplayReports = () => {
     };
 
     return (
-        <div className='DisplayReports flex'>
-            <div className='bugTable'>
+        <div className='displayReports flex'>
+            <div className='Bug-Table'>
                 <table>
-                    <thead>
+                    <thead className='tableHead'>
                         <tr className='flex'>
+                            <th>Bug Id</th>
                             <th>Bug Title</th>
                             <th>Bug Description</th>
                             <th>File Attached</th>
+                            <th>Severity</th>
                             <th>Status</th>
+                            <th>Remark</th>
                             <th>Action</th>
+                            <th>CreatedAt</th>
                         </tr>
                     </thead>
                     <tbody>
                         {reports.map((report) => (
                             <tr key={report._id} className='flex'>
+                                <td>{report._id}</td>
                                 <td>{report.title}</td>
                                 <td>{report.description}</td>
+                                {/* Display image if fileAttached exists */}
                                 <td>
-                                    {report.fileAttached && 
-                                        <img 
-                                            src={report.fileAttached} 
-                                            alt='File Attached' 
-                                            className='fileAttached' 
-                                            height='150' 
-                                            onClick={() => handleZoomImage(report.fileAttached)} 
-                                        />
+                                    {
+                                        report.fileAttached && 
+                                            <img src={report.fileAttached} alt='File Attached' className='fileAttached' height='100' onClick={() => handleZoomImage(report.fileAttached)} />
                                     }
                                 </td>
+                                <td>{report.severity}</td>
                                 <td>{report.status}</td>
-                                <td> 
-                                    <button className='table-btn btn1 flex' onClick={() => handleOpenModal(report)}>Edit</button> 
+                                <td>{report.remark}</td>
+                                <td>
+                                    <button className='Table-Btn Btn1 flex' onClick={() => handleOpenModal(report)}>Edit</button>
                                 </td>
+                                <td>{report.createdAt}</td>
                             </tr>
                         ))}
-                        {/* Modal for editing report */}
-                        {isModalOpen && (
-                            <div className='UserModal flex'>
-                                <div className='modal-content flex'>
-                                    {/* Pass the selected report data to the EditReport component */}
-                                    <EditReport report={selectedReport} onSave={handleSaveReport} onClose={handleCloseModal}/>
-                                </div>
-                            </div>
-                        )}
                     </tbody>
                 </table>
+            </div>
+            <div>
+                {/* Modal for editing report */}
+                {isModalOpen && (
+                    <div className='Modal'>
+                        <div className='modalContent flex'>
+                            <TesterResolveBug report={selectedReport} onSave={handleSaveReport} onClose={handleCloseModal} />
+                        </div>
+                    </div>
+                )}
             </div>
             {/* Zoomed image */}
             {zoomedImage && (
@@ -122,4 +130,4 @@ const DisplayReports = () => {
     );
 };
 
-export default DisplayReports;
+export default AssignedBugs;

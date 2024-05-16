@@ -1,0 +1,23 @@
+.pages{
+    height: 10vh;
+}
+ul{
+    list-style: none;
+}
+.page-item, .current{
+    height: 5vh;
+    width: 5vh;
+    text-align: center;
+    margin: 10px 5px;
+    border-radius: 50%;
+    background-color: rgba(137, 158, 170, 0.76);
+}
+.current {
+    color: #fff;
+    background-color: #657a91;
+}
+.page-link{
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+}

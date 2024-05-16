@@ -1,40 +1,44 @@
 .DisplayReports{
     height: 90vh;
-    width: 80%;
+    width: 85.6vw;
     margin-inline: auto;
+    flex-direction: column;
 }
-.bug-table{
+.bugTable{
     height: 80vh;
-    width: 100%;
+    width: 90%;
     padding: 1rem;
     overflow: auto;
     text-align: center;
 }
-.bug-table::-webkit-scrollbar{
+.bugTable::-webkit-scrollbar{
     height: 0.5rem;
     width: 0.5rem;
 }
-.bug-table::-webkit-scrollbar-thumb{
+.bugTable::-webkit-scrollbar-thumb{
     border-radius: 0.5rem;
     background-color: #0004;
     visibility: hidden;
 }
-.bug-table:hover::-webkit-scrollbar-thumb{  
+.bugTable:hover::-webkit-scrollbar-thumb{  
     visibility: visible;
+}
+table{
+    padding: 1rem;
 }
 table, th, td, tr{
     margin-inline: auto;
-    padding: 1rem;
+    padding: 0.6rem;
     width: 90%;
 }
-thead th{
+.bugTable thead th{
     text-wrap: nowrap;
     background-color: var(--secondary-color);
 }
-tbody tr:nth-child(even) {
+.bugTable tbody tr:nth-child(even) {
     background-color: #95ee4c44;
 }
-tbody tr:hover{
+.bugTable tbody tr:hover{
     background-color: #afee7cd4;
 }
 .table-btn{
@@ -52,4 +56,52 @@ tbody tr:hover{
 }
 .btn2{
     background-color: rgb(255, 130, 130);
+}
+
+.UserModal {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    width: 60%;
+    min-height: 50vh; 
+    height: fit-content;
+}
+
+.modal-content {
+    background-color: rgb(255, 255, 255);
+    height: fit-content;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* max-width: 40%;  */
+}
+.file-preview{
+    aspect-ratio: 16/9;
+}
+
+.ZoomedImage{
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    /* transform: translateX(-50%); */
+    z-index: 1000;
+    width: 60%;
+    height: 60vh;
+}
+
+/******* media query *******/
+
+@media only screen and (max-width: 921px) {
+    .bug-table{
+        height: 60vh;
+        width: 100%;
+    }
+    th, td, tr{
+        padding: 0.3rem;
+        width: 90%;
+    }
 }

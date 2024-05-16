@@ -2,22 +2,36 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ReportBug.css';
 import { toast } from 'react-hot-toast';
+import Cookies from 'js-cookie'; // Import Cookies
 
 export const ReportBug = () => {
     const [userId, setUserId] = useState('');
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [file, setFile] = useState(null);
+    const [filePreview, setFilePreview] = useState(null); 
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        const userIdFromStorage = localStorage.getItem('userId');
-        console.log("UserId from storage:", userIdFromStorage);
-        if (userIdFromStorage) {
-            setUserId(userIdFromStorage);
-            console.log("UserId from storage:   ", userIdFromStorage);
+        // Retrieve userId from cookies
+        const userIdFromCookie = Cookies.get('userId');
+        if (userIdFromCookie) {
+            setUserId(userIdFromCookie);
+            console.log(userIdFromCookie);
         }
     }, []);
+
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        setFile(selectedFile);
+
+        // Preview the selected image
+        const reader = new FileReader();
+        reader.onload = () => {
+            setFilePreview(reader.result);
+        };
+        reader.readAsDataURL(selectedFile);
+    };
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
@@ -25,10 +39,6 @@ export const ReportBug = () => {
 
     const handleDescriptionChange = (e) => {
         setDescription(e.target.value);
-    };
-
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
     };
 
     const handleSubmit = async (e) => {
@@ -67,6 +77,7 @@ export const ReportBug = () => {
                         setTitle('');
                         setDescription('');
                         setFile(null);
+                        setFilePreview('')
                         e.target.reset();
                     } else {
                         toast.error('Error submitting bug report');
@@ -89,7 +100,7 @@ export const ReportBug = () => {
                 setLoading(false);
             };
     
-            reader.readAsDataURL(file); // Read file as data URL (base64)
+            reader.readAsDataURL(file); 
         } catch (error) {
             toast.error('An unexpected error occurred');
             setLoading(false);
@@ -110,6 +121,7 @@ export const ReportBug = () => {
                         <textarea placeholder='Bug Description' value={description} onChange={handleDescriptionChange} />
                     </div>
                     <div className='form-item file'>
+                        {filePreview && <img src={filePreview} alt='File Preview'className='file-preview' height='200' />}
                         <input type='file' accept='image/*' placeholder='Attach a File' onChange={handleFileChange} />
                     </div>
                     <div className='form-item form-submit'>

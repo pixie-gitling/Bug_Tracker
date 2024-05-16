@@ -1,21 +1,18 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import './AdminSidebar.css'
+import '../admin/AdminSidebar.css'
 
-const AdminSidebar = () => {
+const TesterSidebar = () => {
   return (
     <div className="Sidebar">
       <div className="Item flex">
-        <NavLink to='/admindashboard'>Dashboard</NavLink>
+        <NavLink to='/testerdashboard'>Dashboard</NavLink>
       </div>
       <div className='Item flex'>
-        <NavLink to='/reports'>Bug Reports</NavLink>
+        <NavLink to='/assignedbugs'>Assigned Bugs</NavLink>
       </div>
       <div className='Item flex'>
-        <NavLink to='/users'>Users</NavLink>
-      </div>
-      <div className='Item flex'>
-        <NavLink to='/adminprofile'>Profile</NavLink>
+        <NavLink to='/testerprofile'>Profile</NavLink>
       </div>
       <div className='Item flex'>
         <NavLink to='/forum'>Forum</NavLink>
@@ -24,4 +21,4 @@ const AdminSidebar = () => {
   )
 }
 
-export default AdminSidebar
+export default TesterSidebar

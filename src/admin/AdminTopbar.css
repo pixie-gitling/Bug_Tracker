@@ -3,36 +3,34 @@
     align-items: center;
     justify-content: center;
 }
-.UserTopbar{
+.Topbar{
     position: sticky;
-    min-height: 10vh;
-    width: 100%;
+    height: 10vh;
+    width: 100vw;
     background-color: var(--accent-color);
     box-shadow: 4px 4px 4px #1414144b;
 }
-.UserTopbar .logo{
+.logo{
     width: 35%;
     margin-left: 20px;
     justify-content: left;
 }
-.UserTopbar .logo h1{
-    color: #b6dc9c;
+.logo h1{
+    margin-left: 10%;
+    color: #20666fde;
 }
-.UserTopbar .logo img{
+.logo img{
     height: 40px;
-    width: 40px;
 }
-/* .user{
-    width: 40%;
-} */
-.user button{
-    margin-right: 15px;
+.user{
+    width: 50%;
+    text-align: end;
 }
 .logout{
     width: 10%;
     text-align: center;
 }
-.UserTopbar .logout-btn{
+.logout-btn{
     height: 7vh;
     width: 85%;
     padding: 0.5rem;
@@ -41,31 +39,31 @@
     text-align: center;
     border: none;
     border-radius: 25px;
-    background-color: #96c264;
+    background-color: #296a72c9;
     filter: drop-shadow(5px 5px 2px #ffffff4b);
     box-shadow: 3px 3px 3px #ffffff4b inset;
 }
-.UserTopbar .logout-btn:hover{
+.logout-btn:hover{
     height: 8vh;
     width: 75%;
     font-size: larger;
     transition: 0.2s;
-    background-color: #b6dc9c;
+    background-color: #20666f94;
     filter: drop-shadow(5px 5px 2px #ffffff4b);
     box-shadow: 3px 3px 3px #ffffff4b inset;
     cursor: pointer;
 }
-.UserTopbar .user-profile{
-    color: #b6dc9c;
+.user-profile{
     border: none;
     background: none;
     font-size: larger;
     font-weight: bold;
+    color: #20666fde;
     cursor: pointer;
 }
-.UserTopbar .user-profile:hover{
+.user-profile:hover{
     font-size: 22px;
-    text-shadow: 1px 1px 2px #1717176b;
+    text-shadow: 3px 3px 3px #17171760;
 }
 
 /******* media query *******/
@@ -88,7 +86,7 @@
         width: 110%;
         font-size: 1rem;
         transition: 0.2s;
-        background-color: #96c264;
+        background-color: #389ba9da;
         filter: drop-shadow(5px 5px 2px #ffffff4b);
         box-shadow: 3px 3px 3px #ffffff4b inset;
         cursor: pointer;

@@ -1,20 +1,20 @@
-.sidebar{
-    min-height: 80.5vh;
-    /* height: 100vh; */
+.Sidebar{
+    height: 80.5vh;
     width: 10vw;
-    background-color: var(--secondary-color);
     padding: 2rem;
+    float: left;
+    background-color: var(--primary-color);
     text-align: center;
 }
-.sidebar .item{
+.Item{
     height: 10vh;
 }
-.sidebar .item a{
+.Item a{
     font-size: 1.3rem;
     text-decoration: none;
-    color: #302f2f;
+    color: #acacac;
 }
-.sidebar .item a:hover{
+.Item a:hover{
     height: 5vh;
     padding: 1rem;
     text-align: center;
