@@ -10,16 +10,29 @@
     border-radius: 30px;
     margin-inline: auto;
     text-align: center;
-    background-color: #a5cc786a;
-    filter: drop-shadow(8px 8px 5px #6968687e);
+    background-color: #81c78441;
+    box-shadow: 2px 3px 10px #ffffff84 inset, 3px 5px 10px #9797977e;
+
+    transform-style: preserve-3d;
+    border-radius: 32px;
+    box-shadow: 1px 1px 8px 3px #f9f9fb57 inset, -1px 0 28px 0 rgba(34, 33, 81, 0.01),  28px 28px 28px 0 rgba(34, 33, 81, 0.25);
+    transition: .4s ease-in-out transform, .4s ease-in-out box-shadow;
+
+    &:hover {
+        transform: translate3d(0px, -16px, 0px);
+        box-shadow: 1px 1px 8px 3px #f9f9fb57 inset, -1px 0 28px 0 rgba(34, 33, 81, 0.01),  28px 28px 28px 0 rgba(34, 33, 81, 0.25);
+      }
 }
 form{
     width: 90%;
 }
-.heading{
+.header{
     padding: 1rem;
     font-size: 20px;
-    text-shadow: 4px 3px 3px #797878;
+    text-shadow: 4px 3px 3px #b3b4b4;
+}
+.header h1{
+    color: var(--accent-color2);
 }
 .username, .password, .name, .confirm-password, .role{
     height: 10vh;
@@ -48,8 +61,8 @@ select{
     text-align: center;
     font-size: medium;
     background-color: #f2f5f796;
-    filter: drop-shadow(2px 2px 2px #8584847e);
-    box-shadow: 3px 3px 2px #858484ce inset;
+    filter: drop-shadow(2px 2px 5px #8584847e);
+    box-shadow: 3px 3px 2px #bbbbbbce inset, 2px 2px 5px #8888887e;
 }
 .login-btn{
     margin-inline: auto;
@@ -64,16 +77,11 @@ select{
     cursor: pointer;
     border: none;
     border-radius: 25px;
-    background-color: #97c068;
+    background-color: var(--button-metallic-green);
     filter: drop-shadow(5px 5px 2px #ffffff4b);
-    box-shadow: 3px 3px 3px #ffffff4b inset;
+    box-shadow: 3px 3px 6px #ecececce inset, 2px 2px 5px #8888887e;
 }
-.google{
-    /* outline: none; */
-    /* height: 3rem; */
-    width: 100%;
-}
-.sign, .googleSign{
+.sign{
     padding: 1rem;
     width: 90%;
 }

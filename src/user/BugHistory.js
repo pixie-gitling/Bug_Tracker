@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import './Bug.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort } from '@fortawesome/free-solid-svg-icons';
+import './DisplayReports.css'
 
-const History = () => {
+const BugHistory = () => {
     const { reportId } = useParams();
     const [bugHistory, setBugHistory] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -40,6 +40,7 @@ const History = () => {
         };
         return new Date(timeString).toLocaleString('en-GB', options);
     };
+    
     const handleSort = (column) => {
         if (column === sortedColumn) {
             setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
@@ -47,26 +48,39 @@ const History = () => {
             setSortedColumn(column);
             setSortOrder('asc');
         }
+        
+        const sortedData = [...bugHistory].sort((a, b) => {
+            const aValue = a.previousData[column].toLowerCase();
+            const bValue = b.previousData[column].toLowerCase();
+    
+            if (aValue < bValue) {
+                return sortOrder === 'asc' ? -1 : 1;
+            }
+            if (aValue > bValue) {
+                return sortOrder === 'asc' ? 1 : -1;
+            }
+            return 0;
+        });
+    
+        setBugHistory(sortedData);
     };
+    
 
     return (
-        <div className='history'>
-            <div className='heading flex'>
+        <div className='bugHistory'>
+            <div className='header flex'>
                 <h1>Bug History</h1>
             </div>
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
-            <table className='bug-history-table'>
-                <thead className='tableHead'>
+            <table className='bugTable'>
+                <thead>
                     <tr className='flex'>
                         <th>Updated By</th>
-                        <th>UpdatedAt</th>
                         <th onClick={() => handleSort('title')}>Title <FontAwesomeIcon icon={faSort} className='font-icon' /> </th>
-                        <th onClick={() => handleSort('title')}>Description <FontAwesomeIcon icon={faSort} className='font-icon' /> </th>
-                        <th onClick={() => handleSort('title')}>Severity <FontAwesomeIcon icon={faSort} className='font-icon' /> </th>
+                        <th onClick={() => handleSort('description')}>Description <FontAwesomeIcon icon={faSort} className='font-icon' /> </th>
                         <th>Status</th>
                         <th>Assigned To</th>
-                        <th>Remark</th>
                         <th>Created At</th>
                         <th>Last Update</th>
                     </tr>
@@ -75,13 +89,10 @@ const History = () => {
                     {bugHistory.map((historyItem, index) => (
                         <tr key={index} className='flex'>
                             <td>{historyItem.updatedBy}</td>
-                            <td>{formatTime(historyItem.updatedAt)}</td>
                             <td>{historyItem.previousData.title}</td>
                             <td>{historyItem.previousData.description}</td>
-                            <td>{historyItem.previousData.severity}</td>
                             <td>{historyItem.previousData.status}</td>
                             <td>{historyItem.previousData.assignedTo}</td>
-                            <td>{historyItem.previousData.remark}</td>
                             <td>{formatTime(historyItem.previousData.createdAt)}</td>
                             <td>{formatTime(historyItem.previousData.updatedAt)}</td>
                         </tr>
@@ -92,4 +103,4 @@ const History = () => {
     );
 };
 
-export default History;
+export default BugHistory;

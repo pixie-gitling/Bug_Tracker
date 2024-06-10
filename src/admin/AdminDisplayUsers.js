@@ -20,22 +20,22 @@ const AdminDisplayUsers = () => {
         fetchUsers();
     }, []);
 
-    const handleDeleteUser = async (userId) => {
-        try {
-            if (window.confirm('Are you sure you want to delete this user?')) {
-                const response = await axios.delete(`/users/${userId}`);
-                if (response.status === 200) {
-                    setUsers(users.filter(user => user._id !== userId));
-                    toast.success('User deleted successfully');
-                } else {
-                    toast.error('Error deleting user');
-                }
-            }
-        } catch (error) {
-            toast.error('Error deleting user');
-            console.error('Error Deleting User:', error);
-        }
-    };    
+    // const handleDeleteUser = async (userId) => {
+    //     try {
+    //         if (window.confirm('Are you sure you want to delete this user?')) {
+    //             const response = await axios.delete(`/users/${userId}`);
+    //             if (response.status === 200) {
+    //                 setUsers(users.filter(user => user._id !== userId));
+    //                 toast.success('User deleted successfully');
+    //             } else {
+    //                 toast.error('Error deleting user');
+    //             }
+    //         }
+    //     } catch (error) {
+    //         toast.error('Error deleting user');
+    //         console.error('Error Deleting User:', error);
+    //     }
+    // };    
 
     return (
         <div className='displayUsers flex'> 

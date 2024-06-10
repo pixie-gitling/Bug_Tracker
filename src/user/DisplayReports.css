@@ -9,19 +9,8 @@
     width: 90%;
     padding: 1rem;
     overflow: auto;
+    scrollbar-width: none;
     text-align: center;
-}
-.bugTable::-webkit-scrollbar{
-    height: 0.5rem;
-    width: 0.5rem;
-}
-.bugTable::-webkit-scrollbar-thumb{
-    border-radius: 0.5rem;
-    background-color: #0004;
-    visibility: hidden;
-}
-.bugTable:hover::-webkit-scrollbar-thumb{  
-    visibility: visible;
 }
 table{
     padding: 1rem;
@@ -33,13 +22,13 @@ table, th, td, tr{
 }
 .bugTable thead th{
     text-wrap: nowrap;
-    background-color: var(--secondary-color);
+    background-color: var(--hover-color);
 }
 .bugTable tbody tr:nth-child(even) {
-    background-color: #95ee4c44;
+    background-color: var(--light-metallic-green);
 }
 .bugTable tbody tr:hover{
-    background-color: #afee7cd4;
+    background-color: var(--hover-color);
 }
 .table-btn{
     padding: .5rem;
@@ -52,10 +41,11 @@ table, th, td, tr{
     margin-inline: auto;
 }
 .btn1{
-    background-color: var(--secondary-color);
+    background-color: var(--button-metallic-green);
 }
 .btn2{
-    background-color: rgb(255, 130, 130);
+    border: 1px solid var(--bright-red);
+    background-color: var(--bright-red);
 }
 
 .UserModal {
@@ -65,18 +55,19 @@ table, th, td, tr{
     transform: translateX(-50%);
     z-index: 1000;
     /* background-color: rgba(0, 0, 0, 0.5); */
-    width: 60%;
+    width: 100%;
     min-height: 50vh; 
     height: fit-content;
 }
 
 .modal-content {
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0);
     height: fit-content;
+    width: 60%;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* max-width: 40%;  */
+    /* margin-left: 100px; */
+    transform: translateX(10%);
+    backdrop-filter: blur(4px);
 }
 .file-preview{
     aspect-ratio: 16/9;
@@ -87,10 +78,39 @@ table, th, td, tr{
     position: absolute;
     top: 20%;
     left: 30%;
-    /* transform: translateX(-50%); */
     z-index: 1000;
     width: 60%;
     height: 60vh;
+}
+.bugHistory{
+    height: 80vh;
+    width: 83.7vw;
+    padding: 1rem;
+    overflow: auto;
+}
+.bugDetails{
+    height: 80vh;
+    width: 83.7vw;
+    padding: 1rem;
+    overflow: auto;
+}
+.Detail h3{
+    color: #396f0c;
+}
+.search{
+    margin-left: 50px;
+}
+.his-btn{
+    height: 6vh;
+    width: 10vw;
+    margin: 10px 2px;
+    border: none;
+    border-radius: 40px;
+    box-sizing: border-box;
+    background-color: var(--button-metallic-green);
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 /******* media query *******/

@@ -60,8 +60,8 @@ const EditReport = ({ report, onSave, onClose }) => {
                         <input type='file' accept='image/*' onChange={handleFileChange} />
                     </div>
                     <div className='form-item form-submit'>
-                        <button type='button' onClick={handleSave} className='table-btn btn1'>Save</button> <br/><br/>
-                        <button type='button' onClick={onClose} className='table-btn btn2'>Cancel</button>
+                        <button type='button' onClick={handleSave} className='btn1'>Save</button> <br/>
+                        <button type='button' onClick={onClose} className='btn2'>Cancel</button>
                     </div>
                 </form>
             </div>

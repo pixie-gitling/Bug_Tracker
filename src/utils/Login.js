@@ -20,6 +20,8 @@ const Login = ({onLogin, flip}) => {
                 toast.error(data.error);
             } else {
                 Cookies.set('userId', data.user._id, { expires: 1/24 });
+                Cookies.set('username', data.user.username, { expires: 1/24 });
+                Cookies.set('name', data.user.name, { expires: 1/24 });
                 setUsername('');
                 setPassword('');
                 toast.success("Login Successful !!!");
@@ -27,18 +29,18 @@ const Login = ({onLogin, flip}) => {
             }
         } catch (error) {
             console.error('Error:', error);
-            // toast.error("An error occurred.");
+            toast.error("Invalid Credentials.");
             // Check if there's a response from the server
-            if (error.response) {
-                console.error('Response data:', error.response.data);
-                toast.error(error.response.data.message || 'An error occurred while processing your request.');
-            } else if (error.request) { // Check if the request was made but no response was received
-                console.error('No response received:', error.request);
-                toast.error('No response received from the server.');
-            } else { // General error (e.g., network error)
-                console.error('Error message:', error.message);
-                toast.error('An error occurred while processing your request.');
-            }
+            // if (error.response) {
+            //     console.error('Response data:', error.response.data);
+            //     toast.error(error.response.data.message || 'An error occurred while processing your request.');
+            // } else if (error.request) { // Check if the request was made but no response was received
+            //     console.error('No response received:', error.request);
+            //     toast.error('No response received from the server.');
+            // } else { // General error (e.g., network error)
+            //     console.error('Error message:', error.message);
+            //     toast.error('An error occurred while processing your request.');
+            // }
         }
     };
     
@@ -51,7 +53,7 @@ const Login = ({onLogin, flip}) => {
         <div className='login flex'>
                 <div className='login-form'>
                     <form onSubmit={handleSubmit} className='flex'>
-                        <div className='heading'>
+                        <div className='header flex'>
                             <h1>Login</h1>
                         </div>
                         <div className='username'>

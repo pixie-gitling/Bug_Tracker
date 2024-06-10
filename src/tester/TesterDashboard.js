@@ -1,65 +1,82 @@
-import React, { useEffect, useState } from 'react'
-import '../admin/AdminDashboard.css'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react';
+import '../admin/AdminDashboard.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router';
 import Cookies from 'js-cookie'
 
 const TesterDashboard = () => {
+    const navigate = useNavigate();
 
-    const [totalBugs, setTotalBugs] = useState(0)
-    const [resolvedBugs, setResolvedBugs] = useState(0)
-    const [assignedBugs, setAssignedBugs] = useState(0)
-    const username = Cookies.get('username')
+    const [totalBugs, setTotalBugs] = useState(0);
+    const [resolvedBugs, setResolvedBugs] = useState(0);
+    const [unresolvedBugs, setUnresolvedBugs] = useState(0);
+    const [assignedBugs, setAssignedBugs] = useState(0);
+    const user = Cookies.get('username');
 
     useEffect(() => {
-        const fetchBugReports = async() => {
-            const response = await axios.get('/report')
-            const filteredReports = response.data.filter(report => report.assignedTo === username);
+        const fetchBugReports = async () => {
+            const response = await axios.get('/report');
+            const bugs = response.data.filter(report => report.assignedTo === user);
 
-            setTotalBugs(filteredReports.length)
-            setAssignedBugs(filteredReports.filter(report => report.status === 'Assigned').length)
-            setResolvedBugs(filteredReports.filter(report => report.status === 'Resolved').length)
-        }
+            setTotalBugs(bugs);
+            setUnresolvedBugs(bugs.filter(report => report.status === 'Reported'));
+            setAssignedBugs(bugs.filter(report => report.status === 'Assigned'));
+            setResolvedBugs(bugs.filter(report => report.status === 'Resolved'));
+        };
 
-        fetchBugReports()
-    })
+        fetchBugReports();
+    }, []);
 
-  return (
-    <div className='admin'>
+    const handleCardClick = (status) => {
+        navigate(`/reports?status=${status}`);
+    };
+
+    return (
+        <div className='admin'>
             <div className='DashItems'>
-                <div className='Card'>
+                <div className='Card' onClick={() => handleCardClick('Reported')}>
                     <div className='CardItems'>
                         <div className='CardHeading'>
-                            <h1>Total Bugs Assigned</h1>
+                            <h1>Total Bugs Reported</h1>
                         </div>
                         <div className='CardData'>
-                            <h1>{totalBugs}</h1>
+                            <h1>{totalBugs.length}</h1>
                         </div>
                     </div>
                 </div>
-                <div className='Card'>
+                <div className='Card' onClick={() => handleCardClick('Resolved')}>
                     <div className='CardItems'>
                         <div className='CardHeading'>
                             <h1>No. of Bugs Resolved</h1>
                         </div>
                         <div className='CardData'>
-                            <h1>{resolvedBugs}</h1>
+                            <h1>{resolvedBugs.length}</h1>
                         </div>
                     </div>
                 </div>
-                <div className='Card'>
+                <div className='Card' onClick={() => handleCardClick('Assigned')}>
+                    <div className='CardItems'>
+                        <div className='CardHeading'>
+                            <h1>No. of Bugs Assigned</h1>
+                        </div>
+                        <div className='CardData'>
+                            <h1>{assignedBugs.length}</h1>
+                        </div>
+                    </div>
+                </div>
+                <div className='Card' onClick={() => handleCardClick('Unresolved')}>
                     <div className='CardItems'>
                         <div className='CardHeading'>
                             <h1>No. of Bugs Unresolved</h1>
                         </div>
                         <div className='CardData'>
-                            <h1>{assignedBugs}</h1>
+                            <h1>{unresolvedBugs.length}</h1>
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
-  )
-}
+    );
+};
 
-export default TesterDashboard
+export default TesterDashboard;

@@ -10,9 +10,18 @@ export const Home = ({onLogin}) => {
     <div className='container'>
         <div className='hero flex'>
             <div className='hero-bg'>
-              <div className='circle circle1'></div>
-              <div className='circle circle2'></div>
-              <div className='circle circle3'></div>
+              <ul className="circles">
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                      <li></li>
+              </ul>
             </div>
             <div className='hero-text'>
               <div className='hero-heading'>

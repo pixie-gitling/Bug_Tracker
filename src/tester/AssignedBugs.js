@@ -5,13 +5,15 @@ import '../admin/AdminDisplayReports.css';
 import EditBugReportModal from '../admin/EditBugReport';
 import Cookies from 'js-cookie';
 import TesterResolveBug from './TesterResolveBug';
+import { useNavigate } from 'react-router';
 
 const AssignedBugs = () => {
     const [reports, setReports] = useState([]);
     const [selectedReport, setSelectedReport] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false); 
     const [zoomedImage, setZoomedImage] = useState(null); 
-    const username = Cookies.get('username'); // Retrieve username from cooki
+    const username = Cookies.get('username'); 
+    const navigate = useNavigate();
 
     useEffect(() => {
         try {
@@ -68,30 +70,46 @@ const AssignedBugs = () => {
         setZoomedImage(null);
     };
 
+    const handleReportClick = (reportId) => {
+        navigate(`/assignedbugs/${reportId}`);
+    };
+
+    const formatTime = (timeString) => {
+        const options = { 
+            year: 'numeric', 
+            month: 'numeric', 
+            day: 'numeric', 
+            hour: 'numeric', 
+            minute: 'numeric', 
+            hour12: true 
+        };
+        return new Date(timeString).toLocaleString('en-GB', options);
+    };
+
     return (
         <div className='displayReports flex'>
             <div className='Bug-Table'>
                 <table>
                     <thead className='tableHead'>
                         <tr className='flex'>
-                            <th>Bug Id</th>
+                            {/* <th>Bug Id</th> */}
                             <th>Bug Title</th>
                             <th>Bug Description</th>
                             <th>File Attached</th>
                             <th>Severity</th>
-                            <th>Status</th>
+                            {/* <th>Status</th> */}
                             <th>Remark</th>
                             <th>Action</th>
                             <th>CreatedAt</th>
+                            <th>Details</th>
                         </tr>
                     </thead>
                     <tbody>
                         {reports.map((report) => (
                             <tr key={report._id} className='flex'>
-                                <td>{report._id}</td>
+                                {/* <td>{report._id}</td> */}
                                 <td>{report.title}</td>
                                 <td>{report.description}</td>
-                                {/* Display image if fileAttached exists */}
                                 <td>
                                     {
                                         report.fileAttached && 
@@ -99,12 +117,13 @@ const AssignedBugs = () => {
                                     }
                                 </td>
                                 <td>{report.severity}</td>
-                                <td>{report.status}</td>
+                                {/* <td>{report.status}</td> */}
                                 <td>{report.remark}</td>
                                 <td>
                                     <button className='Table-Btn Btn1 flex' onClick={() => handleOpenModal(report)}>Edit</button>
                                 </td>
-                                <td>{report.createdAt}</td>
+                                <td>{formatTime(report.createdAt)}</td>
+                                <td className='details' onClick={() => handleReportClick(report._id)}>View Details</td>
                             </tr>
                         ))}
                     </tbody>

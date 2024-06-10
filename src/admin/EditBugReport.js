@@ -8,6 +8,7 @@ const EditBugReportModal = ({ report, onSave, onClose }) => {
     const [severity, setSeverity] = useState(report.severity);
     const [assignedTo, setAssignedTo] = useState(report.assignedTo);
     const [status, setStatus] = useState(report.status);
+    const [remark, setRemark] = useState(report.remark);
     const [testers, setTesters] = useState([]);
 
     // Fetch the list of testers from the database
@@ -33,7 +34,8 @@ const EditBugReportModal = ({ report, onSave, onClose }) => {
             ...report,
             severity: severity,
             assignedTo: assignedTo,
-            status: status
+            status: status,
+            remark: remark
         });
     };
 
@@ -63,6 +65,9 @@ const EditBugReportModal = ({ report, onSave, onClose }) => {
                         <option value="Reported">Reported</option>
                         <option value="Assigned">Assigned</option>
                     </select>
+                </p>
+                <p>Remark:
+                        <textarea className='severity' value={remark} onChange={(e) => setRemark(e.target.value)}></textarea>
                 </p>
                 {/* Save and Cancel buttons */}
                 <button onClick={handleSave} className='edit Btn1'>Save</button><br/>

@@ -32,15 +32,10 @@
     font-size: 1rem;
     font-weight: bold;
     text-align: center;
+    border: 1px solid #296a72c9;
     border-radius: 25px;
     filter: drop-shadow(5px 5px 2px #ffffff4b);
     box-shadow: 3px 3px 3px #ffffff4b inset;
-}
-.message p.admin{
-    border: 1px solid #296a72c9;
-}
-.message p.user{
-    border: 1px solid var(--button-metallic-green);
 }
 .message-input{
     width: 100%;
@@ -55,13 +50,8 @@
     text-align: center;
     border: none;
     border-radius: 25px;
+    background-color: #296a72c9;
     filter: drop-shadow(5px 5px 2px #ffffff4b);
     box-shadow: 3px 3px 3px #ffffff4b inset;
     cursor: pointer;
-}
-.send-btn.admin{
-    background-color: #296a72c9;
-}
-.send-btn.user{
-    background-color: var(--button-metallic-green);
 }

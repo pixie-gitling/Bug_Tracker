@@ -1,12 +1,20 @@
 :root{
-  --primary-color: #1b4e55;
-  --secondary-color: #a5cc78;
-  --accent-color: #ffffff;
-  --background-color: #f5f5f5;
-  --text-color: #333333;
+  --primary-color: #4CAF50;
+  --secondary-color: #388E3C;
+  --light-metallic-green: #C8E6C9;
+  --button-metallic-green: #66BB6A;
+  --accent-color: #8BC34A;
+  --accent-color2: #2E7D32;
+  --hover-color: #81C784;
+  --background-color: #A5D6A7;
+  --text-color: #424242;
+  --bright-yellow: #FFEB3B;
+  --bright-red: #F44336;
 }
 .parent{
-  background-color: var(--background-color);
+  background-color: #f8fff85f;
+  color: var(--text-color);
+  font-family: sans serif;
 }
 .box{
   display: flex;

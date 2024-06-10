@@ -1,25 +1,37 @@
 .reportBug{
     height: 90vh;
-    width: 85.6vw;
+    width: 83vw;
 }
 .bug-form{
     height: fit-content;
     width: 60%;
     padding: 1rem;
-    background: #95ee4c44;
+    background: var(--light-metallic-green);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 3px 10px #ffffffe9 inset, 3px 5px 10px #5c5c5c7e;
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px); 
+
+    transform-style: preserve-3d;
+    border-radius: 32px;
+    box-shadow: 1px 1px 8px 3px #ffffff9a inset, -1px 0 28px 0 #122c122a,  28px 28px 28px 0 #21512358;
+    transition: .4s ease-in-out transform, .4s ease-in-out box-shadow;
+
+    &:hover {
+        transform: translate3d(0px, -16px, 0px);
+        box-shadow: 1px 1px 8px 3px #ffffff9a inset, -1px 0 28px 0 #122c122a,  28px 28px 28px 0 #21512358;
+      }
 }
 form{
     height: inherit;
     width: 90%;
     flex-direction: column;
-    /* background-color: aqua; */
 }
 .form-heading{
     padding: 1rem;
+}
+.form-heading h1{
+    color: var(--secondary-color);
 }
 .form-item{
     width: 100%;
@@ -34,28 +46,30 @@ form{
     font-size: 17px;
     text-align: left;
     border: 1px solid rgba(27, 78, 85, 0.162);
-    background: #1b4e5509;
+    background: #ffffffc6;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(1px);
     -webkit-backdrop-filter: blur(1px);
 }
 textarea{
-    height: 10vh;
+    height: 12vh;
+    font-family: serif;
 }
 .form-submit button{
     cursor: pointer;
     font-size: 0.8rem;
     font-weight: bold;
     padding: 1rem;
-    border: 1px solid #afee7cd4;
+    margin-top: 15px;
+    border: 1px solid var(--button-metallic-green);
     border-radius: 16px;
-    background-color: #afee7c5e;
+    background-color: var(--button-metallic-green);
 }
 .form-submit button:hover {
     padding: 1.2rem;
     font-size: 0.9rem;
-    background-color: #afee7c96;
+    background-color:  var(--hover-color);
 }
 
 .editReport{
@@ -64,10 +78,12 @@ textarea{
 
 /******* media query *******/
 
-@media only screen and (max-width: 921px) {
-    .bug-form{
-        height: 50vh;
-        width: 70%;
-        /* padding: 1.2rem;  */
+@media only screen and (max-width: 867px) {
+    .reportBug{
+        width: 100vw;
     }
+}
+@media only screen and (min-width: 868px) and (max-width: 1049px) {
+}
+@media only screen and (min-width: 1050px) and (max-width: 1280px) {
 }

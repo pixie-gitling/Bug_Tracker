@@ -8,9 +8,18 @@ export const Admin = ({onLogin}) => {
     <div className='Container'>
         <div className='Hero flex'>
             <div className='Hero-bg'>
-              <div className='Circle Circle1'></div>
-              <div className='Circle Circle2'></div>
-              <div className='Circle Circle3'></div>
+              <ul className="Circles">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                </ul>
             </div>
             <div className='Hero-text'>
               <div className='Hero-heading'>

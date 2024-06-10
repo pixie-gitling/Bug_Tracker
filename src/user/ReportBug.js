@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './ReportBug.css';
 import { toast } from 'react-hot-toast';
-import Cookies from 'js-cookie'; // Import Cookies
+import Cookies from 'js-cookie';
 
 export const ReportBug = () => {
     const [userId, setUserId] = useState('');
@@ -46,66 +46,73 @@ export const ReportBug = () => {
         try {
             setLoading(true);
             
-            if (!userId || !title || !description || !file) {
-                toast.error('Please fill out all fields');
+            if (!userId || !title || !description) {
+                toast.error('Please fill out all required fields');
                 setLoading(false);
                 return;
             }
     
-            // Read the file as a binary blob
-            const reader = new FileReader();
-            reader.onload = async () => {
-                const fileData = reader.result; // File data as base64 string
-    
-                // Send data as JSON
-                const requestData = {
-                    User: userId,
-                    title: title,
-                    description: description,
-                    fileAttached: fileData // File data as base64 string
+            // Read the file as a binary blob if it exists
+            let fileData = null;
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = async () => {
+                    fileData = reader.result; // File data as base64 string
+                    await submitBugReport(fileData);
                 };
     
-                try {
-                    const response = await axios.post('/report/bug', requestData, {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    });
-    
-                    if (response.status === 201) {
-                        toast.success('Bug report submitted successfully');
-                        setTitle('');
-                        setDescription('');
-                        setFile(null);
-                        setFilePreview('')
-                        e.target.reset();
-                    } else {
-                        toast.error('Error submitting bug report');
-                    }
-                } catch (error) {
-                    if (error.response) {
-                        toast.error('Error submitting bug report');
-                    } else if (error.request) {
-                        toast.error('No response received from server');
-                    } else {
-                        toast.error('An unexpected error occurred');
-                    }
-                } finally {
+                reader.onerror = () => {
+                    toast.error('Error reading the file');
                     setLoading(false);
-                }
-            };
+                };
     
-            reader.onerror = () => {
-                toast.error('Error reading the file');
-                setLoading(false);
-            };
-    
-            reader.readAsDataURL(file); 
+                reader.readAsDataURL(file); 
+            } else {
+                await submitBugReport(fileData);
+            }
         } catch (error) {
             toast.error('An unexpected error occurred');
             setLoading(false);
         }
-    };    
+    };
+
+    const submitBugReport = async (fileData) => {
+        // Send data as JSON
+        const requestData = {
+            User: userId,
+            title: title,
+            description: description,
+            fileAttached: fileData || '' // File data as base64 string or empty string
+        };
+
+        try {
+            const response = await axios.post('/report/bug', requestData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.status === 201) {
+                toast.success('Bug report submitted successfully');
+                setTitle('');
+                setDescription('');
+                setFile(null);
+                setFilePreview(null);
+            } else {
+                toast.error('Error submitting bug report');
+            }
+        } catch (error) {
+            if (error.response) {
+                toast.error('Error submitting bug report');
+            } else if (error.request) {
+                toast.error('No response received from server');
+            } else {
+                toast.error('An unexpected error occurred');
+            }
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <div className='reportBug flex'>
@@ -114,18 +121,18 @@ export const ReportBug = () => {
                     <div className='form-heading'>
                         <h1>Report a Bug</h1>
                     </div>
-                    <div className='form-item title'>
-                        <input type='text' placeholder='Bug Title' value={title} onChange={handleTitleChange} />
+                    <div className='form-item title flex'>
+                        <input type='text' placeholder='Bug Title (mandatory)' value={title} onChange={handleTitleChange} required />
                     </div>
-                    <div className='form-item description'>
-                        <textarea placeholder='Bug Description' value={description} onChange={handleDescriptionChange} />
+                    <div className='form-item description flex'>
+                        <textarea placeholder='Bug Description (mandatory)' value={description} onChange={handleDescriptionChange} required />
                     </div>
                     <div className='form-item file'>
-                        {filePreview && <img src={filePreview} alt='File Preview'className='file-preview' height='200' />}
-                        <input type='file' accept='image/*' placeholder='Attach a File' onChange={handleFileChange} />
+                        {filePreview && <img src={filePreview} alt='File Preview' className='file-preview' height='200' />}
+                        <input type='file' accept='image/*' placeholder='Attach a File (optional)' onChange={handleFileChange} />
                     </div>
                     <div className='form-item form-submit'>
-                        <button type='submit' disabled={loading}>{loading ? 'Submitting...' : 'Submit Report'}</button>
+                        <button type='submit' disabled={loading} className='bt btn1'>{loading ? 'Submitting...' : 'Submit Report'}</button>
                     </div>
                 </form>
             </div>

@@ -3,28 +3,28 @@
     align-items: center;
     justify-content: center;
 }
+.hide{
+    display: none;
+}
 .UserTopbar{
-    position: sticky;
+    position: relative;
     min-height: 10vh;
-    width: 100%;
-    background-color: var(--accent-color);
-    box-shadow: 4px 4px 4px #1414144b;
+    width: 100vw;
+    background-color: #fff;
+    /* box-shadow: 4px 4px 4px #1414144b; */
 }
 .UserTopbar .logo{
     width: 35%;
     margin-left: 20px;
     justify-content: left;
 }
-.UserTopbar .logo h1{
-    color: #b6dc9c;
+.UserTopbar .logo h1, .logo1 h1{
+    color: var(--accent-color);
 }
-.UserTopbar .logo img{
+.UserTopbar .logo img, .logo1 img{
     height: 40px;
     width: 40px;
 }
-/* .user{
-    width: 40%;
-} */
 .user button{
     margin-right: 15px;
 }
@@ -39,9 +39,10 @@
     font-size: 1rem;
     font-weight: bold;
     text-align: center;
+    color: #edfaef;
     border: none;
     border-radius: 25px;
-    background-color: #96c264;
+    background-color: var(--accent-color2);
     filter: drop-shadow(5px 5px 2px #ffffff4b);
     box-shadow: 3px 3px 3px #ffffff4b inset;
 }
@@ -50,13 +51,13 @@
     width: 75%;
     font-size: larger;
     transition: 0.2s;
-    background-color: #b6dc9c;
+    background-color: var(--hover-color);
     filter: drop-shadow(5px 5px 2px #ffffff4b);
     box-shadow: 3px 3px 3px #ffffff4b inset;
     cursor: pointer;
 }
 .UserTopbar .user-profile{
-    color: #b6dc9c;
+    color: var(--accent-color);
     border: none;
     background: none;
     font-size: larger;
@@ -68,29 +69,39 @@
     text-shadow: 1px 1px 2px #1717176b;
 }
 
-/******* media query *******/
-
-@media only screen and (max-width: 921px) {
-    .logo{
-        width: 33%;
-    }
-    .user{
-        width: 45%;
-    }
-    .logout-btn{
-        height: 7vh;
-        width: 100%;
-        padding: 0.5rem;
-        font-size: 0.9rem;
-    }
-    .logout-btn:hover{
-        height: 8vh;
-        width: 110%;
-        font-size: 1rem;
-        transition: 0.2s;
-        background-color: #96c264;
-        filter: drop-shadow(5px 5px 2px #ffffff4b);
-        box-shadow: 3px 3px 3px #ffffff4b inset;
-        cursor: pointer;
-    }
+.Profile{
+    position: relative;
+    left: 15%;
+    padding: .5rem;
+}
+.logo1{
+    width: 40%;
+    justify-content: center;
+}
+.options{
+    position: absolute;
+    z-index: 1;
+    left: -50px;
+    height: 15vh;
+    width: 20vw;
+    flex-direction: column;
+    border-radius: 25px;
+    box-shadow: 4px 4px 4px #1414144b, -4px -4px 4px #53535344;
+    background-color: #fff;
+}
+.option{
+    padding: .5rem;
+}
+.menu{
+    position: absolute;
+    left: 10%;
+    cursor: pointer;
+}
+.icon{
+    position: absolute;
+    top: 40%;
+    margin-left: 5px;
+}
+.icon1{
+    font-size: 2rem;
 }

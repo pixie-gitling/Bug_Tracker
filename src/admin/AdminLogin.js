@@ -24,6 +24,7 @@ export const AdminLogin = ({ flip }) => {
             } else {
                 Cookies.set('userId', data.user._id, { expires: 1/24 });
                 Cookies.set('username', username, { expires: 1/24 });
+                Cookies.set('name', data.user.name, { expires: 1/24 });
 
                 // Navigate based on the role fetched from the response
                 if (data.user.role === 'Admin') {

@@ -3,6 +3,8 @@ import './Topbar.css';
 import { useNavigate } from 'react-router';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 const Topbar = ({ onLogout }) => {
   const [user, setUser] = useState('');
@@ -44,7 +46,7 @@ const Topbar = ({ onLogout }) => {
       <div className="user">
         <button className='user-profile' onClick={handleUser}>{user}</button>
       </div> 
-      <div className='profile'> 
+      <div className='profile flex'> 
         <button className='user-profile' onClick={handleUser}>
         {profile && (
           <img src={profile} alt='Profile' className='user-profile-image' />

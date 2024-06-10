@@ -1,6 +1,6 @@
 .dashboard{
     height: fit-content;
-    width: 80%;
+    max-width: 84vw;
     overflow: hidden;
 }
 .dash-items{
@@ -9,64 +9,82 @@
     padding: 1rem;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 .card{
-    height: 30vh;
+    height: 220px;
     width: 80%;
     margin-top: 30px;
-    background: #95ee4c44;
+    background: var(--hover-color);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
+
+    transform-style: preserve-3d;
+    border-radius: 32px;
+    box-shadow: 1px 1px 8px 3px #f9f9fb57 inset, -1px 0 28px 0 rgba(34, 33, 81, 0.01),  15px 15px 15px 0 rgba(34, 33, 81, 0.25);
+    transition: .4s ease-in-out transform, .4s ease-in-out box-shadow;
+
+    &:hover {
+        transform: translate3d(10px, 0px, 10px);
+        box-shadow: 1px 1px 8px 3px #f9f9fb57 inset, -1px 0 28px 0 rgba(34, 33, 81, 0.01),  15px 15px 15px 0 rgba(34, 33, 81, 0.25);
+      }
 }
 .card-items{
-    padding: 2rem;
+    padding: 1.7rem;
     text-align: center;
 }
 .card-heading, .card-data{
-    padding: 1rem;
+    padding: .5rem;
 }
 
 /******* media query *******/
-
-@media only screen and (max-width: 921px) {
+@media only screen and (max-width: 867px) {
+    .dashboard{
+        width: 100vw;
+        margin-top: 30px;
+    }
     .dash-items{
-        padding: 2rem;
+        height: 100vh;
+        padding: 3rem;
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        overflow: auto;
     }
     .card{
-        height: 25vh;
-        width: 70%;
-    }
-    .card-items{
-        height: 25vh;
-        padding: 1.2rem;
-        text-align: center;
+        height: 160px;
+        width: 50%;
+        padding: 1rem;
     }
     .card-heading, .card-data{
+        /* padding: 1rem; */
         font-size: small;
     }
 }
-
-@media only screen and (min-width: 922px) and (max-width: 1120px) {
+@media only screen and (min-width: 868px) and (max-width: 1049px) {
     .dash-items{
         padding: 2rem;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+        grid-template-columns: 50% 50%;
     }
     .card{
-        height: 35vh;
+        height: 190px;
         width: 70%;
     }
-    .card-items{
-        height: 35vh;
-        padding: 1.2rem;
-        text-align: center;
+}
+
+@media only screen and (min-width: 1050px) and (max-width: 1280px) {
+    .dashboard{
+        width: 83vw;
+    }
+    .dash-items{
+        padding: 1rem;
+        grid-template-columns: 25% 25% 25%;
+    }
+    .card{
+        width: 90%;
     }
     .card-heading, .card-data{
         font-size: medium;

@@ -1,23 +1,27 @@
 .UserProfile{
     height: 90vh;
-    width: 85.6vw;
-    overflow: auto;
-}
-.UserProfile::-webkit-scrollbar{
-    height: 0.5rem;
-    width: 0.5rem;
-}
-.UserProfile::-webkit-scrollbar-thumb{
-    border-radius: 0.5rem;
-    background-color: #0004;
-    visibility: hidden;
-}
-.UserProfile:hover::-webkit-scrollbar-thumb{  
-    visibility: visible;
+    width: 85vw;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 .profile-name, .profile-username, .profile-password{
     height: 13vh;
     width: 50%;
+}
+.profile-heading{
+    padding: 2rem;
+    font-size: large;
+}
+.profile-heading h1.user{
+    color: var(--accent-color);
+}
+.profile-heading h1.admin{
+    height: 13vh;
+    width: 50%;
+    color: #296972;
+}
+.profile-form{
+    padding: 3rem;
 }
 .profile-form input{
     text-align: center;
@@ -27,16 +31,16 @@
     font-size: large;
     font-weight: bold;
 }
+.profile-img{
+    width: 50%;
+    padding: 1rem;
+    text-align: center;
+}
 .profile-image{
     aspect-ratio: 1/1;
     max-width: 200px;
     max-height: 200px;
     border-radius: 100%;
-}
-.profile-img{
-    width: 50%;
-    padding: 1rem;
-    text-align: center;
 }
 .choose-img{
     padding: 1rem;
@@ -45,25 +49,58 @@
     display: none;
 }
 .save{
-    background-color: #7a9c53;
+    background-color: var(--button-metallic-green);
 }
 .save-btn{
     height: 10vh;
     width: 40%;
 }
-.sv-btn, .cancel-btn, .edit-btn{
+.sv-btn.user, .edit-btn.user{
     height: 7vh;
     width: 60%;
     padding: 0.7rem;
     margin: 4px;
     border-radius: 25px;
-    background-color: #23755f7f;
     text-align: center;
     cursor: pointer;
     border: none;
     font-size: large;
     font-weight: bold;
+    background-color: var(--button-metallic-green);
+}
+.sv-btn.admin, .edit-btn.admin{
+    height: 7vh;
+    width: 60%;
+    padding: 0.7rem;
+    margin: 4px;
+    border-radius: 25px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    font-size: large;
+    font-weight: bold;
+    background-color: #296972ba;
 }
 .cancel-btn{
-    background-color: #fa6464a4;
+    height: 7vh;
+    width: 60%;
+    padding: 0.7rem;
+    margin: 4px;
+    border-radius: 25px;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    font-size: large;
+    font-weight: bold;
+    background-color: var(--bright-red);
+}
+
+/* Media Query */
+@media only screen and (max-width: 867px) {
+    .UserProfile{
+        flex-direction: column;
+        width: 100vw;
+        height: max-content;
+        overflow-y: auto;
+    }
 }
