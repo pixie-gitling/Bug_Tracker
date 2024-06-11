@@ -5,12 +5,12 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import './Chat.css';
 
-const Chat = () => {
+const Chat = ({role}) => {
     const { reportId } = useParams();
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState('');
     const [loading, setLoading] = useState(true);
-    const username = Cookies.get('username'); // Get the username from cookies
+    const username = Cookies.get('username');
 
     useEffect(() => {
         const fetchMessages = async () => {
@@ -33,7 +33,17 @@ const Chat = () => {
             const response = await axios.post(`/message/bug/${reportId}/message`, { sender: username, content: newMessage });
             setMessages([...messages, response.data]);
             setNewMessage('');
-            console.log(username);
+            
+            // Send notification
+            const redirectUrl = role === 'admin' ? `/bug/${reportId}/testerchat` : `/bug/${reportId}/chat`;
+            const message = role === 'admin' ? "New Chat From Admin" : "New Chat From Tester"
+            await axios.post('/notification/notifications', {
+                message: message,
+                type: 'chat',
+                time: new Date().toISOString(),
+                redirect: redirectUrl,
+                sender: username
+            });
         } catch (error) {
             toast.error('Error Sending Message');
             console.log(error);

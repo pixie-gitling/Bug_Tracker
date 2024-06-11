@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import './Forum.css'
 
-const Forum = ({setHasNotifications, colorScheme}) => {
+const Forum = ({setHasNotifications, colorScheme, role}) => {
   const { reportId } = useParams();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
@@ -42,7 +42,23 @@ const Forum = ({setHasNotifications, colorScheme}) => {
             const response = await axios.post(`/message/postForum`, { sender: username, content: newMessage });
             setMessages([...messages, response.data]);
             setNewMessage('');
-            console.log(username);
+
+            let redirectUrl;
+            if (role === 'admin') {
+              redirectUrl = '/tester/forum';
+            } else if (role === 'tester') {
+              redirectUrl = '/admin/forum';
+            }else if (role === 'user') {
+              redirectUrl = '/forum';
+            }
+            // Send notification
+            await axios.post('/notification/notifications', {
+              message: 'New forum message',
+              type: 'forum',
+              time: new Date().toISOString(),
+              redirect: redirectUrl,
+              sender: username
+            });
         } catch (error) {
             toast.error('Error Sending Message');
             console.log(error);

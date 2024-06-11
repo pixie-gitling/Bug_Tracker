@@ -103,7 +103,7 @@ function App() {
 
   return (
     <div className="parent">
-      {/* Popup for session timeout */}
+      {/* Popup for session timeout
       {showSessionTimeoutPopup && (
         <div className="session-timeout-popup">
           <div className="session-timeout-content">
@@ -112,7 +112,7 @@ function App() {
             <button onClick={handleLogout}>Logout</button>
           </div>
         </div>
-      )}
+      )} */}
       <BrowserRouter>
       {(isLoggedIn && !isAdmin && width > 867 && <Topbar onLogout={handleLogout} />) || (isLoggedIn && !isAdmin && width <= 867 && <ResTopbar onLogout={handleLogout} toggleSidebarOnButtonClick={toggleSidebarOnButtonClick} />)}
         {isLoggedIn && isAdmin && <AdminLayout onLogout={handleLogout} hasNotifications = {hasNotifications} />}
@@ -126,28 +126,29 @@ function App() {
             <Route path="/myreports" element={storedLoginStatus ? <DisplayReports /> : <Home onLogin={handleLogin} />} />
             <Route path="/bug/:reportId/details" element={storedLoginStatus ? <Details /> : <Home onLogin={handleLogin} />} />
             <Route path="/bug/:reportId/reporthistory" element={storedLoginStatus ? <BugHistory /> : <Home onLogin={handleLogin} />} />
-            <Route path="/forum" element={storedLoginStatus ? <Forum setHasNotifications = {setHasNotifications} colorScheme = "user" /> : <Home onLogin={handleLogin} />} />
+            <Route path="/forum" element={storedLoginStatus ? <Forum setHasNotifications = {setHasNotifications} colorScheme = "user" role="user"/> : <Home onLogin={handleLogin} />} />
             <Route path="/profile" element={storedLoginStatus ? <UserProfile colorScheme = "user" /> : <Home onLogin={handleLogin} />} />
-            <Route path="/notifications" element={storedLoginStatus ? <Notifications /> : <Home onLogin={handleLogin} />} />
+            <Route path="/notifications" element={storedLoginStatus ? <Notifications colorScheme="user"/> : <Home onLogin={handleLogin} />} />
 
             <Route path="/adminlogin" element={<Admin onLogin={() => handleLogin(true)} />} />
             <Route path="/admindashboard" element={<AdminLayout onLogout={handleLogout}><AdminDashboard /></AdminLayout>} />
             <Route path="/reports" element={<AdminLayout onLogout={handleLogout}><AdminDisplayReports /></AdminLayout>} />
-            <Route path="/bug/:reportId" element={<AdminLayout onLogout={handleLogout}><BugDetails /></AdminLayout>} />
-            <Route path="/bug/:reportId/chat" element={<AdminLayout onLogout={handleLogout}><Chat user="admin"/></AdminLayout>} />
+            <Route path="/bug/:reportId" element={<AdminLayout onLogout={handleLogout}><BugDetails role="admin"/></AdminLayout>} />
+            <Route path="/bug/:reportId/chat" element={<AdminLayout onLogout={handleLogout}><Chat role="admin"/></AdminLayout>} />
             <Route path="/bug/:reportId/history" element={<AdminLayout onLogout={handleLogout}><History /></AdminLayout>} />
             <Route path="/users" element={<AdminLayout onLogout={handleLogout}><AdminDisplayUsers /></AdminLayout>} />
             <Route path="/adminprofile" element={<AdminLayout onLogout={handleLogout}><UserProfile colorScheme = "admin"  /></AdminLayout>} />
-            <Route path="/admin/forum" element={<AdminLayout onLogout={handleLogout}><Forum setHasNotifications = {setHasNotifications} colorScheme = "admin" /></AdminLayout>} />
+            <Route path="/admin/forum" element={<AdminLayout onLogout={handleLogout}><Forum setHasNotifications = {setHasNotifications} colorScheme = "admin" role="admin"/></AdminLayout>} />
+            <Route path="/admin/notifications" element={<AdminLayout onLogout={handleLogout}><Notifications colorScheme="admin"/></AdminLayout>} />
 
             <Route path="/testerdashboard" element={<TesterLayout hasNotifications={hasNotifications} onLogout={handleLogout}><TesterDashboard /></TesterLayout>} />
             <Route path="/assignedbugs" element={<TesterLayout onLogout={handleLogout}><AssignedBugs /></TesterLayout>} />
-            <Route path="/assignedbugs/:reportId" element={<TesterLayout onLogout={handleLogout}><BugDetails /></TesterLayout>} />
-            <Route path="/bug/:reportId/testerchat" element={<TesterLayout onLogout={handleLogout}><Chat user="tester"/></TesterLayout>} />
-            <Route path="/bug/:reportId/history" element={<TesterLayout onLogout={handleLogout}><History /></TesterLayout>} />
+            <Route path="/assignedbugs/:reportId" element={<TesterLayout onLogout={handleLogout}><BugDetails role="tester"/></TesterLayout>} />
+            <Route path="/bug/:reportId/testerchat" element={<TesterLayout onLogout={handleLogout}><Chat role="tester"/></TesterLayout>} />
+            <Route path="/bug/:reportId/testerhistory" element={<TesterLayout onLogout={handleLogout}><History /></TesterLayout>} />
             <Route path="/testerprofile" element={<TesterLayout onLogout={handleLogout}><UserProfile colorScheme="admin"/></TesterLayout>} />
-            <Route path="/tester/forum" element={<TesterLayout hasNotifications={hasNotifications} onLogout={handleLogout}><Forum setHasNotifications = {setHasNotifications} /></TesterLayout>} />
-            <Route path="/tester/notifications" element={<TesterLayout onLogout={handleLogout}><Notifications /></TesterLayout>} />
+            <Route path="/tester/forum" element={<TesterLayout hasNotifications={hasNotifications} onLogout={handleLogout}><Forum setHasNotifications = {setHasNotifications} role="tester"/></TesterLayout>} />
+            <Route path="/tester/notifications" element={<TesterLayout onLogout={handleLogout}><Notifications colorScheme="admin"/></TesterLayout>} />
           </Routes>
         </div>
       </BrowserRouter>

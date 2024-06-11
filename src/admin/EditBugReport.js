@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
 import './EditBugReport.css';
 import axios from 'axios';
+import Cookies from 'js-cookie'
 
 // Define the component
-const EditBugReportModal = ({ report, onSave, onClose }) => {
+const EditBugReportModal = ({ report, onSave, onClose, role }) => {
     // State for the edited report details
     const [severity, setSeverity] = useState(report.severity);
     const [assignedTo, setAssignedTo] = useState(report.assignedTo);
     const [status, setStatus] = useState(report.status);
     const [remark, setRemark] = useState(report.remark);
     const [testers, setTesters] = useState([]);
+    const username = Cookies.get('username')
 
     // Fetch the list of testers from the database
     useEffect(() => {
@@ -27,7 +29,7 @@ const EditBugReportModal = ({ report, onSave, onClose }) => {
     }, []);    
 
     // Function to handle saving changes to the report
-    const handleSave = () => {
+    const handleSave = async() => {
         // Update the report details in the database
         // Call the onSave callback with the updated report details
         onSave({
@@ -36,6 +38,15 @@ const EditBugReportModal = ({ report, onSave, onClose }) => {
             assignedTo: assignedTo,
             status: status,
             remark: remark
+        });
+
+        // Send notification
+        await axios.post('/notification/notifications', {
+            message: 'Bug Report Updated by Admin',
+            type: 'update',
+            time: new Date().toISOString(),
+            redirect: '/assignedbugs',
+            sender: username
         });
     };
 

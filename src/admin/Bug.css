@@ -75,7 +75,8 @@
 }
 .history{
     height: 80vh;
-    width: 82.2vw;
+    width: 83vw;
     padding: 1rem;
     overflow: auto;
+    scrollbar-width: none;
 }

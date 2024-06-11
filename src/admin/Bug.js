@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import './Bug.css';
 
-const BugDetails = () => {
+const BugDetails = ({role}) => {
     const { reportId } = useParams(); 
     const navigate = useNavigate();
     const [bugDetails, setBugDetails] = useState(null);
@@ -25,23 +25,24 @@ const BugDetails = () => {
         fetchBugDetails();
     }, [reportId]);
 
+    
     // const revertToVersion = async (updateId) => {
-    //     try {
-    //       const response = await axios.put(`/bug/${reportId}/revert/${updateId}`);
-    //       setBugDetails(response.data.report);
-    //     } catch (error) {
-    //       console.error('Error Reverting to Version:', error);
-    //     }
-    //   };
-
-    if (loading) {
+        //     try {
+            //       const response = await axios.put(`/bug/${reportId}/revert/${updateId}`);
+            //       setBugDetails(response.data.report);
+            //     } catch (error) {
+                //       console.error('Error Reverting to Version:', error);
+                //     }
+                //   };
+                
+                if (loading) {
         return <div>Loading...</div>;
     }
-
+    
     if (!bugDetails) {
         return <div>No bug details found or an error occurred while fetching data.</div>;
     }
-
+    
     const formatTime = (timeString) => {
         const options = { 
             year: 'numeric', 
@@ -53,13 +54,23 @@ const BugDetails = () => {
         };
         return new Date(timeString).toLocaleString('en-GB', options);
     };
-
+    
     const handleChatClick = () => {
-        navigate(`/bug/${reportId}/chat`);
-    }    
+        if (role === "admin") {
+          navigate(`/bug/${reportId}/chat`);
+        } else
+        if (role === 'tester') {
+          navigate(`/bug/${reportId}/testerchat`);
+        }
+      }  
     
     const handleHistoryClick = () => {
-        navigate(`/bug/${reportId}/history`);
+        if (role === "admin") {
+            navigate(`/bug/${reportId}/history`);
+          } else
+          if (role === 'tester') {
+            navigate(`/bug/${reportId}/testerhistory`);
+        }
     }
 
     return (

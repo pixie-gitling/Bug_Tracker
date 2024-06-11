@@ -1,0 +1,43 @@
+.Notifications{
+    height: 80vh;
+    width: 83vw;
+    padding: 1rem;
+    overflow: auto;
+    scrollbar-width: none;
+}
+.notify{
+    height: fit-content;
+    width: 50%;
+    padding: 1rem;
+    margin: 20px;
+    border-radius: 30px;
+    margin-inline: auto;
+    text-align: center;
+    filter: drop-shadow(3px 3px 2px #5150507e);
+
+    transform-style: preserve-3d;
+    border-radius: 32px;
+    box-shadow: 1px 1px 8px 3px #f9f9fb57 inset, -1px 0 28px 0 rgba(34, 33, 81, 0.01),  8px 8px 8px 0 rgba(34, 33, 81, 0.25);
+    transition: .4s ease-in-out transform, .4s ease-in-out box-shadow;
+
+    &:hover {
+        transform: translate3d(3px, -6px, 3px);
+        box-shadow: 1px 1px 8px 3px #f9f9fb57 inset, -1px 0 28px 0 rgba(34, 33, 81, 0.01),  20px 20px 20px 0 rgba(34, 33, 81, 0.25);
+      }
+}
+.notify.admin{
+    background-color: #1b4e5530;
+}
+.notify.user{
+    background-color: var(--light-metallic-green);
+}
+.notification h3{
+    font-size: 1.4rem;
+    padding: 1rem;
+}
+.heading h1.user{
+    color: var(--secondary-color);
+}
+.history-btn.user{
+    background-color: var(--button-metallic-green);
+}
