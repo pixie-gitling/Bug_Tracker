@@ -1,12 +1,10 @@
 .Sidebar{
-    height: 80.5vh;
-    width: 10.2vw;
-    background-color: #296972;
+    min-height: 78vh;
+    max-width: 11vw;
     padding: 2.5rem;
     text-align: center;
     position: relative;
-    left: 0%;
-    top: 10%;
+    background-color: #296972;
 }
 .Sidebar ul {
     position: relative;
@@ -49,19 +47,19 @@
     width: 100%;
   }
 
-.red-badge {
+/* .red-badge {
     width: 8px;
     height: 8px;
     background-color: red;
     border-radius: 50%;
     display: inline-block;
     margin-left: 5px; 
-}
+} */
   
 
 /******* media query *******/
 
-@media only screen and (max-width: 867px) {
+/* @media only screen and (max-width: 867px) {
     .Sidebar{
         position: absolute;
         z-index: 2;
@@ -70,18 +68,15 @@
         padding: 0;
         background: #296972;
         top: 10%;
-        /* background: #fff; */
     }
     .Sidebar ul li {
         height: 5vh;
     }
     .Sidebar ul li a {
-        /* color: var(--button-metallic-green); */
         color: #dcf1f4;
       }
       .Sidebar ul li a::after {
         background: #dcf1f4;
-        /* background: var(--accent-color2); */
       }
 }
 
@@ -102,4 +97,4 @@
         font-size: 1.2rem;
         padding: 0.9rem;
     }
-}
+} */

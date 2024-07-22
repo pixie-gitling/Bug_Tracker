@@ -3,7 +3,7 @@
 }
 .Hero-span{
     color: #1b4e55;
-    font-size: 2.7rem;
+    font-size: 4.2rem;
     text-shadow: 5px 5px 2px #89898972;
 }
 .Hero{
@@ -17,15 +17,15 @@
 }
 
 .Hero-heading h1{
-    font-size: 2.5rem;
+    font-size: 4rem;
 }
 .Hero-text{
     position: absolute;
-    top: 25%;
+    top: 35%;
     left: 5%;
-    height: 60vh;
-    width: 45%;
-    padding: 1rem;
+    height: 40vh;
+    width: 50%;
+    padding: 1.2rem;
     text-align: center;
 }
 .hero-login{
@@ -35,9 +35,9 @@
 }
 .Login-form{
     height: fit-content;
-    width: 55%;
+    width: 60%;
     padding: 1rem;
-    border-radius: 30px;
+    border-radius: 60px;
     margin-inline: auto;
     text-align: center;
     background-color: #1b4e5549;
@@ -54,15 +54,33 @@
       }
 }
 .Lg-btn{
-    height: 2.5rem;
+    height: 5rem;
     width: 40%;
-    font-size: medium;
+    font-size: 2rem;
     font-weight: bold;
     cursor: pointer;
     border: none;
     border-radius: 25px;
     background-color: #1b4e5571;
 }
+/* select{
+    height: 6vh;
+    width: 95%;
+    padding: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 2rem;
+    background-color: #f2f5f796;
+    filter: drop-shadow(2px 2px 5px #8584847e);
+    box-shadow: 3px 3px 2px #bbbbbbce inset, 2px 2px 5px #8888887e;
+}
+.role select option{
+    height: 3vh;
+    width: 50%;
+    padding: 1rem;
+} */
 .Circles{
     position: absolute;
     top: 0;
@@ -163,41 +181,105 @@
 }
 
 /******* media queries *******/
-
-@media only screen and (max-width: 867px) {
-    .Hero{
-        height: 150vh;
+/* 
+@media only screen and (max-width: 470px) {
+    .hero{
+        height: 110vh;
     }
-    .Hero-text{
+    .hero-text{
         display: block;
         top: 5%;
-        height: 30vh;
         width: 80%;
         padding: 1rem;
         text-align: center;
     }
+    .hero-span{
+        font-size: 1.8rem;
+    }
+    .hero-heading h1{
+        font-size: 1.5rem;
+    }
+    .hero-btn{
+        padding: 0;
+        margin-top: 20px;
+    }
+    .btn{
+        height: 6vh;
+        width: 40%;
+        font-size: medium;
+    }
     .hero-login{
-        top: 45%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
+        left: 0;
     }
 }
 
-/* @media only screen and (max-width: 868px) {
-    .Hero-text{
+@media only screen and (min-width: 471px) and (max-width: 868px) {
+    .hero{
+        width: 100%;
+        min-height: auto;
+    }
+    .hero-text{
         display: block;
         top: 5%;
-        height: 40vh;
-        width: 80%;
+        width: 90%;
+        padding: 1rem;
+        text-align: center;
+        background-color: red;
+    }
+    .hero-span{
+        font-size: 2rem;
+    }
+    .hero-heading h1{
+        font-size: 1.8rem;
+    }
+    .hero-btn{
+        padding: 0;
+        margin-top: 20px;
+    }
+    .btn{
+        font-size: 1rem;
+        height: 2.5rem;
+    }
+}
+
+@media only screen and (min-width: 869px) and (max-width: 1024px) {
+    .hero-span{
+        font-size: 2.2rem;
+    }
+    .hero-heading h1{
+        font-size: 2rem;
+    }
+    .btn{
+        height: 3rem;
+        width: 30%;
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1749px) {
+    .hero-text{
+        top: 30%;
         padding: 1rem;
         text-align: center;
     }
     .hero-login{
-        top: 48%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-        
+        left: 70%;
+    }
+    .hero{
+        width: 100%;
+    }
+    .hero-span{
+        font-size: 2.7rem;
+    }
+    .hero-heading h1{
+        font-size: 2.5rem;
+    }
+    .hero-btn{
+        padding: 0rem;
+    }
+    .btn{
+        height: 9vh;
+        width: 25%;
+        font-size: 1.6rem;
     }
 } */

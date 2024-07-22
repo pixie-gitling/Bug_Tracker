@@ -1,15 +1,26 @@
 .Notifications{
-    height: 80vh;
-    width: 83vw;
-    padding: 1rem;
+    min-height: 80vh;
+    /* padding: 1rem; */
+    width: 80vw;
+    margin-top: 10rem;
+    font-size: 2rem;
+    margin-left: auto;
+}
+.notification{
+    height: 70vh;
+    width: 70vw;
+    /* padding: 1rem; */
     overflow: auto;
-    scrollbar-width: none;
+    margin-inline: auto;
+    scrollbar-width: thin;
+    /* display: grid;
+    grid-template-columns: 50% 50%; */
 }
 .notify{
     height: fit-content;
-    width: 50%;
+    width: 40%;
     padding: 1rem;
-    margin: 20px;
+    margin-top: 25px;
     border-radius: 30px;
     margin-inline: auto;
     text-align: center;
@@ -32,7 +43,7 @@
     background-color: var(--light-metallic-green);
 }
 .notification h3{
-    font-size: 1.4rem;
+    font-size: 2.8rem;
     padding: 1rem;
 }
 .heading h1.user{
@@ -40,4 +51,60 @@
 }
 .history-btn.user{
     background-color: var(--button-metallic-green);
+}
+
+/******* media query *******/
+
+@media only screen and (max-width: 470px) {
+    .Notifications{
+        margin-top: 5rem;
+        font-size: .8rem;
+        margin-left: 0;
+        margin-inline: auto;
+    }
+    .notification h3{
+        font-size: 1rem;
+        padding: .5rem;
+    }
+    .notify{
+        width: 70%;
+    }
+}    
+
+@media only screen and (min-width: 471px) and (max-width: 868px) {
+    .Notifications{
+        margin-top: 5rem;
+        font-size: 1rem;
+        margin-left: 0;
+        margin-inline: auto;
+    }
+    .notification h3{
+        font-size: 1.2rem;
+        padding: .5rem;
+    }
+    .notify{
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 869px) and (max-width: 1024px) {
+    .Notifications{
+        margin-top: 5rem;
+        font-size: 1.2rem;
+    }
+    .notification h3{
+        font-size: 1.4rem;
+        padding: 1rem;
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1749px) {
+    .Notifications{
+        margin-top: 6rem;
+        font-size: 1.5rem;
+    }
+    .notification h3{
+        font-size: 1.8rem;
+        padding: 1rem;
+    }
 }

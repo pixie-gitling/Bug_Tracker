@@ -64,13 +64,16 @@
 }
 .history-btn{
     height: 6vh;
-    width: 10vw;
+    width: 40%;
+    margin-top: 10px;
+    font-size: 2rem;
     border: none;
     border-radius: 40px;
     box-sizing: border-box;
+    margin-inline: auto;
     background-color: #1b4e557d;
     text-align: center;
-    font-weight: bold;
+    /* font-weight: bold; */
     cursor: pointer;
 }
 .history{
@@ -79,4 +82,29 @@
     padding: 1rem;
     overflow: auto;
     scrollbar-width: none;
+}
+
+/****** media query ******/
+@media only screen and (max-width: 470px) {
+    .history-btn{
+        font-size: .8rem;
+    }
+}
+
+@media only screen and (min-width: 471px) and (max-width: 868px) {
+    .history-btn{
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (min-width: 869px) and (max-width: 1024px) {
+    .history-btn{
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1749px) {
+    .history-btn{
+        font-size: 1.6rem;
+    }
 }

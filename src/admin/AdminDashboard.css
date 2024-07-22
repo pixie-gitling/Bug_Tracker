@@ -1,19 +1,19 @@
-.admin{
-    height: 80vh;
-    width: 85vw;
+.Box{
+    min-height: auto;
+    max-width: auto;
 }
 .DashItems{
-    height: 80vh;
+    height: auto;
     width: 90%;
     padding: 1rem;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
-    justify-content: center;
+    /* justify-content: center; */
 }
 .Card{
-    height: 220px;
+    /* height: auto; */
     width: 80%;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     background: #2969728a;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -38,7 +38,7 @@
     padding: .5rem;
 }
 
-@media only screen and (max-width: 867px) {
+/* @media only screen and (max-width: 867px) {
     .admin{
         width: 100vw;
         margin-top: 30px;
@@ -58,7 +58,6 @@
         padding: 1rem;
     }
     .CardHeading, .CardData{
-        /* padding: 1rem; */
         font-size: small;
     }
 }
@@ -90,7 +89,6 @@
         width: 100%;
     }
     .CardHeading, .CardData{
-        /* padding: .5rem; */
         font-size: medium;
     }
-}
+} */

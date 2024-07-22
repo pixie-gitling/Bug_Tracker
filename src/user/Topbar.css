@@ -7,23 +7,27 @@
     display: none;
 }
 .UserTopbar{
-    position: relative;
-    min-height: 10vh;
-    width: 100vw;
-    background-color: #fff;
+    width:100%;
+    position: fixed;
+    z-index: 10001;
+    height: 10rem;
+    background-color: #ffffff;
     /* box-shadow: 4px 4px 4px #1414144b; */
 }
 .UserTopbar .logo{
-    width: 35%;
-    margin-left: 20px;
-    justify-content: left;
+    width: 30%;
+    /* margin-left: 20px; */
+    font-size: 1.8rem;
 }
 .UserTopbar .logo h1, .logo1 h1{
     color: var(--accent-color);
 }
 .UserTopbar .logo img, .logo1 img{
-    height: 40px;
-    width: 40px;
+    height: 90px;
+    width: 90px;
+}
+.user{
+    width: 30%;
 }
 .user button{
     margin-right: 15px;
@@ -36,12 +40,12 @@
     height: 7vh;
     width: 85%;
     padding: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.8rem;
     font-weight: bold;
     text-align: center;
     color: #edfaef;
     border: none;
-    border-radius: 25px;
+    border-radius: 50px;
     background-color: var(--accent-color2);
     filter: drop-shadow(5px 5px 2px #ffffff4b);
     box-shadow: 3px 3px 3px #ffffff4b inset;
@@ -60,48 +64,141 @@
     color: var(--accent-color);
     border: none;
     background: none;
-    font-size: larger;
+    font-size: 2.2rem;
     font-weight: bold;
     cursor: pointer;
+}
+.UserTopbar .user-profile-image{
+    height: 100px;
+    width: 100px;
 }
 .UserTopbar .user-profile:hover{
     font-size: 22px;
     text-shadow: 1px 1px 2px #1717176b;
 }
-
-.Profile{
-    position: relative;
-    left: 15%;
-    padding: .5rem;
-}
-.logo1{
-    width: 40%;
-    justify-content: center;
-}
-.options{
-    position: absolute;
-    z-index: 1;
-    left: -50px;
-    height: 15vh;
-    width: 20vw;
-    flex-direction: column;
-    border-radius: 25px;
-    box-shadow: 4px 4px 4px #1414144b, -4px -4px 4px #53535344;
-    background-color: #fff;
-}
-.option{
-    padding: .5rem;
-}
 .menu{
-    position: absolute;
-    left: 10%;
     cursor: pointer;
-}
-.icon{
-    position: absolute;
-    top: 40%;
-    margin-left: 5px;
 }
 .icon1{
     font-size: 2rem;
+}
+
+/******* media query *******/
+
+@media only screen and (max-width: 470px) {
+    .UserTopbar{
+        height: 4.5rem;
+    }
+    .UserTopbar .logo{
+        font-size: .8rem;
+    }
+    .UserTopbar .logo img, .logo1 img{
+        height: 40px;
+        width: 40px;
+    }
+    .UserTopbar .logout-btn{
+        font-size: 1rem;
+    }
+    .UserTopbar .user-profile{
+        font-size: 1.3rem;
+    }
+    .UserTopbar .user-profile-image{
+        height: 40px;
+        width: 40px;
+    }
+    .logo1{
+        width: 100%;
+        /* background-color: blue; */
+    }
+    .logo1 img{
+        height: 35px;
+        width: 35px;
+    }
+    .logo1 h1{
+        font-size: 1.2rem;
+    }
+    .menu, .log{
+        width: 60%;
+        /* background-color: red; */
+    }
+}
+
+@media only screen and (min-width: 471px) and (max-width: 868px) {
+    .UserTopbar{
+        height: 4.5rem;
+    }
+    .UserTopbar .logo{
+        font-size: .8rem;
+    }
+    .UserTopbar .logo img, .logo1 img{
+        height: 40px;
+        width: 40px;
+    }
+    .UserTopbar .logout-btn{
+        font-size: 1rem;
+    }
+    .UserTopbar .user-profile{
+        font-size: 1.3rem;
+    }
+    .UserTopbar .user-profile-image{
+        height: 40px;
+        width: 40px;
+    }
+    .logo1{
+        width: 100%;
+        /* background-color: blue; */
+    }
+    .logo1 h1{
+        font-size: 1.5rem;
+    }
+    .menu, .log{
+        width: 100%;
+        /* background-color: red; */
+    }
+}    
+
+@media only screen and (min-width: 869px) and (max-width: 1024px) {
+    .UserTopbar{
+        height: 4.5rem;
+    }
+    .UserTopbar .logo{
+        font-size: .8rem;
+    }
+    .UserTopbar .logo img, .logo1 img{
+        height: 40px;
+        width: 40px;
+    }
+    .UserTopbar .logout-btn{
+        font-size: 1rem;
+    }
+    .UserTopbar .user-profile{
+        font-size: 1.3rem;
+    }
+    .UserTopbar .user-profile-image{
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1749px) {
+    .UserTopbar{
+        height: 5rem;
+    }
+    .UserTopbar .logo{
+        font-size: 1rem;
+    }
+    .UserTopbar .logo img, .logo1 img{
+        height: 50px;
+        width: 50px;
+    }
+    .UserTopbar .logout-btn{
+        font-size: 1.4rem;
+    }
+    .UserTopbar .user-profile{
+        font-size: 1.5rem;
+    }
+    .UserTopbar .user-profile-image{
+        height: 50px;
+        width: 50px;
+    }
 }

@@ -103,16 +103,16 @@ function App() {
 
   return (
     <div className="parent">
-      {/* Popup for session timeout
+      {/* Popup for session timeout */}
       {showSessionTimeoutPopup && (
         <div className="session-timeout-popup">
           <div className="session-timeout-content">
             <h2>Session Timeout</h2>
             <p>Your session has timed out. Please login again.</p>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout} className="cancel-btn btn2">Logout</button>
           </div>
         </div>
-      )} */}
+      )} 
       <BrowserRouter>
       {(isLoggedIn && !isAdmin && width > 867 && <Topbar onLogout={handleLogout} />) || (isLoggedIn && !isAdmin && width <= 867 && <ResTopbar onLogout={handleLogout} toggleSidebarOnButtonClick={toggleSidebarOnButtonClick} />)}
         {isLoggedIn && isAdmin && <AdminLayout onLogout={handleLogout} hasNotifications = {hasNotifications} />}
@@ -130,7 +130,7 @@ function App() {
             <Route path="/profile" element={storedLoginStatus ? <UserProfile colorScheme = "user" /> : <Home onLogin={handleLogin} />} />
             <Route path="/notifications" element={storedLoginStatus ? <Notifications colorScheme="user"/> : <Home onLogin={handleLogin} />} />
 
-            <Route path="/adminlogin" element={<Admin onLogin={() => handleLogin(true)} />} />
+            {/* <Route path="/adminlogin" element={<Admin onLogin={() => handleLogin(true)} />} /> */}
             <Route path="/admindashboard" element={<AdminLayout onLogout={handleLogout}><AdminDashboard /></AdminLayout>} />
             <Route path="/reports" element={<AdminLayout onLogout={handleLogout}><AdminDisplayReports /></AdminLayout>} />
             <Route path="/bug/:reportId" element={<AdminLayout onLogout={handleLogout}><BugDetails role="admin"/></AdminLayout>} />

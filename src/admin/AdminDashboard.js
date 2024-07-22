@@ -30,7 +30,7 @@ const AdminDashboard = () => {
     };
 
     return (
-        <div className='admin'>
+        <div className='Box'>
             <div className='DashItems'>
                 <div className='Card' onClick={() => handleCardClick('Reported')}>
                     <div className='CardItems'>

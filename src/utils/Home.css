@@ -1,9 +1,22 @@
 .container{
     overflow: hidden;
 }
+.session-timeout-popup{
+    /* height: 30vh; */
+    width: 40%;
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+}
+.session-timeout-content h2{
+    font-size: 3rem;
+}
+.session-timeout-content p{
+    font-size: 2.5rem;
+}
 .hero-span{
     color: var(--accent-color2);
-    font-size: 2.7rem;
+    font-size: 4.2rem;
     text-shadow: 3px 5px 2px #74737372;
 }
 .hero{
@@ -17,34 +30,36 @@
     background-position: center;
 }
 .hero-bg{
-    background: var(--light-metallic-green);  
-    background: linear-gradient(to left, var(--light-metallic-green), var(--background-color));  
+    /* background: var(--light-metallic-green);   */
+    /* background: linear-gradient(to left, var(--light-metallic-green), var(--background-color));   */
     width: 100%;
-    height:100vh;
+    min-height:100vh;
 }
 .hero-heading h1{
-    font-size: 2.5rem;
+    font-size: 4rem;
 }
 .hero-text{
     position: absolute;
-    top: 25%;
+    top: 35%;
     left: 5%;
-    height: 60vh;
-    width: 45%;
-    padding: 1rem;
+    width: 50%;
+    height: 40vh;
+    padding: 1.2rem;
     text-align: center;
 }
 .hero-btn{
-    height: 20vh;
+    padding: 0;
+    margin-top: 20px;
     width: 100%;
-    padding: 1.5rem;
 }
 .btn{
-    height: 9vh;
-    width: 20%;
+    height: 6vh;
+    width: 25%;
+    font-size: 2.7rem;
     /* color: #4f6c7d; */
+    padding: .5rem;
     font-weight: bold;
-    font-size: medium;
+    
     border: none;
     border-radius: 50px;
     background-color: var(--button-metallic-green);
@@ -52,14 +67,15 @@
 }
 .btn:hover{
     height: 10vh;
-    width: 22%;
-    font-size: large;
+    width: 32%;
+    font-size: x-large;
     transition: 0.2s;
     background-color: var(--hover-color);
     cursor: pointer;
 }
 .hero-login{
     position: absolute;
+    /* top: 30%; */
     left: 50%;
     width: 50%;   
 }
@@ -165,49 +181,118 @@
 
 /******* media queries *******/
 
-@media only screen and (max-width: 868px) {
+@media only screen and (max-width: 470px) {
     .hero{
-        height: 150vh;
+        box-sizing: border-box;
+        height: 110vh;
+        padding: 1rem;
+        overflow: auto;
     }
     .hero-text{
         display: block;
         top: 5%;
-        height: 30vh;
         width: 80%;
-        padding: 1rem;
+        /* padding: 1rem; */
         text-align: center;
     }
+    .hero-span{
+        font-size: 1.8rem;
+    }
+    .hero-heading h1{
+        font-size: 1.5rem;
+    }
+    .hero-btn{
+        padding: 0;
+        margin-top: 20px;
+    }
+    .btn{
+        height: 6vh;
+        width: 40%;
+        font-size: medium;
+    }
     .hero-login{
-        top: 45%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
+        /* width: 100%; */
+        /* left: 50%; */
+        top: 40%;
+        transform: translate(-100%);
+    }
+}
+
+@media only screen and (min-width: 471px) and (max-width: 868px) {
+        .hero{
+            box-sizing: border-box;
+            height: 110vh;
+            padding: 1rem;
+            overflow: auto;
+        }
+    .hero-text{
+        display: block;
+        top: 5%;
+        width: 90%;
+        padding: 1rem;
+        text-align: center;
+        /* background-color: red; */
     }
     .hero-span{
-        font-size: 2.4rem;
+        font-size: 2rem;
+    }
+    .hero-heading h1{
+        font-size: 1.8rem;
+    }
+    .hero-btn{
+        padding: 0;
+        margin-top: 20px;
+    }
+    .btn{
+        font-size: 1rem;
+        height: 2.5rem;
+    }
+    .hero-login{
+        width: 70%;
+        /* left: 50%; */
+        top: 40%;
+        transform: translate(-50%);
+    }
+}
+
+@media only screen and (min-width: 869px) and (max-width: 1024px) {
+    .hero-span{
+        font-size: 2.2rem;
     }
     .hero-heading h1{
         font-size: 2rem;
     }
+    .btn{
+        height: 3rem;
+        width: 30%;
+        font-size: 1.2rem;
+    }
 }
 
-@media only screen and (max-width: 867px) {
-    .hero{
-        height: 150vh;
-    }
+@media only screen and (min-width: 1025px) and (max-width: 1749px) {
     .hero-text{
-        display: block;
-        top: 5%;
-        height: 40vh;
-        width: 80%;
+        top: 30%;
         padding: 1rem;
         text-align: center;
     }
     .hero-login{
-        top: 48%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-        
+        left: 70%;
+    }
+    .hero{
+        width: 100%;
+    }
+    .hero-span{
+        font-size: 2.7rem;
+    }
+    .hero-heading h1{
+        font-size: 2.5rem;
+    }
+    .hero-btn{
+        padding: 0rem;
+    }
+    .btn{
+        height: 9vh;
+        width: 25%;
+        font-size: 1.6rem;
     }
 }

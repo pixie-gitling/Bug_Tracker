@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import '../utils/Login.css';
+// import zxcvbn from 'zxcvbn'; 
 import { toast } from 'react-hot-toast';
 
 const AdminSignup = ({ flip }) => {
@@ -26,6 +28,9 @@ const AdminSignup = ({ flip }) => {
 
     const handlePasswordChange = (e) => {
         setPassword(e.target.value);
+        // Update password strength meter
+        // const { score } = zxcvbn(newPassword);
+        // setPasswordStrength(score);
     };
 
     const handleConfirmPasswordChange = (e) => {
@@ -91,10 +96,10 @@ const AdminSignup = ({ flip }) => {
 
     return (
         <div className='login flex'>
-            <div className='Login-form'>
+            <div className='login-form'>
                 <form onSubmit={handleSignup} className='flex'>
-                    <div className='heading'>
-                        <h1>Admin/Tester Signup</h1>
+                    <div className='header'>
+                        <h1>Signup</h1>
                     </div>
                     <div className='name'>
                         <input type='text' placeholder='Enter Name' value={name} onChange={handleNameChange} />
@@ -116,12 +121,13 @@ const AdminSignup = ({ flip }) => {
                     <div className='role'>
                         <select value={role} onChange={handleRoleChange}>
                             <option value='' disabled>Select User</option>
+                            <option value="User">User</option>
                             <option value="Admin">Admin</option>
                             <option value="Tester">Tester</option>
                         </select>
                     </div>
                     <div className='login-btn'>
-                        <button className='Lg-btn' type='submit'>
+                        <button className='lg-btn' type='submit'>
                             SignUp
                         </button>
                     </div>

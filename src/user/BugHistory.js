@@ -69,11 +69,12 @@ const BugHistory = () => {
     return (
         <div className='bugHistory'>
             <div className='header flex'>
-                <h1>Bug History</h1>
+                <h1  >Bug History</h1>
             </div>
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
-            <table className='bugTable'>
+        <div className='bugTable'>
+            <table>
                 <thead>
                     <tr className='flex'>
                         <th>Updated By</th>
@@ -99,6 +100,7 @@ const BugHistory = () => {
                     ))}
                 </tbody>
             </table>
+            </div>
         </div>
     );
 };

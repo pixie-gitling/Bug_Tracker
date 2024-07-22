@@ -4,9 +4,9 @@
     justify-content: center;
 }
 .Topbar{
-    position: static;
-    min-height: 10vh;
-    width: 100vw;
+    height: 10vh;
+    max-width: auto;
+    position: relative;
     /* box-shadow: 4px 4px 4px #1414144b; */
 }
 .logo{

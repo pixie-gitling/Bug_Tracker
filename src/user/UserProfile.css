@@ -1,16 +1,22 @@
 .UserProfile{
-    height: 90vh;
-    width: 85vw;
-    overflow-y: scroll;
-    scrollbar-width: none;
+    min-height: 80vh;
+    /* background-color: pink; */
+    width: 90vw;
+    margin-top: 10rem;
+    margin-left: auto;
+    overflow: auto;
 }
-.profile-name, .profile-username, .profile-password{
+.prof{
+    display: flex;
+}
+.profile-name, .profile-username{
     height: 13vh;
-    width: 50%;
+    width: 80%;
 }
 .profile-heading{
     padding: 2rem;
-    font-size: large;
+    font-size: 2.3rem;
+    /* margin-inline: auto; */
 }
 .profile-heading h1.user{
     color: var(--accent-color);
@@ -24,22 +30,24 @@
     padding: 3rem;
 }
 .profile-form input{
+    font-size: 2.5rem;
     text-align: center;
 }
 .profile-form label{
     padding: 0.5rem;
-    font-size: large;
+    font-size: 2.5rem;
     font-weight: bold;
 }
 .profile-img{
-    width: 50%;
+    width: 100%;
     padding: 1rem;
+    font-size: 2.5rem;
     text-align: center;
 }
 .profile-image{
     aspect-ratio: 1/1;
-    max-width: 200px;
-    max-height: 200px;
+    width: 400px;
+    height: 400px;
     border-radius: 100%;
 }
 .choose-img{
@@ -60,11 +68,11 @@
     width: 60%;
     padding: 0.7rem;
     margin: 4px;
-    border-radius: 25px;
+    border-radius: 50px;
     text-align: center;
     cursor: pointer;
     border: none;
-    font-size: large;
+    font-size: 2.5rem;
     font-weight: bold;
     background-color: var(--button-metallic-green);
 }
@@ -86,21 +94,190 @@
     width: 60%;
     padding: 0.7rem;
     margin: 4px;
-    border-radius: 25px;
+    border-radius: 50px;
     text-align: center;
     cursor: pointer;
     border: none;
-    font-size: large;
+    font-size: 2.5rem;
     font-weight: bold;
     background-color: var(--bright-red);
 }
+.webCam{
+    height: 500px;
+    width: 500px;
+    border-radius: 50%;
+    object-fit: cover;
+}
 
 /* Media Query */
-@media only screen and (max-width: 867px) {
+@media only screen and (max-width: 470px) {
     .UserProfile{
-        flex-direction: column;
-        width: 100vw;
-        height: max-content;
-        overflow-y: auto;
+        width: 100%;
+        margin-top: 4rem;
+        margin-inline: auto;
+        text-align: center;
+        padding: 0;
+    }
+    .prof{
+        display: block;
+    }
+    .profile-heading{
+        font-size: 1rem;
+    }
+    .profile-heading h1{
+        width: 100%;
+    }
+    .profile-form{
+        padding: 0;
+        width: 100%;
+    }
+    .profile-form input{
+        font-size: 1rem;
+    }
+    .profile-form label{
+        font-size: 1rem;
+    }
+    .profile-img{
+        padding: 0;
+        font-size: 1rem;
+    }
+    .profile-image{
+        aspect-ratio: 1/1;
+        width: 150px;
+        height: 150px;
+    }
+    .sv-btn.user, .edit-btn.user{
+        width: 60%;
+        font-size: 1rem;
+    }
+    .sv-btn.admin, .edit-btn.admin{
+        width: 60%;
+        font-size: 1rem;
+    }
+    .cancel-btn{
+        width: 60%;
+        font-size: 1rem;
+    }
+    .webCam{
+        height: 150px;
+        width: 150px;
+    }
+}
+
+@media only screen and (min-width: 471px) and (max-width: 868px) {
+    .UserProfile{
+        margin-top: 5rem;
+    }
+    .profile-heading{
+        font-size: 1.2rem;
+    }
+    .profile-form input{
+        font-size: 1.2rem;
+    }
+    .profile-form label{
+        padding: 0.5rem;
+        font-size: 1.2rem;
+    }
+    .profile-img{
+        font-size: 1.2rem;
+    }
+    .profile-image{
+        aspect-ratio: 1/1;
+        width: 200px;
+        height: 200px;
+    }
+    .sv-btn.user, .edit-btn.user{
+        width: 80%;
+        font-size: 1.2rem;
+    }
+    .sv-btn.admin, .edit-btn.admin{
+        width: 80%;
+        font-size: 1.2rem;
+    }
+    .cancel-btn{
+        width: 80%;
+        font-size: 1.2rem;
+    }
+    .webCam{
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media only screen and (min-width: 869px) and (max-width: 1024px) {
+    .UserProfile{
+        margin-top: 5rem;
+    }
+    .profile-heading{
+        font-size: 1.2rem;
+    }
+    .profile-form input{
+        font-size: 1.2rem;
+    }
+    .profile-form label{
+        padding: 0.5rem;
+        font-size: 1.2rem;
+    }
+    .profile-img{
+        font-size: 1.2rem;
+    }
+    .profile-image{
+        aspect-ratio: 1/1;
+        width: 200px;
+        height: 200px;
+    }
+    .sv-btn.user, .edit-btn.user{
+        width: 60%;
+        font-size: 1.2rem;
+    }
+    .sv-btn.admin, .edit-btn.admin{
+        width: 60%;
+        font-size: 1.2rem;
+    }
+    .cancel-btn{
+        width: 60%;
+        font-size: 1.2rem;
+    }
+    .webCam{
+        height: 200px;
+        width: 200px;
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1749px) {
+    .profile-heading{
+        font-size: 1.6rem;
+    }
+    .profile-form input{
+        font-size: 1.6rem;
+    }
+    .profile-form label{
+        padding: 0.5rem;
+        font-size: 1.6rem;
+    }
+    .profile-img{
+        font-size: 1.6rem;
+    }
+    .profile-image{
+        aspect-ratio: 1/1;
+        width: 250px;
+        height: 250px;
+    }
+    .sv-btn.user, .edit-btn.user{
+        width: 60%;
+        margin: 4px;
+        font-size: 1.8rem;
+    }
+    .sv-btn.admin, .edit-btn.admin{
+        width: 60%;
+        font-size: 1.8rem;
+    }
+    .cancel-btn{
+        width: 60%;
+        font-size: 1.6rem;
+    }
+    .webCam{
+        height: 300px;
+        width: 300px;
     }
 }

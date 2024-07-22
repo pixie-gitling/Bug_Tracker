@@ -15,7 +15,7 @@
     width: 75vw;
     padding: 1rem;
     overflow: auto;
-    scrollbar-width: none;
+    scrollbar-width: thin;
     text-align: center;
 }
 table{

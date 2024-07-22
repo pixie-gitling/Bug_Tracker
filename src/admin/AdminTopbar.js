@@ -28,7 +28,7 @@ const AdminTopbar = ({ onLogout }) => {
       onLogout();
     }
     Cookies.remove('userId');
-    navigate("/adminlogin");
+    navigate("/");
   };
 
   const handleUser = () => {

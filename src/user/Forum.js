@@ -3,14 +3,18 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import './Forum.css'
+import useWindowSize from "../utils/UseWindowSize";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './Forum.css';
 
 const Forum = ({setHasNotifications, colorScheme, role}) => {
   const { reportId } = useParams();
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(true);
-  const username = Cookies.get('username'); 
+  const username = Cookies.get('username');
+  const { width } = useWindowSize();
+
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -71,7 +75,7 @@ const Forum = ({setHasNotifications, colorScheme, role}) => {
   
   return (
     <div className="chat-container">
-      <h2 className='flex'>Forum</h2>
+      <h1 className='header flex'>Forum</h1>
       <div className="messages">
           {messages.map((msg, index) => (
               <div key={index} className={`message ${msg.sender === username ? 'sent' : 'received'}`}>
@@ -86,7 +90,10 @@ const Forum = ({setHasNotifications, colorScheme, role}) => {
               onChange={(e) => setNewMessage(e.target.value)}
               placeholder="Type your message..."
           />
-          <button onClick={handleSendMessage} className={`${colorScheme} send-btn`}>Send</button>
+          {width > 867 ? 
+            <button onClick={handleSendMessage} className={`${colorScheme} send-btn`}>Send</button> :
+            <button onClick={handleSendMessage} className={`${colorScheme} send-btn`}><FontAwesomeIcon icon='arrow-up' /></button>
+          }
       </div>
     </div>
   )

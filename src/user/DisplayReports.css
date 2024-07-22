@@ -1,28 +1,42 @@
 .DisplayReports{
-    height: 90vh;
-    width: 85.6vw;
-    margin-inline: auto;
+    height: 80vh;
+    /* margin-inline: auto; */
+    width: 80vw;
+    padding: 2rem;
     flex-direction: column;
+    scrollbar-width: thin;
+    margin-top: 10rem;
+    margin-left: auto;
+    overflow: auto;
+}
+.DisplayReports .header h1{
+    width: 100%;
+    /* font-size: 1.2rem; */
 }
 .bugTable{
-    height: 80vh;
-    width: 90%;
-    padding: 1rem;
+    height: auto;
+    width: 70vw;
+    /* padding: 1rem;  */
     overflow: auto;
-    scrollbar-width: none;
     text-align: center;
 }
 table{
     padding: 1rem;
+    font-size: 2rem;
 }
-table, th, td, tr{
+/* table, th, td, tr{
     margin-inline: auto;
     padding: 0.6rem;
     width: 90%;
-}
+} */
 .bugTable thead th{
+    padding: 2rem;
+    font-weight: bold;
     text-wrap: nowrap;
     background-color: var(--hover-color);
+}
+.bugTable tbody td{
+    padding: 2rem;
 }
 .bugTable tbody tr:nth-child(even) {
     background-color: var(--light-metallic-green);
@@ -34,9 +48,9 @@ table, th, td, tr{
     padding: .5rem;
     height: 5vh;
     width: 60%;
+    font-size: 1.8rem;
     border: none;
     border-radius: 15px;
-    font-weight: bold;
     box-sizing: border-box;
     margin-inline: auto;
 }
@@ -46,6 +60,10 @@ table, th, td, tr{
 .btn2{
     border: 1px solid var(--bright-red);
     background-color: var(--bright-red);
+}
+.fileAttached{
+    height: 250px;
+    width: 300px;
 }
 
 .UserModal {
@@ -83,45 +101,276 @@ table, th, td, tr{
     height: 60vh;
 }
 .bugHistory{
-    height: 80vh;
-    width: 83.7vw;
+    width: 75vw;
+    /* margin-inline: auto; */
+    margin-top: 12vh;
+    margin-left: auto;
+    font-size: 2rem;
     padding: 1rem;
-    overflow: auto;
 }
 .bugDetails{
-    height: 80vh;
-    width: 83.7vw;
-    padding: 1rem;
+    margin-top: 12vh;
+    margin-left: auto;
+    font-size: 2rem;
+    /* min-height: 80vh; */
+    width: 80%;
+    height: 84vh;
     overflow: auto;
+    padding: 1rem;
+}
+.Detail{
+    display: flex;
+}
+.Detail .detail-ip{
+    font-size: 2rem;
 }
 .Detail h3{
     color: #396f0c;
 }
-.search{
-    margin-left: 50px;
+.searchBar{
+    height: 4vh;
+    /* width: 100%; */
+    /* margin-left: 40px; */
 }
 .his-btn{
     height: 6vh;
-    width: 10vw;
+    width: 12vw;
     margin: 10px 2px;
     border: none;
     border-radius: 40px;
     box-sizing: border-box;
     background-color: var(--button-metallic-green);
     text-align: center;
+    font-size: 1.8rem;
     font-weight: bold;
     cursor: pointer;
 }
 
 /******* media query *******/
 
-@media only screen and (max-width: 921px) {
-    .bug-table{
-        height: 60vh;
+@media only screen and (max-width: 470px) {
+    .DisplayReports{
+        height: 80vh;
+        margin-top: 3rem;
+    }
+    .DisplayReports .header h1{
+        /* width: 100%; */
+        font-size: 1rem;
+    }
+    table{
+        font-size: .8rem;
+    }
+    .bugTable tr{
         width: 100%;
     }
-    th, td, tr{
-        padding: 0.3rem;
+    .bugTable td{
+        width: 150px;
+    }
+    .bugTable thead th{
+        padding: 0.5rem;
+    }
+    .bugTable tbody td{
+        padding: 0rem;
+    }
+    .table-btn{
+        font-size: .8rem;
+    }
+    .fileImg{
+        aspect-ratio: 1/1;
+        /* height: 100px;
+        width: 100px; */
+    }
+    .fileAttached{
+        height: 100px;
+        width: 100px;
+    }
+    .bugHistory{
+        margin-left: 0;
+        margin-inline: auto;
+        font-size: .8rem;
+        padding: 0;
+    }
+    .bugHistory .bugTable{
+        width: 100%;
+    }
+    .bugDetails{
+        font-size: .8rem;
+        margin-inline: auto;
+        /* width: 100%; */
+    }
+    .Detail{
+        display: block;
+    }
+    .Detail .detail-ip{
         width: 90%;
+        font-size: .7rem;
+    }
+    .his-btn{
+        height: 7vh;
+        width: 25vw;
+        font-size: .8rem;
+    }
+}
+
+@media only screen and (min-width: 471px) and (max-width: 868px) {
+    .DisplayReports{
+        height: 80vh;
+        margin-top: 3rem;
+        margin-left: 0;
+        margin-inline: auto;
+    }
+    table{
+        font-size: 1rem;
+    }
+    .bugTable tr{
+        width: 100%;
+    }
+    .bugTable td{
+        width: 170px;
+    }
+    .bugTable thead th{
+        padding: .8rem;
+    }
+    .bugTable tbody td{
+        padding: 0.5rem;
+    }
+    .table-btn{
+        height: 5vh;
+        width: 70%;
+        font-size: 1rem;
+        border-radius: 45px;
+    }
+    .fileAttached{
+        height: 120px;
+        width: 180px;
+    }
+    .bugHistory{
+        margin-left: 0;
+        margin-inline: auto;
+        font-size: 1rem;
+        padding: 0;
+    }
+    .bugHistory .bugTable{
+        width: 100%;
+    }
+    .bugDetails{
+        font-size: 1rem;
+        height: 80vh;
+        margin-inline: auto;
+        width: 80%;
+    }
+    .Detail{
+        display: block;
+    }
+    .Detail .detail-ip{
+        width: 90%;
+        font-size: .9rem;
+    }
+    .his-btn{
+        height: 7vh;
+        width: 15vw;
+        font-size: .9rem;
+    }
+}
+
+@media only screen and (min-width: 869px) and (max-width: 1024px) {
+    .DisplayReports{
+        height: 75vh;
+        margin-top: 5rem;
+    }
+    table{
+        font-size: 1rem;
+    }
+    .bugTable td{
+        width: 200px;
+    }
+    .bugTable thead th{
+        padding: 1rem;
+    }
+    .bugTable tbody td{
+        padding: 0.8rem;
+    }
+    .table-btn{
+        height: 5vh;
+        width: 70%;
+        font-size: 1rem;
+        border-radius: 45px;
+    }
+    .fileAttached{
+        height: 120px;
+        width: 180px;
+    }
+    .status{
+        height: 4vh;
+        width: 80%;
+    }
+    .bugHistory{
+        font-size: 1rem;
+    }
+    .bugDetails{
+        margin-left: auto;
+        padding: 0;
+        font-size: 1rem;
+    }
+    .Detail .detail-ip{
+        font-size: .9rem;
+    }
+    .his-btn{
+        height: 7vh;
+        width: 13vw;
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1749px) {
+    .DisplayReports{
+        height: 75vh;
+        margin-top: 5rem;
+    }
+    table{
+        font-size: 1.5rem;
+    }
+    .bugTable td{
+        width: 250px;
+    }
+    .bugTable thead th{
+        padding: 1.5rem;
+    }
+    .bugTable tbody td{
+        padding: 0.8rem;
+    }
+    .table-btn{
+        height: 5vh;
+        width: 70%;
+        font-size: 1.4rem;
+        border-radius: 45px;
+    }
+    .fileAttached{
+        height: 150px;
+        width: 230px;
+    }
+    .status{
+        height: 4vh;
+        width: 80%;
+    }
+    .bugHistory{
+        width: 75vw;
+        margin-top: 12vh;
+        margin-left: auto;
+        font-size: 1.5rem;
+        padding: 1rem;
+    }
+    .bugDetails{
+        padding: 0;
+        font-size: 1.5rem;
+        margin-left: auto;
+    }
+    .Detail .detail-ip{
+        font-size: 1.3rem;
+    }
+    .his-btn{
+        height: 7vh;
+        width: 13vw;
+        font-size: 1.5rem;
     }
 }

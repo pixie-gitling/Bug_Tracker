@@ -1,10 +1,11 @@
 .sidebar{
-    height: 80.5vh;
-    /* height: 100vh; */
-    width: 11vw;
+    height: 90vh;
+    width:15vw;
     background-color: var(--background-color);
-    padding: 2rem;
+    padding: 1.8rem;
+    margin-top: 10vh;
     text-align: center;
+    position: fixed;
 }
 .sidebar ul {
     position: relative;
@@ -16,7 +17,7 @@
 }
 
 .sidebar ul li a {
-    font-size: 1.3rem;
+    font-size: 2.5rem;
     text-decoration: none;
     color: #302f2f;
     border-bottom: 4px solid transparent;
@@ -49,41 +50,55 @@
 
 /******* media query *******/
 
-@media only screen and (max-width: 867px) {
-    .sidebar{
-        position: absolute;
+@media only screen and (max-width: 470px) {
+  .sidebar{
         z-index: 2;
-        width: 100vw;
-        height: 40vh;
+        width: 100%;
+        height: fit-content;
+        overflow: hidden;
+        margin-top: 70px;
         padding: 0;
-        background: var(--secondary-color);
-        /* background: #fff; */
     }
     .sidebar ul li {
-        height: 5vh;
+        width: 100%;
+        margin-inline: auto;
+        padding: 0;
     }
     .sidebar ul li a {
-        /* color: var(--button-metallic-green); */
-        color: var(--light-metallic-green);
-      }
-      .sidebar ul li a::after {
-        background: var(--light-metallic-green);
-        /* background: var(--accent-color2); */
-      }
-}
-
-@media only screen and (min-width: 868px) and (max-width: 1049) {
-    a:hover{
-        padding: 0.7rem;
+      font-size: 1.2rem;
     }
 }
 
-@media only screen and (min-width: 1050px) and (max-width: 1280px) {
-    a{
-        font-size: 1.1rem;
-    }
-    a:hover{
-        font-size: 1.2rem;
-        padding: 0.9rem;
-    }
+@media only screen and (min-width: 471px) and (max-width: 868px) {
+  .sidebar{
+    z-index: 2;
+    width: 100%;
+    height: fit-content;
+    overflow: hidden;
+  }
+  .sidebar ul li {
+      margin-inline: auto;
+      padding: 0;
+  }
+  .sidebar ul li a {
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (min-width: 869px) and (max-width: 1024px) {
+  .sidebar{
+    padding: 1rem;
+  }
+  .sidebar ul li a {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1749px) {
+  .sidebar{
+    padding: 1rem;
+  }
+  .sidebar ul li a {
+    font-size: 1.6rem;
+  }
 }

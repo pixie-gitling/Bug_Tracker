@@ -3,15 +3,14 @@
   padding: 0;
   color: var(--text-color);
   background-color: var(--backgroung-color);
-  font-family: serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 600;
   /* scroll-behavior: smooth;
   scrollbar-width: thin; */
 }
 body {
   margin: 0;
-  width: fit-content;
-  
+  width: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

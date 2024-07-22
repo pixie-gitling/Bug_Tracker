@@ -1,7 +1,10 @@
 .dashboard{
-    height: fit-content;
-    max-width: 84vw;
+    min-height: 80vh;
+    width: 80%;
     overflow: hidden;
+    margin-top: 15vh;
+    margin-left: auto;
+    /* position: relative; */
 }
 .dash-items{
     height: 80vh;
@@ -12,11 +15,10 @@
     justify-content: space-evenly;
 }
 .card{
-    height: 220px;
+    height: 25rem;
     width: 80%;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     background: var(--hover-color);
-    border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
@@ -37,56 +39,86 @@
 }
 .card-heading, .card-data{
     padding: .5rem;
+    font-size: 1.9rem;
 }
 
 /******* media query *******/
-@media only screen and (max-width: 867px) {
+
+@media only screen and (max-width: 470px) {
     .dashboard{
         width: 100vw;
-        margin-top: 30px;
+        margin-inline: auto;
     }
     .dash-items{
-        height: 100vh;
-        padding: 3rem;
+        height: 150vh;
+        padding: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        overflow: auto;
+        justify-content: space-evenly;
     }
     .card{
         height: 160px;
-        width: 50%;
-        padding: 1rem;
+        width: 70%;
+        padding: 0.5rem;
     }
     .card-heading, .card-data{
-        /* padding: 1rem; */
+        padding: 0.2rem;
         font-size: small;
     }
 }
-@media only screen and (min-width: 868px) and (max-width: 1049px) {
+
+@media only screen and (min-width: 471px) and (max-width: 868px) {
+    .dashboard{
+        width: 100vw;
+    }
     .dash-items{
-        padding: 2rem;
+        height: 500px;
+        width: 100%;
+        /* padding: 2rem; */
         grid-template-columns: 50% 50%;
+        row-gap: 30px;
+        margin-left: 20px;
     }
     .card{
-        height: 190px;
+        height: 12rem;
         width: 70%;
+    }
+    .card-heading, .card-data{
+        font-size: .8rem;
+    }
+}
+@media only screen and (min-width: 869px) and (max-width: 1024px) {
+    .dash-items{
+        height: 50vh;
+        padding: 1rem;
+        grid-template-columns: 30% 30% 30%;
+        row-gap: 20px;
+    }
+    .card{
+        height: 12rem;
+        width: 90%;
+    }
+    .card-heading, .card-data{
+        font-size: .8rem;
     }
 }
 
-@media only screen and (min-width: 1050px) and (max-width: 1280px) {
+@media only screen and (min-width: 1025px) and (max-width: 1749px) {
     .dashboard{
         width: 83vw;
     }
     .dash-items{
-        padding: 1rem;
-        grid-template-columns: 25% 25% 25%;
+        height: 50vh;
+        padding-left: 3.5rem;
+        grid-template-columns: 30% 30% 30%;
+        row-gap: 40px;
     }
     .card{
-        width: 90%;
+        height: 13rem;
+        width: 75%;
     }
     .card-heading, .card-data{
-        font-size: medium;
+        font-size: .9rem;
     }
 }

@@ -130,11 +130,11 @@ const UserProfile = ({ colorScheme }) => {
     };
 
     return (
-        <div className='UserProfile '>
-            <div className='profile-heading flex'>
+        <div className='UserProfile'>
+            <div className='header profile-heading flex'>
                 <h1 className={`${colorScheme} flex`}>User Profile</h1>
             </div>
-            <div className='flex'>
+            <div className='prof'>
                 <div className='profile-img'>
                     <h2>Profile Picture</h2>
                     <div>
@@ -153,13 +153,15 @@ const UserProfile = ({ colorScheme }) => {
                                 <>
                                     <Webcam
                                         audio={false}
-                                        height={300}
                                         ref={webcamRef}
+                                        height={500}
                                         screenshotFormat="image/jpeg"
-                                        width={300}
                                         mirrored={true}
+                                        className='webCam'
                                     />
-                                    <button type='button' className={`sv-btn ${colorScheme}`} onClick={capture}>Capture</button>
+                                    <div>
+                                        <button type='button' className={`sv-btn ${colorScheme}`} onClick={capture}>Capture</button>
+                                    </div>
                                 </>
                             )}
                             <button type='button' onClick={handleCameraToggle} className={`sv-btn ${colorScheme}`}>{showCamera ? 'Close Camera' : 'Take a picture'}</button>

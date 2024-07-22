@@ -3,8 +3,9 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import Cookies from 'js-cookie';
+import '../utils/Login.css'
 
-export const AdminLogin = ({ flip }) => {
+export const AdminLogin = ({ onlogin, flip }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
@@ -33,6 +34,9 @@ export const AdminLogin = ({ flip }) => {
                 } else if (data.user.role === 'Tester') {
                     navigate("/testerdashboard");
                     toast.success("Tester Login Successful !!!");
+                } else if (data.user.role === 'User') {
+                    navigate("/");
+                    toast.success("Login Successful !!!");
                 } else {
                     toast.error("Invalid credentials.");
                 }

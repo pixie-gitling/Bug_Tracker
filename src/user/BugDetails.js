@@ -64,8 +64,8 @@ const Details = () => {
             <div className='header flex'>
                 <h1>Bug Details</h1>
             </div>
-            <div className='Detail flex'>
-                <div className='left'>
+            <div className='Detail'>
+                <div className=''>
                     <h3>Bug Title: <input className='detail-ip' value={bugDetails.title} readOnly/> </h3>
                     <h3>Bug Description: <textarea className='detail-ip' value={bugDetails.description} style={{fontFamily: 'sans-serif'}} readOnly/> </h3>
                     <h3>Assigned To: <input className='detail-ip' value={bugDetails.assignedTo} readOnly/> </h3>
@@ -74,8 +74,8 @@ const Details = () => {
                     <h3>Updated At: <input className='detail-ip' value={formatTime(bugDetails.updatedAt)} readOnly/> </h3>
                     <h3>Remarks: <div className='detail-ip' value={bugDetails.remark} readOnly/> </h3>
                 </div>
-                <div className='right'>
-                    <h3>File Attached:</h3> {bugDetails.fileAttached && ( <img src={bugDetails.fileAttached} alt='File Attached' className='flex' height='300' />)}
+                <div className=''>
+                    <h3>File Attached:</h3> {bugDetails.fileAttached && ( <img src={bugDetails.fileAttached} alt='File Attached' className='fileImg flex' height='300' />)}
                     <h3>Update History:</h3>{ console.log(bugDetails.updateHistory)}
                     <ol>
                         {bugDetails.updateHistory.slice(0,2).map((update) => (

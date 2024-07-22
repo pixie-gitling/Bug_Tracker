@@ -28,7 +28,7 @@ const Notifications = ({colorScheme}) => {
 
   return (
     <div className='Notifications'>
-      <div className='heading flex'>
+      <div className='header flex'>
         <h1>Notifications</h1>
       </div>
       <div className='notification'>

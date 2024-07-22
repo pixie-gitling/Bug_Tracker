@@ -3,13 +3,14 @@ import './Topbar.css';
 import { useNavigate } from 'react-router';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import useWindowSize from '../utils/UseWindowSize';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 const ResTopbar = ({ onLogout, toggleSidebarOnButtonClick }) => {
   const [profile, setProfile] = useState('');
   const [showOptions, setShowOptions] = useState(false);
   const navigate = useNavigate();
+  const { width } = useWindowSize();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -43,28 +44,22 @@ const ResTopbar = ({ onLogout, toggleSidebarOnButtonClick }) => {
 
   return (
     <div className="UserTopbar flex">
-        <div className='menu' onClick={toggleSidebarOnButtonClick}>
+     
+        <div className='menu flex' onClick={toggleSidebarOnButtonClick}>
             <FontAwesomeIcon icon='bars' className='icon1'/>
         </div>
       <div className="logo1 flex">
         <img src='icon.png' />
-        <h1>Bug Tracker</h1>
+        <h1 className={ width < 470 ? "hide" : ""}>Bug Tracker</h1>
       </div>
-      <div className='Profile'>
+      <div className='log flex'>
           {profile && (
               <img src={profile} alt='Profile' className='user-profile-image' />
           )}
-        <button className='user-profile' onClick={toggleOptions}>
-          <FontAwesomeIcon icon={faAngleDown} className='icon'/>
-        </button>
-        {showOptions && (
-          <div className='options flex'>
-            <button className='option user-profile' onClick={handleUser}>User Profile</button> 
-            <button className='option user-profile' onClick={handleLogout}>Logout</button>
-          </div>
-        )}
+        <button className='user-profile' onClick={handleLogout}>Logout</button>
       </div>
-    </div>
+      </div>
+   
   );
 };
 

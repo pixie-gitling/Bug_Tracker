@@ -47,7 +47,7 @@ const Dashboard = () => {
                 <div className='card'>
                     <div className='card-items'>
                         <div className='card-heading'>
-                            <h1>No. of Bugs Resolved</h1>
+                            <h1>Resolved Bugs</h1>
                         </div>
                         <div className='card-data'>
                             <h1>{resolvedBugs}</h1>
@@ -57,7 +57,7 @@ const Dashboard = () => {
                 <div className='card'>
                     <div className='card-items'>
                         <div className='card-heading'>
-                            <h1>No. of Bugs Unresolved</h1>
+                            <h1>Unresolved Bugs </h1>
                         </div>
                         <div className='card-data'>
                             <h1>{unresolvedBugs}</h1>
@@ -67,7 +67,7 @@ const Dashboard = () => {
                 <div className='card'>
                     <div className='card-items'>
                         <div className='card-heading'>
-                            <h1>No. of Bugs Assigned</h1>
+                            <h1>Assigned Bugs </h1>
                         </div>
                         <div className='card-data'>
                             <h1>{assignedBugs}</h1>

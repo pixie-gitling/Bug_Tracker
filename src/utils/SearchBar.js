@@ -13,7 +13,7 @@ const SearchBar = ({setSearchTerm}) => {
     return(
         <div className="search-bar">
                 <div className="flex">
-                    <input className='search' type="text" placeholder="Search..." value={search} onChange={handleChange}/>
+                    <input className='searchBar' type="text" placeholder="Search..." value={search} onChange={handleChange}/>
                 </div>
         </div>
     )

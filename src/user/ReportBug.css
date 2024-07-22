@@ -1,10 +1,12 @@
 .reportBug{
-    height: 90vh;
-    width: 83vw;
+    min-height: 80vh;
+    width: 80vw;
+    margin-top: 100px;
+    margin-left: auto;
 }
 .bug-form{
     height: fit-content;
-    width: 60%;
+    width: 70%;
     padding: 1rem;
     background: var(--light-metallic-green);
     border-radius: 16px;
@@ -29,6 +31,7 @@ form{
 }
 .form-heading{
     padding: 1rem;
+    font-size: 2rem;
 }
 .form-heading h1{
     color: var(--secondary-color);
@@ -39,11 +42,11 @@ form{
     text-align: center;
 }
 .form-item input, textarea{
-    height: 7vh;
+    height: 8vh;
     width: 100%;
     outline: none;
     padding: 0.2rem;
-    font-size: 17px;
+    font-size: 2rem;
     text-align: left;
     border: 1px solid rgba(27, 78, 85, 0.162);
     background: #ffffffc6;
@@ -53,22 +56,23 @@ form{
     -webkit-backdrop-filter: blur(1px);
 }
 textarea{
-    height: 12vh;
+    height: 15vh;
     font-family: serif;
 }
 .form-submit button{
     cursor: pointer;
-    font-size: 0.8rem;
+    height: 7vh;
+    font-size: 2rem;
     font-weight: bold;
-    padding: 1rem;
+    padding: 1.5rem;
     margin-top: 15px;
     border: 1px solid var(--button-metallic-green);
-    border-radius: 16px;
+    border-radius: 50px;
     background-color: var(--button-metallic-green);
 }
 .form-submit button:hover {
-    padding: 1.2rem;
-    font-size: 0.9rem;
+    padding: 1.7rem;
+    font-size: 2.2rem;
     background-color:  var(--hover-color);
 }
 
@@ -78,12 +82,108 @@ textarea{
 
 /******* media query *******/
 
-@media only screen and (max-width: 867px) {
+@media only screen and (max-width: 470px) {
     .reportBug{
-        width: 100vw;
+        width: 100%;
+        margin-top: 100px;
+        margin-left: 0;
+    }
+    .bug-form{
+        width: 75%;        
+    }
+    .form-heading{
+        font-size: .8rem;
+    }
+    .form-item input, textarea{
+        height: 6vh;
+        font-size: .8rem;
+    }
+    textarea{
+        height: 10vh;
+    }
+    .form-submit button{
+        height: 6vh;
+        font-size: .8rem;
+        padding: .5rem;
+    }
+    .form-submit button:hover {
+        font-size: 1rem;
+        padding: .7rem;
     }
 }
-@media only screen and (min-width: 868px) and (max-width: 1049px) {
+@media only screen and (min-width: 471px) and (max-width: 868px) {
+    .reportBug{
+        width: 100%;
+        margin-top: 100px;
+        margin-left: 0;
+    }
+    .bug-form{
+        width: 75%;        
+    }
+    .form-heading{
+        font-size: 1rem;
+    }
+    .form-item input, textarea{
+        height: 6vh;
+        font-size: 1rem;
+    }
+    textarea{
+        height: 12vh;
+    }
+    .form-submit button{
+        height: 6vh;
+        font-size: 1rem;
+        padding: .5rem;
+    }
+    .form-submit button:hover {
+        font-size: 1.2rem;
+        padding: .7rem;
+    }
 }
-@media only screen and (min-width: 1050px) and (max-width: 1280px) {
+
+@media only screen and (min-width: 869px) and (max-width: 1024px) {
+    .form-heading{
+        font-size: 1rem;
+    }
+    .form-item input, textarea{
+        height: 6vh;
+        font-size: 1rem;
+    }
+    textarea{
+        height: 12vh;
+    }
+    .form-submit button{
+        height: 6vh;
+        font-size: 1rem;
+        padding: .5rem;
+    }
+    .form-submit button:hover {
+        font-size: 1.2rem;
+        padding: .7rem;
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1749px) {
+    .bug-form{
+        width: 60%;        
+    }
+    .form-heading{
+        font-size: 1.3rem;
+    }
+    .form-item input, textarea{
+        height: 6vh;
+        font-size: 1.3rem;
+    }
+    textarea{
+        height: 12vh;
+    }
+    .form-submit button{
+        height: 8vh;
+        font-size: 1.3rem;
+        padding: 1rem;
+    }
+    .form-submit button:hover {
+        padding: 1.2rem;
+        font-size: 1.5rem;
+    }
 }

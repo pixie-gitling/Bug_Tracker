@@ -12,7 +12,7 @@
     height: 55vh;
     width: 90%;
     overflow-y: scroll;
-    scrollbar-width: none;
+    scrollbar-width: thin;
 }
 .message{
     padding: .3rem;
@@ -25,14 +25,15 @@
 .message.received{
     align-items: flex-start;
 }
-.message p{
+.messages .message h4{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.messages .message p{
     height: fit-content;
     width: fit-content;
     padding: 0.5rem;
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: center;
-    border: 1px solid #296a72c9;
+    font-size: 2rem;
     border-radius: 25px;
     filter: drop-shadow(5px 5px 2px #ffffff4b);
     box-shadow: 3px 3px 3px #ffffff4b inset;
@@ -45,7 +46,7 @@
     height: 7vh;
     width: 10%;
     margin-left: 10px;
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: bold;
     text-align: center;
     border: none;
@@ -55,3 +56,105 @@
     box-shadow: 3px 3px 3px #ffffff4b inset;
     cursor: pointer;
 }
+
+/****** media query ******/
+
+@media only screen and (max-width: 470px) {
+    .chat-container{
+        margin-top: 3rem;
+        margin-left: 0;
+        margin-inline: auto;
+    }
+    .chat-container h1{
+        font-size: 1.8rem;
+    }
+    .messages{
+        margin-top: 10px;
+    }
+    .messages .message h4{
+        font-size: .8rem;
+    }
+    .messages .message p{
+        font-size: .8rem;
+    }
+    .message-input textarea{
+        margin-top: 0px;
+    }
+    .send-btn{
+        font-size: .8rem;
+    }
+}
+
+@media only screen and (min-width: 471px) and (max-width: 868px) {
+    .chat-container{
+        margin-top: 3rem;
+        margin-left: 0;
+        margin-inline: auto;
+    }
+    .chat-container h1{
+        font-size: 2rem;
+    }
+    .messages{
+        margin-top: 10px;
+    }
+    .messages .message h4{
+        font-size: 1rem;
+    }
+    .messages .message p{
+        font-size: 1rem;
+    }
+    .message-input textarea{
+        margin-top: 0px;
+    }
+    .send-btn{
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (min-width: 869px) and (max-width: 1024px) {
+    .chat-container{
+        margin-top: 3rem;
+    }
+    .chat-container h1{
+        font-size: 2rem;
+    }
+    .messages{
+        margin-top: 10px;
+    }
+    .messages .message h4{
+        font-size: 1rem;
+    }
+    .messages .message p{
+        font-size: 1rem;
+    }
+    .message-input textarea{
+        margin-top: 0px;
+    }
+    .send-btn{
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (min-width: 1025px) and (max-width: 1749px) {
+    .chat-container{
+        margin-top: 5rem;
+    }
+    .chat-container h1{
+        font-size: 2.8rem;
+    }
+    .messages{
+        margin-top: 30px;
+    }
+    .messages .message h4{
+        font-size: 1.4rem;
+    }
+    .messages .message p{
+        font-size: 1.4rem;
+    }
+    .message-input textarea{
+        margin-top: 0px;
+    }
+    .send-btn{
+        font-size: 1.4rem;
+    }
+} 

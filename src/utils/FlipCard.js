@@ -3,6 +3,7 @@ import ReactCardFlip from 'react-card-flip'
 import Login from './Login'
 import Signup from './Signup'
 import { useNavigate } from 'react-router'
+import Cookies from 'js-cookie'
 
 const FlipCard = ({onLogin}) => {
 
@@ -14,8 +15,22 @@ const FlipCard = ({onLogin}) => {
     }
 
     const handleLoginClick = () => {
+        // navigate("/dashboard")
+        const role = Cookies.get('role');
+        switch(role) {
+            case 'Admin':
+                console.log('Navigating to Admin Dashboard');
+                navigate("/admindashboard");
+                break;
+                case 'Tester':
+                    console.log('Navigating to Tester Dashboard');
+                    navigate("/testerdashboard");
+                    break;
+                    default:
+                        console.log('Navigating to User Dashboard');
+                        navigate("/");
+                    }
         onLogin()
-        navigate("/dashboard")
     }
     
   return (
@@ -31,5 +46,5 @@ const FlipCard = ({onLogin}) => {
     </div>
   )
 }
-
+ 
 export default FlipCard
