@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import '../admin/AdminSidebar.css'
+import './AdminSidebar.css'
 import useWindowSize from '../utils/UseWindowSize';
 
 const TesterSidebar = ({closeSidebar, hasNotifications}) => {

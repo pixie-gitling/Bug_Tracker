@@ -25,7 +25,7 @@ const TesterDashboard = () => {
         };
 
         fetchBugReports();
-    }, []);
+    });
 
     const handleCardClick = (status) => {
         navigate(`/reports?status=${status}`);

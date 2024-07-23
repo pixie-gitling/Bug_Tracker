@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import SearchBar from '../utils/SearchBar';
-import './AdminDisplayReports.css';
+import '../user/DisplayReports.css';
 
 const AdminDisplayUsers = () => {
     const [users, setUsers] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
+    const [setSearchTerm] = useState('');
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -40,12 +40,12 @@ const AdminDisplayUsers = () => {
     // };    
 
     return (
-        <div className='displayUsers flex'>
-            <div className='heading flex'>
+        <div className='DisplayReports flex'>
+            <div className='header flex'>
                 <h1>List of Users</h1>
                 <SearchBar setSearchTerm={setSearchTerm} />
             </div> 
-            <div className='User-Table'> 
+            <div className='bugTable'> 
                 <table>
                     <thead className='tableHead'>
                         <tr className='flex'>

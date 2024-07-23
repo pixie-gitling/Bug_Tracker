@@ -56,7 +56,7 @@ const Chat = ({role}) => {
 
     return (
         <div className="chat-container">
-            <h2 className='flex'>Chat</h2>
+            <h1 className='header flex'>Chat</h1>
             <div className="messages">
                 {messages.map((msg, index) => (
                     <div key={index} className={`message ${msg.sender === username ? 'sent' : 'received'}`}>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import useWindowSize from "../utils/UseWindowSize";
+import useWindowSize from "./UseWindowSize";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Forum.css';
 

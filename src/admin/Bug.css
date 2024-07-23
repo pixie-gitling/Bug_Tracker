@@ -1,14 +1,15 @@
-.detail{
-    height: inherit;
-    width: 85vw;
-    padding: 1rem;
-    overflow: auto;
-    scrollbar-width: none;
-    box-sizing: border-box;
+.bug-details{
+    height: 80vh;
+    width: 83%;
+    margin-left: auto;
+    margin-top: 100px;
 }
-.heading h1{
-    font-size: 6vh;
-    color: #1b4e55;
+.detail{
+    width: 80%;
+    margin-inline:auto;
+    overflow: auto;
+    scrollbar-width: thin;
+    box-sizing: border-box;
 }
 .left{
     height: 60vh;
@@ -39,7 +40,7 @@
 } */
 .detail h3{
     padding: .5rem;
-    color: #1b4e55;
+    color: var(--accent-color);
 }
 .detail-ip{
     width: 80%;
@@ -71,19 +72,29 @@
     border-radius: 40px;
     box-sizing: border-box;
     margin-inline: auto;
-    background-color: #1b4e557d;
+    background-color: var(--button-metallic-green);
     text-align: center;
     /* font-weight: bold; */
     cursor: pointer;
 }
 .history{
+    margin-top:50px;
     height: 80vh;
+    margin-left: auto;
     width: 83vw;
     padding: 1rem;
     overflow: auto;
     scrollbar-width: none;
 }
+.bug-history-div{
+    width: 75vw;
+    overflow: scroll;
+    margin-inline: auto;
 
+}
+.bug-history-table{
+    
+}
 /****** media query ******/
 @media only screen and (max-width: 470px) {
     .history-btn{

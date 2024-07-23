@@ -58,9 +58,9 @@ const UserProfile = ({ colorScheme }) => {
         }
     };
 
-    const handleCancelCamera = () => {
-        setShowCamera(false);
-    };
+    // const handleCancelCamera = () => {
+    //     setShowCamera(false);
+    // };
 
     const handleChange = (e) => {
         if (editMode) {
@@ -139,9 +139,9 @@ const UserProfile = ({ colorScheme }) => {
                     <h2>Profile Picture</h2>
                     <div>
                         {tempUserData.image ? (
-                            <img src={tempUserData.image} alt='Profile Picture' className='profile-image' />
+                            <img src={tempUserData.image} alt='ProfilePic' className='profile-image' />
                         ) : (
-                            <img src="../profile.jpg" alt='Profile Picture' className='profile-image' />
+                            <img src="../profile.jpg" alt='ProfilePic' className='profile-image' />
                         )}
                     </div>
                     {editMode && (

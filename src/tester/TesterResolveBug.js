@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import '../admin/EditBugReport.css';
 import axios from 'axios';
 import Cookies from 'js-cookie'

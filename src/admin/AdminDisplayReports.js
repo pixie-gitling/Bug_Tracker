@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
-import './AdminDisplayReports.css';
+import '../user/DisplayReports.css';
 import EditBugReportModal from './EditBugReport';
 import Pagination from '../utils/Pagination';
 import SearchBar from '../utils/SearchBar';
@@ -110,12 +110,12 @@ const AdminDisplayReports = () => {
     };
 
     return (
-        <div className='displayReports flex'>
-            <div className='heading flex'>
+        <div className='DisplayReports flex'>
+            <div className='header flex'>
                 <h1>List of Bug Reports</h1>
                 <SearchBar setSearchTerm={setSearchTerm} />
             </div>
-            <div className='Bug-Table'>
+            <div className='bugTable'>
                 <table>
                     <thead className='tableHead'>
                         <tr className='flex'>

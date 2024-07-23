@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import AdminTopbar from '../admin/AdminTopbar';
+import AdminTopbar from './AdminTopbar';
 import TesterSidebar from './TesterSidebar';
 import useWindowSize from '../utils/UseWindowSize';
-import ResponsiveTopbar from '../admin/ResponsiveTopbar';
+// import ResponsiveTopbar from './ResponsiveTopbar';
 
 const TesterLayout = ({ onLogout, children, hasNotifications }) => {
 
@@ -13,11 +13,11 @@ const TesterLayout = ({ onLogout, children, hasNotifications }) => {
     setShowSidebar(!showSidebar);
   }
 
-  const toggleSidebarOnButtonClick = () => {
-    if(width <= 867) {
-      toggleSidebar();
-    }
-  }
+  // const toggleSidebarOnButtonClick = () => {
+  //   if(width <= 867) {
+  //     toggleSidebar();
+  //   }
+  // }
   
   return (
     <div className="adminLayout">

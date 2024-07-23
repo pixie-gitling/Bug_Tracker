@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import axios from "axios";
@@ -9,28 +9,28 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 
 import { Home } from "../utils/Home";
 
-import Topbar from "../user/Topbar";
-import Sidebar from "../user/Sidebar";
+import Topbar from "./Topbar";
+import Sidebar from "./Sidebar";
 import Dashboard from "../user/Dashboard";
 import { ReportBug } from "../user/ReportBug";
 import DisplayReports from "../user/DisplayReports";
-import Forum from "../user/Forum";
+import Forum from "./Forum";
 import UserProfile from "../user/UserProfile";
 
 import AdminDashboard from "../admin/AdminDashboard";
-import { Admin } from "../admin/Admin";
+// import { Admin } from "../extras/Admin";
 import AdminDisplayReports from "../admin/AdminDisplayReports";
-import AdminLayout from "../admin/AdminLayout";
+import AdminLayout from "../extras/AdminLayout";
 import AdminDisplayUsers from "../admin/AdminDisplayUsers";
 
-import TesterLayout from "../tester/TesterLayout";
+// import TesterLayout from "../extras/TesterLayout";
 import TesterDashboard from "../tester/TesterDashboard";
 import AssignedBugs from "../tester/AssignedBugs";
 import BugDetails from "../admin/Bug";
 import BugHistory from "../user/BugHistory";
 import History from "../admin/History";
 import Details from "../user/BugDetails";
-import ResTopbar from "../user/ResTopbar";
+import ResTopbar from "./ResTopbar";
 import useWindowSize from "./UseWindowSize";
 import Chat from "../admin/Chat";
 import Notifications from "./Notifications";
@@ -45,7 +45,7 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [showSessionTimeoutPopup, setShowSessionTimeoutPopup] = useState(false);
   const [hasNotifications, setHasNotifications] = useState(false);
-  let sessionTimeoutTimer;
+  const sessionTimeoutRef = useRef(null);
   
   const handleLogin = (isAdminLogin) => { 
     setIsLoggedIn(true);
@@ -58,7 +58,7 @@ function App() {
   const handleLogout = () => {
     setIsLoggedIn(false);
     setIsAdmin(false);
-    clearInterval(sessionTimeoutTimer);
+    clearInterval(sessionTimeoutRef);
     setShowSessionTimeoutPopup(false);
     Cookies.remove("isLoggedIn");
     Cookies.remove("isAdmin")
@@ -66,26 +66,32 @@ function App() {
   
   const storedLoginStatus = Cookies.get("isLoggedIn");
   const storedIsAdmin = Cookies.get("isAdmin");
+  
+  const clearSessionTimeout = useCallback(() => {
+    if (sessionTimeoutRef.current) {
+      clearTimeout(sessionTimeoutRef.current);
+    }
+  }, []);
 
+  const setSessionTimeout = useCallback(() => {
+    clearSessionTimeout();
+    const sessionTimeoutDuration = 60 * 60 * 1000; // 1 hour
+    sessionTimeoutRef.current = setTimeout(() => {
+      setShowSessionTimeoutPopup(true);
+    }, sessionTimeoutDuration);
+  }, [clearSessionTimeout]); 
+  
+  const resetSessionTimeout = () => {
+    setSessionTimeout();
+  };
+  
   useEffect(() => {
     setIsLoggedIn(storedLoginStatus === "true");
     setIsAdmin(storedIsAdmin === "true");
     if(storedLoginStatus === "true"){
       setSessionTimeout();
     }
-  }, []);
-
-  const setSessionTimeout = () => {
-    const sessionTimeoutDuration = 60*60*1000;
-    const sessionTimeoutTimer = setTimeout(() => {
-      setShowSessionTimeoutPopup(true);
-    }, sessionTimeoutDuration);
-  }
-
-  const resetSessionTimeout = () => {
-    clearTimeout(sessionTimeoutTimer);
-    setSessionTimeout();
-  }
+  },[storedLoginStatus, storedIsAdmin, setSessionTimeout]);
 
   const { width } = useWindowSize();
 
@@ -102,7 +108,7 @@ function App() {
   };
 
   return (
-    <div className="parent">
+    <div className="parent" onClick={resetSessionTimeout} onKey={resetSessionTimeout}>
       {/* Popup for session timeout */}
       {showSessionTimeoutPopup && (
         <div className="session-timeout-popup">
@@ -131,24 +137,24 @@ function App() {
             <Route path="/notifications" element={storedLoginStatus ? <Notifications colorScheme="user"/> : <Home onLogin={handleLogin} />} />
 
             {/* <Route path="/adminlogin" element={<Admin onLogin={() => handleLogin(true)} />} /> */}
-            <Route path="/admindashboard" element={<AdminLayout onLogout={handleLogout}><AdminDashboard /></AdminLayout>} />
-            <Route path="/reports" element={<AdminLayout onLogout={handleLogout}><AdminDisplayReports /></AdminLayout>} />
-            <Route path="/bug/:reportId" element={<AdminLayout onLogout={handleLogout}><BugDetails role="admin"/></AdminLayout>} />
-            <Route path="/bug/:reportId/chat" element={<AdminLayout onLogout={handleLogout}><Chat role="admin"/></AdminLayout>} />
-            <Route path="/bug/:reportId/history" element={<AdminLayout onLogout={handleLogout}><History /></AdminLayout>} />
-            <Route path="/users" element={<AdminLayout onLogout={handleLogout}><AdminDisplayUsers /></AdminLayout>} />
-            <Route path="/adminprofile" element={<AdminLayout onLogout={handleLogout}><UserProfile colorScheme = "admin"  /></AdminLayout>} />
-            <Route path="/admin/forum" element={<AdminLayout onLogout={handleLogout}><Forum setHasNotifications = {setHasNotifications} colorScheme = "admin" role="admin"/></AdminLayout>} />
-            <Route path="/admin/notifications" element={<AdminLayout onLogout={handleLogout}><Notifications colorScheme="admin"/></AdminLayout>} />
+            <Route path="/dashboard" element={storedLoginStatus ? <AdminDashboard /> : <Home onLogin={handleLogin} />} />
+            <Route path="/reports" element={storedLoginStatus ? <AdminDisplayReports /> : <Home onLogin={handleLogin} />} />
+            <Route path="/bug/:reportId" element={storedLoginStatus ? <BugDetails role="admin"/> : <Home onLogin={handleLogin} />} />
+            <Route path="/bug/:reportId/chat" element={storedLoginStatus ? <Chat role="admin"/> : <Home onLogin={handleLogin} />} />
+            <Route path="/bug/:reportId/history" element={storedLoginStatus ? <History /> : <Home onLogin={handleLogin} />} />
+            <Route path="/users" element={storedLoginStatus ? <AdminDisplayUsers /> : <Home onLogin={handleLogin} />} />
+            {/* <Route path="/adminprofile" element={<UserProfile colorScheme = "admin"  />} /> */}
+            {/* <Route path="/admin/forum" element={<Forum setHasNotifications = {setHasNotifications} colorScheme = "admin" role="admin"/>} /> */}
+            <Route path="/admin/notifications" element={storedLoginStatus ? <Notifications colorScheme="admin"/>: <Home onLogin={handleLogin} />} />
 
-            <Route path="/testerdashboard" element={<TesterLayout hasNotifications={hasNotifications} onLogout={handleLogout}><TesterDashboard /></TesterLayout>} />
-            <Route path="/assignedbugs" element={<TesterLayout onLogout={handleLogout}><AssignedBugs /></TesterLayout>} />
-            <Route path="/assignedbugs/:reportId" element={<TesterLayout onLogout={handleLogout}><BugDetails role="tester"/></TesterLayout>} />
-            <Route path="/bug/:reportId/testerchat" element={<TesterLayout onLogout={handleLogout}><Chat role="tester"/></TesterLayout>} />
-            <Route path="/bug/:reportId/testerhistory" element={<TesterLayout onLogout={handleLogout}><History /></TesterLayout>} />
-            <Route path="/testerprofile" element={<TesterLayout onLogout={handleLogout}><UserProfile colorScheme="admin"/></TesterLayout>} />
-            <Route path="/tester/forum" element={<TesterLayout hasNotifications={hasNotifications} onLogout={handleLogout}><Forum setHasNotifications = {setHasNotifications} role="tester"/></TesterLayout>} />
-            <Route path="/tester/notifications" element={<TesterLayout onLogout={handleLogout}><Notifications colorScheme="admin"/></TesterLayout>} />
+            <Route path="/dashboard" element={storedLoginStatus ? <TesterDashboard /> : <Home onLogin={handleLogin} />} />
+            <Route path="/assignedbugs" element={storedLoginStatus ? <AssignedBugs /> : <Home onLogin={handleLogin} />} />
+            <Route path="/assignedbugs/:reportId" element={storedLoginStatus ? <BugDetails role="tester"/> : <Home onLogin={handleLogin} />} />
+            <Route path="/bug/:reportId/testerchat" element={storedLoginStatus ? <Chat role="tester"/> : <Home onLogin={handleLogin} />} />
+            <Route path="/bug/:reportId/testerhistory" element={storedLoginStatus ? <History /> : <Home onLogin={handleLogin} />}/>
+            {/* <Route path="/testerprofile" element={<UserProfile colorScheme="admin"/>} /> */}
+            {/* <Route path="/tester/forum" element={<Forum setHasNotifications = {setHasNotifications} role="tester"/>} /> */}
+            <Route path="/tester/notifications" element={storedLoginStatus ? <Notifications colorScheme="admin"/> : <Home onLogin={handleLogin} />} />
           </Routes>
         </div>
       </BrowserRouter>

@@ -51,12 +51,13 @@ const History = () => {
 
     return (
         <div className='history'>
-            <div className='heading flex'>
+            <div className='header flex'>
                 <h1>Bug History</h1>
             </div>
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
-            <table className='bug-history-table'>
+            <div className='bug-history-div' >
+            <table className='bugTable'>
                 <thead className='tableHead'>
                     <tr className='flex'>
                         <th>Updated By</th>
@@ -88,6 +89,7 @@ const History = () => {
                     ))}
                 </tbody>
             </table>
+            </div>
         </div>
     );
 };

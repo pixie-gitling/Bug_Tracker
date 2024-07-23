@@ -75,7 +75,7 @@ const BugDetails = ({role}) => {
 
     return (
         <div className='bug-details'>
-            <div className='heading flex'>
+            <div className='header flex'>
                 <h1>Bug Details</h1>
             </div>
             <div className='detail flex'>

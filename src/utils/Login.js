@@ -32,19 +32,20 @@ const Login = ({ onLogin, flip }) => {
                 setPassword('');
                 toast.success("Login Successful !!!");
 
-                switch (data?.role) {
-                    case 'Admin':
-                        console.log('Navigating to Admin Dashboard');
-                        navigate("/admindashboard");
-                        break;
-                    case 'Tester':
-                        console.log('Navigating to Tester Dashboard');
-                        navigate("/testerdashboard");
-                        break;
-                    default:
-                        console.log('Navigating to User Dashboard');
-                        navigate("/");
-                }
+                // switch (data?.role) {
+                //     case 'Admin':
+                //         console.log('Navigating to Admin Dashboard');
+                //         navigate("/admindashboard");
+                //         break;
+                //     case 'Tester':
+                //         console.log('Navigating to Tester Dashboard');
+                //         navigate("/testerdashboard");
+                //         break;
+                //     default:
+                //         console.log('Navigating to User Dashboard');
+                //         navigate("/");
+                // }
+                navigate("/dashboard")
                 onLogin();
             }
         } catch (error) {

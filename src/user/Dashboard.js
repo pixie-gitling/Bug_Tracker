@@ -2,39 +2,54 @@ import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router';
 
 const Dashboard = () => {
-    const [userId, setUserId] = useState('')
+    const navigate = useNavigate();
     const [totalBugs, setTotalBugs] = useState(0);
     const [resolvedBugs, setResolvedBugs] = useState(0);
     const [unresolvedBugs, setUnresolvedBugs] = useState(0);
     const [assignedBugs, setAssignedBugs] = useState(0);
-    // const userId = Cookies.get('userId');
+
+    const role = Cookies.get('role');
+    const userId = Cookies.get('userId');
+    const username = Cookies.get('username');
 
     useEffect(() => {
-        const fetchReportsByUserId = async () => {
+        const fetchReports = async () => {
             try {
-                    const response = await axios.get(`/report/${Cookies.get('userId')}`);
-                    console.log(userId);
-                    const reports = response.data;
-                    console.log(reports);
+                let response;
+                if (role === 'Admin') {
+                    response = await axios.get('/report');
+                } else if (role === 'Tester') {
+                    response = await axios.get('/report');
+                    response.data = response.data.filter(report => report.assignedTo === username);
+                } else {
+                    response = await axios.get(`/report/${userId}`);
+                }
 
-                    setTotalBugs(reports.length);
-                    setResolvedBugs(reports.filter(reports => reports.status === 'Resolved').length);
-                    setUnresolvedBugs(reports.filter(reports => reports.status === 'Reported').length);
-                    setAssignedBugs(reports.filter(reports => reports.status === 'Assigned').length);
+                const reports = response.data;
+
+                setTotalBugs(reports.length);
+                setResolvedBugs(reports.filter(report => report.status === 'Resolved').length);
+                setUnresolvedBugs(reports.filter(report => report.status === 'Reported').length);
+                setAssignedBugs(reports.filter(report => report.status === 'Assigned').length);
             } catch (error) {
                 console.error('Error fetching reports:', error);
             }
         };
 
-        fetchReportsByUserId();
-    }, [userId]);
+        fetchReports();
+    }, [role, userId, username]);
+
+    const handleCardClick = (status) => {
+        navigate(`/reports?status=${status}`);
+    };
 
     return (
         <div className='dashboard'>
             <div className='dash-items'>
-                <div className='card'>
+                <div className='card' onClick={() => handleCardClick('Reported')}>
                     <div className='card-items'>
                         <div className='card-heading'>
                             <h1>Total Bugs Reported</h1>
@@ -44,33 +59,33 @@ const Dashboard = () => {
                         </div>
                     </div>
                 </div>
-                <div className='card'>
+                <div className='card' onClick={() => handleCardClick('Resolved')}>
                     <div className='card-items'>
                         <div className='card-heading'>
-                            <h1>Resolved Bugs</h1>
+                            <h1>No. of Bugs Resolved</h1>
                         </div>
                         <div className='card-data'>
                             <h1>{resolvedBugs}</h1>
                         </div>
                     </div>
                 </div>
-                <div className='card'>
+                <div className='card' onClick={() => handleCardClick('Assigned')}>
                     <div className='card-items'>
                         <div className='card-heading'>
-                            <h1>Unresolved Bugs </h1>
-                        </div>
-                        <div className='card-data'>
-                            <h1>{unresolvedBugs}</h1>
-                        </div>
-                    </div>
-                </div>
-                <div className='card'>
-                    <div className='card-items'>
-                        <div className='card-heading'>
-                            <h1>Assigned Bugs </h1>
+                            <h1>No. of Bugs Assigned</h1>
                         </div>
                         <div className='card-data'>
                             <h1>{assignedBugs}</h1>
+                        </div>
+                    </div>
+                </div>
+                <div className='card' onClick={() => handleCardClick('Unresolved')}>
+                    <div className='card-items'>
+                        <div className='card-heading'>
+                            <h1>No. of Bugs Unresolved</h1>
+                        </div>
+                        <div className='card-data'>
+                            <h1>{unresolvedBugs}</h1>
                         </div>
                     </div>
                 </div>

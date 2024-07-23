@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import '../admin/AdminDisplayReports.css';
-import EditBugReportModal from '../admin/EditBugReport';
+// import EditBugReportModal from '../admin/EditBugReport';
 import Cookies from 'js-cookie';
 import TesterResolveBug from './TesterResolveBug';
 import { useNavigate } from 'react-router';

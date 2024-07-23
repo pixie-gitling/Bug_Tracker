@@ -1,21 +1,19 @@
 .chat-container{
-    padding: 2rem;
+    box-sizing: border-box;
+    /* padding: .5rem; */
     width: 81vw;
-    height: 80vh;
+    height: max-content;
 }
 .chat-container h2{
     font-size: 30px;
-    padding: .5rem;
 }
 .messages{
-    padding: .5rem;
     height: 55vh;
     width: 90%;
     overflow-y: scroll;
     scrollbar-width: thin;
 }
 .message{
-    padding: .3rem;
     display: flex;
     flex-direction: column;
 }
@@ -40,7 +38,8 @@
 }
 .message-input{
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-inline: auto;
 }
 .send-btn{
     height: 7vh;
@@ -51,7 +50,7 @@
     text-align: center;
     border: none;
     border-radius: 25px;
-    background-color: #296a72c9;
+    background-color: var(--button-metallic-green);
     filter: drop-shadow(5px 5px 2px #ffffff4b);
     box-shadow: 3px 3px 3px #ffffff4b inset;
     cursor: pointer;
@@ -113,7 +112,7 @@
 
 @media only screen and (min-width: 869px) and (max-width: 1024px) {
     .chat-container{
-        margin-top: 3rem;
+        margin-top: 4rem;
     }
     .chat-container h1{
         font-size: 2rem;

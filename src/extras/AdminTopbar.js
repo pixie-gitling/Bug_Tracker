@@ -38,7 +38,7 @@ const AdminTopbar = ({ onLogout }) => {
   return (
     <div className="Topbar flex">
       <div className="logo flex">
-        <img src='icon.png' />
+        <img src='icon.png' alt='icon'/>
         <h1>Bug Tracker</h1>
       </div>
       <div className="user">

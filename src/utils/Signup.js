@@ -11,7 +11,7 @@ const Signup = ({ flip }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [confirmPassword, setConfirmPassword] = useState('');
     const [role, setRole] = useState('');
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [setIsAdmin] = useState(false);
 
     const nameRegex = /^[A-Z][a-zA-Z]*$/;
     const usernameRegex = /^[a-zA-Z][a-zA-Z0-9._@]{2,}$/;
