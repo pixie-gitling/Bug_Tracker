@@ -1,8 +1,8 @@
 .container{
     overflow: hidden;
 }
-.session-timeout-popup{
-    /* height: 30vh; */
+/* .session-timeout-popup{
+    height: 30vh;
     width: 40%;
     padding: 1rem;
     text-align: center;
@@ -13,7 +13,7 @@
 }
 .session-timeout-content p{
     font-size: 2.5rem;
-}
+} */
 .hero-span{
     color: var(--accent-color2);
     font-size: 4.2rem;
@@ -42,7 +42,7 @@
     position: absolute;
     top: 35%;
     left: 5%;
-    width: 50%;
+    width: 40%;
     height: 40vh;
     padding: 1.2rem;
     text-align: center;
