@@ -18,12 +18,10 @@ import Forum from "./Forum";
 import UserProfile from "../user/UserProfile";
 
 import AdminDashboard from "../admin/AdminDashboard";
-// import { Admin } from "../extras/Admin";
 import AdminDisplayReports from "../admin/AdminDisplayReports";
 import AdminLayout from "../extras/AdminLayout";
 import AdminDisplayUsers from "../admin/AdminDisplayUsers";
 
-// import TesterLayout from "../extras/TesterLayout";
 import TesterDashboard from "../tester/TesterDashboard";
 import AssignedBugs from "../tester/AssignedBugs";
 import BugDetails from "../admin/Bug";
