@@ -5,18 +5,13 @@ import '../admin/AdminDisplayReports.css';
 // import EditBugReportModal from '../admin/EditBugReport';
 import Cookies from 'js-cookie';
 import TesterResolveBug from './TesterResolveBug';
-import SearchBar from '../utils/SearchBar';
 import { useNavigate } from 'react-router';
 
 const AssignedBugs = () => {
     const [reports, setReports] = useState([]);
     const [selectedReport, setSelectedReport] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false); 
-    const [zoomedImage, setZoomedImage] = useState(null);     const [currentPage, setCurrentPage] = useState(1);
-    // const [reportsPerPage] = useState(5);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [sortColumn, setSortColumn] = useState(null);
-    const [sortOrder, setSortOrder] = useState('asc');
+    const [zoomedImage, setZoomedImage] = useState(null); 
     const username = Cookies.get('username'); 
     const navigate = useNavigate();
 
@@ -34,23 +29,6 @@ const AssignedBugs = () => {
         }
     }, [username]);
     
-    const sortedReports = reports
-    .filter(report => report.title.toLowerCase().includes(searchTerm.toLowerCase()))
-    .sort((a, b) => {
-        if (sortColumn) {
-            const aValue = a[sortColumn];
-            const bValue = b[sortColumn];
-            return sortOrder === 'asc' ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
-        }
-        return 0;
-    });
-
-    const currentReports = sortedReports.slice(indexOfFirstReport, indexOfLastReport);
-
-    const handleSort = (column) => {
-        setSortColumn(column);
-        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
-    };
 
     // Function to handle opening the modal and setting the selected report
     const handleOpenModal = (report) => {
@@ -111,16 +89,15 @@ const AssignedBugs = () => {
     return (
         <div className='displayReports flex'>
             <div className='header flex'>
-                <h1>List of Bug Reports</h1>
-                <SearchBar setSearchTerm={setSearchTerm} />
+                <h1>List of Assigned Bugs</h1>
             </div>
             <div className='Bug-Table'>
                 <table>
                     <thead className='tableHead'>
                         <tr className='flex'>
                             {/* <th>Bug Id</th> */}
-                            <th>Bug Title <FontAwesomeIcon icon={faSort} className='font-icon' /></th>
-                            <th>Bug Description <FontAwesomeIcon icon={faSort} className='font-icon' /></th>
+                            <th>Bug Title</th>
+                            <th>Bug Description</th>
                             <th>File Attached</th>
                             <th>Severity</th>
                             {/* <th>Status</th> */}
@@ -131,7 +108,7 @@ const AssignedBugs = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {currentReports.map((report) => (
+                        {reports.map((report) => (
                             <tr key={report._id} className='flex'>
                                 {/* <td>{report._id}</td> */}
                                 <td>{report.title}</td>
