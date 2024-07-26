@@ -134,7 +134,6 @@ function App() {
             <Route path="/profile" element={storedLoginStatus ? <UserProfile colorScheme = "user" /> : <Home onLogin={handleLogin} />} />
             <Route path="/notifications" element={storedLoginStatus ? <Notifications colorScheme="user"/> : <Home onLogin={handleLogin} />} />
 
-            {/* <Route path="/adminlogin" element={<Admin onLogin={() => handleLogin(true)} />} /> */}
             <Route path="/dashboard" element={storedLoginStatus ? <AdminDashboard /> : <Home onLogin={handleLogin} />} />
             <Route path="/reports" element={storedLoginStatus ? <AdminDisplayReports /> : <Home onLogin={handleLogin} />} />
             <Route path="/bug/:reportId" element={storedLoginStatus ? <BugDetails role="admin"/> : <Home onLogin={handleLogin} />} />
