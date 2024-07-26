@@ -69,7 +69,7 @@ select{
 .role select option{
     height: 6vh;
     width: 30%;
-    padding: 1rem;
+    padding: .5rem;
 }
 .login-btn{
     margin-inline: auto;
