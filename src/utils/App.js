@@ -140,7 +140,6 @@ function App() {
             <Route path="/bug/:reportId/chat" element={storedLoginStatus ? <Chat role="admin"/> : <Home onLogin={handleLogin} />} />
             <Route path="/bug/:reportId/history" element={storedLoginStatus ? <History /> : <Home onLogin={handleLogin} />} />
             <Route path="/users" element={storedLoginStatus ? <AdminDisplayUsers /> : <Home onLogin={handleLogin} />} />
-            {/* <Route path="/adminprofile" element={<UserProfile colorScheme = "admin"  />} /> */}
             {/* <Route path="/admin/forum" element={<Forum setHasNotifications = {setHasNotifications} colorScheme = "admin" role="admin"/>} /> */}
             <Route path="/admin/notifications" element={storedLoginStatus ? <Notifications colorScheme="admin"/>: <Home onLogin={handleLogin} />} />
 
