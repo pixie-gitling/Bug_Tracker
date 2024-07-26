@@ -93,8 +93,8 @@
     position: absolute;
     display: block;
     list-style: none;
-    width: 20px;
-    height: 20px;
+    width: 80px;
+    height: 80px;
     background: rgba(255, 255, 255, 0.368);
     animation: animate 25s linear infinite;
     bottom: -150px;  
