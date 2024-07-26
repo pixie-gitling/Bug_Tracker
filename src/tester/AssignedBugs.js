@@ -8,6 +8,7 @@ import TesterResolveBug from './TesterResolveBug';
 import { useNavigate } from 'react-router';
 
 const AssignedBugs = () => {
+    const [searchTerm, setSearchTerm] = useState('');
     const [reports, setReports] = useState([]);
     const [selectedReport, setSelectedReport] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false); 
@@ -88,6 +89,10 @@ const AssignedBugs = () => {
 
     return (
         <div className='displayReports flex'>
+            <div className='header flex'>
+                <h1>List of Bug Reports</h1>
+                <SearchBar setSearchTerm={setSearchTerm} />
+            </div>
             <div className='Bug-Table'>
                 <table>
                     <thead className='tableHead'>
