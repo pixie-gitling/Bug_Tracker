@@ -5,6 +5,7 @@ import '../admin/AdminDisplayReports.css';
 // import EditBugReportModal from '../admin/EditBugReport';
 import Cookies from 'js-cookie';
 import TesterResolveBug from './TesterResolveBug';
+import SearchBar from '../utils/SearchBar';
 import { useNavigate } from 'react-router';
 
 const AssignedBugs = () => {
