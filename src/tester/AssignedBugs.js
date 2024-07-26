@@ -31,6 +31,18 @@ const AssignedBugs = () => {
         }
     }, [username]);
     
+    const sortedReports = reports
+    .filter(report => report.title.toLowerCase().includes(searchTerm.toLowerCase()))
+    .sort((a, b) => {
+        if (sortColumn) {
+            const aValue = a[sortColumn];
+            const bValue = b[sortColumn];
+            return sortOrder === 'asc' ? aValue.localeCompare(bValue) : bValue.localeCompare(aValue);
+        }
+        return 0;
+    });
+
+    const currentReports = sortedReports.slice(indexOfFirstReport, indexOfLastReport);
 
     // Function to handle opening the modal and setting the selected report
     const handleOpenModal = (report) => {
@@ -111,7 +123,7 @@ const AssignedBugs = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {reports.map((report) => (
+                        {currentReports.map((report) => (
                             <tr key={report._id} className='flex'>
                                 {/* <td>{report._id}</td> */}
                                 <td>{report.title}</td>
