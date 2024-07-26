@@ -67,7 +67,7 @@ select{
     box-shadow: 3px 3px 2px #bbbbbbce inset, 2px 2px 5px #8888887e;
 }
 .role select option{
-    height: 3vh;
+    height: 6vh;
     width: 30%;
     padding: 1rem;
 }
