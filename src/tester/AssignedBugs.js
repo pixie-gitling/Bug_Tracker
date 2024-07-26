@@ -9,11 +9,14 @@ import SearchBar from '../utils/SearchBar';
 import { useNavigate } from 'react-router';
 
 const AssignedBugs = () => {
-    const [searchTerm, setSearchTerm] = useState('');
     const [reports, setReports] = useState([]);
     const [selectedReport, setSelectedReport] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false); 
-    const [zoomedImage, setZoomedImage] = useState(null); 
+    const [zoomedImage, setZoomedImage] = useState(null);     const [currentPage, setCurrentPage] = useState(1);
+    // const [reportsPerPage] = useState(5);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [sortColumn, setSortColumn] = useState(null);
+    const [sortOrder, setSortOrder] = useState('asc');
     const username = Cookies.get('username'); 
     const navigate = useNavigate();
 
@@ -43,6 +46,11 @@ const AssignedBugs = () => {
     });
 
     const currentReports = sortedReports.slice(indexOfFirstReport, indexOfLastReport);
+
+    const handleSort = (column) => {
+        setSortColumn(column);
+        setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    };
 
     // Function to handle opening the modal and setting the selected report
     const handleOpenModal = (report) => {
@@ -111,8 +119,8 @@ const AssignedBugs = () => {
                     <thead className='tableHead'>
                         <tr className='flex'>
                             {/* <th>Bug Id</th> */}
-                            <th>Bug Title</th>
-                            <th>Bug Description</th>
+                            <th>Bug Title <FontAwesomeIcon icon={faSort} className='font-icon' /></th>
+                            <th>Bug Description <FontAwesomeIcon icon={faSort} className='font-icon' /></th>
                             <th>File Attached</th>
                             <th>Severity</th>
                             {/* <th>Status</th> */}
