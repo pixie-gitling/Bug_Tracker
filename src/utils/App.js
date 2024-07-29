@@ -33,7 +33,7 @@ import useWindowSize from "./UseWindowSize";
 import Chat from "../admin/Chat";
 import Notifications from "./Notifications";
 
-axios.defaults.baseURL = "https://bugtrackerbackend-tmcc.onrender.com";
+axios.defaults.baseURL = "https://localhost:8080";
 axios.defaults.withCredentials = true;
 
 library.add(fas)
