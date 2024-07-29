@@ -117,12 +117,12 @@ const AssignedBugs = () => {
     };
 
     return (
-        <div className='displayReports flex'>
+        <div className='DisplayReports flex'>
             <div className='header flex'>
                 <h1>List of Assigned Bugs</h1>
                 <SearchBar setSearchTerm={setSearchTerm} />
             </div>
-            <div className='Bug-Table'>
+            <div className='bugTable'>
                 <table>
                     <thead className='tableHead'>
                         <tr className='flex'>
