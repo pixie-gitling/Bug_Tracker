@@ -6,6 +6,8 @@ import '../admin/AdminDisplayReports.css';
 import Cookies from 'js-cookie';
 import TesterResolveBug from './TesterResolveBug';
 import SearchBar from '../utils/SearchBar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSort } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router';
 
 const AssignedBugs = () => {
@@ -45,6 +47,8 @@ const AssignedBugs = () => {
         return 0;
     });
 
+    const indexOfLastReport = currentPage * reportsPerPage;
+    const indexOfFirstReport = indexOfLastReport - reportsPerPage;
     const currentReports = sortedReports.slice(indexOfFirstReport, indexOfLastReport);
 
     const handleSort = (column) => {
