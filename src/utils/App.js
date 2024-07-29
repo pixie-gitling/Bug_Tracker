@@ -36,7 +36,7 @@ import Notifications from "./Notifications";
 axios.defaults.baseURL = "https://bugtrackerbackend-tmcc.onrender.com";
 axios.defaults.withCredentials = true;
 
-library.add(fas);
+library.add(fas)
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -73,7 +73,7 @@ function App() {
 
   const setSessionTimeout = useCallback(() => {
     clearSessionTimeout();
-    const sessionTimeoutDuration = 60 * 60 * 1000;
+    const sessionTimeoutDuration = 60 * 60 * 1000; // 1 hour
     sessionTimeoutRef.current = setTimeout(() => {
       setShowSessionTimeoutPopup(true);
     }, sessionTimeoutDuration);
@@ -140,6 +140,7 @@ function App() {
             <Route path="/bug/:reportId/chat" element={storedLoginStatus ? <Chat role="admin"/> : <Home onLogin={handleLogin} />} />
             <Route path="/bug/:reportId/history" element={storedLoginStatus ? <History /> : <Home onLogin={handleLogin} />} />
             <Route path="/users" element={storedLoginStatus ? <AdminDisplayUsers /> : <Home onLogin={handleLogin} />} />
+            {/* <Route path="/admin/forum" element={<Forum setHasNotifications = {setHasNotifications} colorScheme = "admin" role="admin"/>} /> */}
             <Route path="/admin/notifications" element={storedLoginStatus ? <Notifications colorScheme="admin"/>: <Home onLogin={handleLogin} />} />
 
             <Route path="/dashboard" element={storedLoginStatus ? <TesterDashboard /> : <Home onLogin={handleLogin} />} />
