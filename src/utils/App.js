@@ -33,7 +33,7 @@ import useWindowSize from "./UseWindowSize";
 import Chat from "../admin/Chat";
 import Notifications from "./Notifications";
 
-axios.defaults.baseURL = "https://localhost:8080";
+axios.defaults.baseURL = "http://localhost:8080";
 axios.defaults.withCredentials = true;
 
 library.add(fas)
@@ -106,7 +106,7 @@ function App() {
   };
 
   return (
-    <div className="parent" onClick={resetSessionTimeout} onClickCapture={resetSessionTimeout}>
+    <div className="parent" onClick={resetSessionTimeout}>
       {/* Popup for session timeout */}
       {showSessionTimeoutPopup && (
         <div className="session-timeout-popup">
