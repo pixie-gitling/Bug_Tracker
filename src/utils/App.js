@@ -106,7 +106,7 @@ function App() {
   };
 
   return (
-    <div className="parent" onClick={resetSessionTimeout} onKey={resetSessionTimeout}>
+    <div className="parent" onClick={resetSessionTimeout} onClickCapture={resetSessionTimeout}>
       {/* Popup for session timeout */}
       {showSessionTimeoutPopup && (
         <div className="session-timeout-popup">
