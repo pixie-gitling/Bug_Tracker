@@ -15,7 +15,7 @@ const AssignedBugs = () => {
     const [selectedReport, setSelectedReport] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false); 
     const [zoomedImage, setZoomedImage] = useState(null);     const [currentPage, setCurrentPage] = useState(1);
-    // const [reportsPerPage] = useState(5);
+    const [reportsPerPage] = useState(5);
     const [searchTerm, setSearchTerm] = useState('');
     const [sortColumn, setSortColumn] = useState(null);
     const [sortOrder, setSortOrder] = useState('asc');
