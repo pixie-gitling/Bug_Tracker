@@ -134,7 +134,6 @@ const DisplayReports = () => {
                             <th>File Attached</th>
                             <th>Status</th>
                             <th>CreatedAt</th>
-                            <th>Action</th>
                             <th>Details</th>
                         </tr>
                     </thead>
@@ -156,21 +155,9 @@ const DisplayReports = () => {
                                 </td>
                                 <td className={`status ${report.status === 'Reported' ? 'red-text' : report.status === 'Assigned' ? 'yellow-text' : 'green-text'}`}>{report.status}</td>
                                 <td>{formatTime(report.createdAt)}</td>
-                                <td> 
-                                    <button className='table-btn btn1 flex' onClick={() => handleOpenModal(report)}>Edit</button> 
-                                </td>
                                 <td className='details' onClick={() => handleReportClick(report._id)}>View Details</td>
                             </tr>
                         ))}
-                        {/* Modal for editing report */}
-                        {isModalOpen && (
-                            <div className='UserModal flex'>
-                                <div className='modal-content flex'>
-                                    {/* Pass the selected report data to the EditReport component */}
-                                    <EditReport report={selectedReport} onSave={handleSaveReport} onClose={handleCloseModal}/>
-                                </div>
-                            </div>
-                        )}
                     </tbody>
                 </table>
             </div>
