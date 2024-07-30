@@ -12,8 +12,8 @@ import { faSort } from '@fortawesome/free-solid-svg-icons';
 
 const DisplayReports = () => {
     const [reports, setReports] = useState([]);
-    const [selectedReport, setSelectedReport] = useState(null); // State to store the selected report
-    const [isModalOpen, setIsModalOpen] = useState(false); // State to control the visibility of the modal
+    // const [selectedReport, setSelectedReport] = useState(null); // State to store the selected report
+    // const [isModalOpen, setIsModalOpen] = useState(false); // State to control the visibility of the modal
     const [zoomedImage, setZoomedImage] = useState(null); // State to store the zoomed image URL
     const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
@@ -60,34 +60,34 @@ const DisplayReports = () => {
     };
 
     // Function to handle opening the modal and setting the selected report
-    const handleOpenModal = (report) => {
-        setSelectedReport(report);
-        setIsModalOpen(true);
-    };
+    // const handleOpenModal = (report) => {
+    //     setSelectedReport(report);
+    //     setIsModalOpen(true);
+    // };
 
-    // Function to handle closing the modal
-    const handleCloseModal = () => {
-        setIsModalOpen(false);
-    };
+    // // Function to handle closing the modal
+    // const handleCloseModal = () => {
+    //     setIsModalOpen(false);
+    // };
 
-    // Function to handle saving the edited report
-    const handleSaveReport = async (updatedReport) => {
-        try {
-            // Update the report in the database
-            const response = await axios.put(`/report/${updatedReport._id}`, updatedReport);
-            if (response.status === 200) {
-                // If the update is successful, update the local state with the updated report
-                setReports(reports.map(report => report._id === updatedReport._id ? updatedReport : report));
-                toast.success('Report updated successfully');
-                setIsModalOpen(false); // Close the modal after successful update
-            } else {
-                toast.error('Error updating report');
-            }
-        } catch (error) {
-            toast.error('Error updating report');
-            console.log(error);
-        }
-    };
+    // // Function to handle saving the edited report
+    // const handleSaveReport = async (updatedReport) => {
+    //     try {
+    //         // Update the report in the database
+    //         const response = await axios.put(`/report/${updatedReport._id}`, updatedReport);
+    //         if (response.status === 200) {
+    //             // If the update is successful, update the local state with the updated report
+    //             setReports(reports.map(report => report._id === updatedReport._id ? updatedReport : report));
+    //             toast.success('Report updated successfully');
+    //             setIsModalOpen(false); // Close the modal after successful update
+    //         } else {
+    //             toast.error('Error updating report');
+    //         }
+    //     } catch (error) {
+    //         toast.error('Error updating report');
+    //         console.log(error);
+    //     }
+    // };
 
     // Function to handle zooming in on the image
     const handleZoomImage = (imageUrl) => {
