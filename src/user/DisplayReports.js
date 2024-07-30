@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import './DisplayReports.css';
-import EditReport from './EditReport';
+// import EditReport from './EditReport';
 import Cookies from 'js-cookie';
 import Pagination from '../utils/Pagination';
 import SearchBar from '../utils/SearchBar';
