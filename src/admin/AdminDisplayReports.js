@@ -130,7 +130,7 @@ const AdminDisplayReports = () => {
                             <th>File Attached</th>
                             <th onClick={() => handleSort('severity')}>
                                 Severity
-                                <FontAwesomeIcon icon={faSort} className='font-icon' />
+                                {/* <FontAwesomeIcon icon={faSort} className='font-icon' /> */}
                             </th>
                             <th>Assigned To</th>
                             <th>Status</th>
