@@ -44,16 +44,6 @@ const TesterDashboard = () => {
                         </div>
                     </div>
                 </div> */}
-                <div className='Card' onClick={() => handleCardClick('Resolved')}>
-                    <div className='CardItems'>
-                        <div className='CardHeading'>
-                            <h1>No. of Bugs Resolved</h1>
-                        </div>
-                        <div className='CardData'>
-                            <h1>{resolvedBugs.length}</h1>
-                        </div>
-                    </div>
-                </div>
                 <div className='Card' onClick={() => handleCardClick('Assigned')}>
                     <div className='CardItems'>
                         <div className='CardHeading'>
@@ -61,6 +51,16 @@ const TesterDashboard = () => {
                         </div>
                         <div className='CardData'>
                             <h1>{assignedBugs.length}</h1>
+                        </div>
+                    </div>
+                </div>
+                <div className='Card' onClick={() => handleCardClick('Resolved')}>
+                    <div className='CardItems'>
+                        <div className='CardHeading'>
+                            <h1>No. of Bugs Resolved</h1>
+                        </div>
+                        <div className='CardData'>
+                            <h1>{resolvedBugs.length}</h1>
                         </div>
                     </div>
                 </div>
